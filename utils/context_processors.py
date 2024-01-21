@@ -7,7 +7,7 @@ def navbar_genres(request):
 
         sections.append(
             {'category': category.name,
-             'genres': Genre.objects.filter(category=category).values('name')
+             'genres': Genre.objects.filter(category=category)
              })
 
     return {'sections': sections}

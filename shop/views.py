@@ -30,7 +30,7 @@ class BookListView(ListView):
 
         genre = get_object_or_404(
             Genre,
-            name=self.kwargs.get('genre'))
+            slug=self.kwargs.get('genre'))
 
         return Book.objects.filter(genre=genre)
 

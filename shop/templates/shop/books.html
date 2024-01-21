@@ -9,7 +9,7 @@
             <small>
                 <ins>${{ book.price }}</ins>
             </small>
-            <a href="{% url 'book-detail' book.id %}" class="card__link"></a>
+            <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
         </div>
     {% endfor %}
 </div>

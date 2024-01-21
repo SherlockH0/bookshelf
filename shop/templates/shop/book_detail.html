@@ -5,7 +5,7 @@
             <img class="detail__image" src="{{ object.image.url }}" alt="">
         </div>
         <hgroup class="detail__title">
-            <small><a href="{% url 'shop-books' object.genre %}">{{ object.genre }}</a></small>
+            <small><a href="{% url 'shop-books' object.genre.slug %}">{{ object.genre }}</a></small>
             <h1 class="detail__book-name">{{ object.name }}</h1>
             <h3>{{ object.author }}</h3>
         </hgroup>
