@@ -97,6 +97,10 @@ main {
   position: relative;
 }
 
+.text {
+  max-width: 600px;
+}
+
 .sorry {
   display: flex;
   justify-content: center;

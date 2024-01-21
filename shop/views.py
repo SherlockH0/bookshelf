@@ -4,6 +4,10 @@ from .models import Book, Genre
 from django.db.models import Q
 
 
+def about(request):
+    return render(request, 'shop/about.html')
+
+
 def home(request):
     context = {'books': Book.objects.all().order_by('-date_created')}
 
