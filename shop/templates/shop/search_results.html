@@ -1,0 +1,9 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <section id="books" class="books">
+        <div class="container books__genre-description">
+            <h2>Search results for {{ query }}</h2>
+        </div>
+        {% include 'shop/books.html' %}
+    </section>
+{% endblock content %}

@@ -1,0 +1,15 @@
+<div class="books__container">
+    {% for book in books %}
+        <div class="card">
+            <img src="{{ book.image.url }}" alt="{{ book.name }} - {{ book.author }}">
+            <hgroup class="card__title">
+                <p>{{ book.name }}</p>
+                <p>{{ book.author }}</p>
+            </hgroup>
+            <small>
+                <ins>${{ book.price }}</ins>
+            </small>
+            <a href="{% url 'book-detail' book.id %}" class="card__link"></a>
+        </div>
+    {% endfor %}
+</div>

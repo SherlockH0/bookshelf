@@ -1,0 +1,304 @@
+[
+    {
+      "title": "The Art Book",
+      "author": "Editors of Phaidon Press",
+      "genre": "Art",
+      "about": "A comprehensive guide to the world of art, featuring iconic works and insights into the lives of renowned artists. Perfect for art enthusiasts and those eager to explore the beauty of visual expression.",
+      "price": 22.99
+    },
+    {
+      "title": "The Joy of Cooking",
+      "author": "Irma S. Rombauer",
+      "genre": "Cooking",
+      "about": "An essential cookbook that has been a kitchen staple for generations. Packed with recipes, tips, and techniques, it invites readers to savor the joy of preparing delicious meals.",
+      "price": 19.99
+    },
+    {
+      "title": "Steve Jobs",
+      "author": "Walter Isaacson",
+      "genre": "Biography",
+      "about": "A compelling biography of Apple's visionary co-founder, Steve Jobs. Dive into the life of this tech pioneer, exploring his innovations, challenges, and lasting impact on the world.",
+      "price": 27.99
+    },
+    {
+      "title": "The Girl with the Dragon Tattoo",
+      "author": "Stieg Larsson",
+      "genre": "Mystery",
+      "about": "A gripping mystery that follows journalist Mikael Blomkvist and hacker Lisbeth Salander as they delve into a wealthy family's dark secrets. Intrigue, suspense, and unexpected twists await.",
+      "price": 14.49
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romance",
+      "about": "Jane Austen's timeless classic explores the complexities of love, social class, and manners in 19th-century England. Follow the spirited Elizabeth Bennet as she navigates the challenges of romance.",
+      "price": 10.99
+    },
+    {
+      "title": "The Magical Forest",
+      "author": "Laura Williams",
+      "genre": "Children`s Fantasy",
+      "about": "Embark on a magical journey through the enchanted forest, where talking animals, fairies, and whimsical adventures await young readers. A delightful tale of friendship and wonder.",
+      "price": 8.99
+    },
+    {
+      "title": "The Lost City of Atlantis",
+      "author": "Ava Reynolds",
+      "genre": "Historical Adventure",
+      "about": "Join a daring expedition to uncover the mysteries of the lost city of Atlantis. Set against a historical backdrop, this adventure novel blends fact and fiction for an exhilarating read.",
+      "price": 15.99
+    },
+    {
+      "title": "The Quest for El Dorado",
+      "author": "Nathan Turner",
+      "genre": "Adventure",
+      "about": "Embark on a thrilling adventure in search of the legendary city of gold, El Dorado. Action, danger, and unexpected discoveries await as explorers brave the untamed jungles of South America.",
+      "price": 16.99
+    },
+    {
+      "title": "Goodnight Moon",
+      "author": "Margaret Wise Brown",
+      "genre": "Children`s Picture Book",
+      "about": "A beloved children's classic that takes young readers on a soothing journey from day to night. With charming illustrations, it's the perfect bedtime story for little ones.",
+      "price": 7.99
+    },
+    {
+      "title": "Ender's Game",
+      "author": "Orson Scott Card",
+      "genre": "Science Fiction",
+      "about": "In a future where Earth is at war with an alien race, young Ender Wiggin is recruited into a military training program. His strategic genius becomes humanity's last hope for survival.",
+      "price": 18.99
+    },
+    {
+      "title": "The Innovators",
+      "author": "Walter Isaacson",
+      "genre": "Science and Technology",
+      "about": "Walter Isaacson explores the history of the digital revolution, profiling innovators who shaped the world of technology. A fascinating journey through the minds of visionaries.",
+      "price": 26.99
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "about": "Join Bilbo Baggins on a quest to reclaim a dragon's treasure in this classic fantasy novel. Filled with magical creatures, epic adventures, and the journey to the Lonely Mountain.",
+      "price": 14.99
+    },
+    {
+      "title": "The Diary of Anne Frank",
+      "author": "Anne Frank",
+      "genre": "History",
+      "about": "The poignant diary of Anne Frank, a Jewish girl hiding from the Nazis during World War II. Her writings capture the challenges, hopes, and fears of a young life disrupted by war.",
+      "price": 12.99
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Classic fiction",
+      "about": "Jane Austen's timeless classic explores the complexities of love, social class, and manners in 19th-century England. Follow the spirited Elizabeth Bennet as she navigates the challenges of romance.",
+      "price": 10.99
+    },
+    {
+      "title": "The Lion, the Witch and the Wardrobe",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Enter the enchanting world of Narnia, where four siblings discover a magical land ruled by the White Witch. This classic fantasy adventure explores themes of courage, sacrifice, and redemption.",
+      "price": 11.99
+    },
+    {
+      "title": "Prince Caspian",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Return to Narnia as the Pevensie siblings embark on a new adventure to aid Prince Caspian in reclaiming his throne. A tale of bravery, loyalty, and the enduring magic of Narnia.",
+      "price": 13.99
+    },
+    {
+      "title": "The Voyage of the Dawn Treader",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Join the voyage aboard the Dawn Treader as Lucy, Edmund, and their cousin Eustace explore the Eastern Seas. A captivating journey filled with mythical creatures, islands, and moral lessons.",
+      "price": 14.99
+    },
+    {
+      "title": "The Silver Chair",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Embark on a quest to rescue Prince Rilian from the enchantment of the Silver Chair. This Narnian adventure explores themes of courage, friendship, and the battle between good and evil.",
+      "price": 13.99
+    },
+    {
+      "title": "The Horse and His Boy",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Follow the journey of Shasta and his talking horse Bree as they escape from Calormen. An exciting tale set in the world of Narnia, where destiny unfolds and characters discover their true identities.",
+      "price": 12.99
+    },
+    {
+      "title": "The Magician's Nephew",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Delve into the origin of Narnia and witness the creation of the magical land. This prequel explores the adventures of Digory Kirke and Polly Plummer, revealing the secrets of the wardrobe.",
+      "price": 11.99
+    },
+    {
+      "title": "The Last Battle",
+      "author": "C.S. Lewis",
+      "genre": "Fantasy",
+      "about": "Experience the final chapter of the Narnia series, where a great battle unfolds, and characters face their ultimate destinies. A tale of sacrifice, redemption, and the enduring power of Aslan.",
+      "price": 15.99
+    },
+    {
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "Mystery",
+      "about": "Step into the world of detective Sherlock Holmes and his loyal companion Dr. John Watson. This collection of short stories presents Holmes' brilliant deductions and ingenious crime-solving methods.",
+      "price": 16.99
+    },
+    {
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Conan Doyle",
+      "genre": "Mystery",
+      "about": "Join Holmes and Watson as they investigate the mysterious case of the supernatural hound haunting the Baskerville family. A gripping mystery set against the eerie moors of Devonshire.",
+      "price": 14.99
+    },
+    {
+      "title": "Bread: A Baker's Book of Techniques and Recipes",
+      "author": "Jeffrey Hamelman",
+      "genre": "Cooking",
+      "about": "A comprehensive guide to the art and science of bread baking. Master the techniques, explore various recipes, and delve into the world of artisanal bread with Jeffrey Hamelman's expertise.",
+      "price": 28.99
+    },
+    {
+      "title": "Twenty Thousand Leagues Under the Sea",
+      "author": "Jules Verne",
+      "genre": "Adventure",
+      "about": "Embark on a thrilling underwater adventure as Professor Pierre Aronnax joins Captain Nemo aboard the Nautilus. Jules Verne's classic novel explores the mysteries of the deep sea.",
+      "price": 12.99
+    },
+    {
+      "title": "The Mysterious Island",
+      "author": "Jules Verne",
+      "genre": "Adventure",
+      "about": "Shipwrecked on a mysterious island, a group of survivors must use their ingenuity to overcome challenges and uncover the island's secrets. Jules Verne's tale of survival and discovery.",
+      "price": 14.99
+    },
+    {
+      "title": "Eugene Onegin",
+      "author": "Alexander Pushkin",
+      "genre": "Poetry",
+      "about": "A novel in verse, 'Eugene Onegin' is a masterful work by Alexander Pushkin. It explores themes of love, honor, and societal expectations, presenting a vivid portrayal of 19th-century Russian society.",
+      "price": 10.99
+    },
+    {
+      "title": "Selected Sonnets",
+      "author": "William Shakespeare",
+      "genre": "Poetry",
+      "about": "Experience the timeless beauty of Shakespeare's sonnets, a collection of 154 poems exploring themes of love, beauty, and the complexities of human emotions. A poetic journey through the human soul.",
+      "price": 9.99
+    },
+    {
+      "title": "The Jungle Book",
+      "author": "Rudyard Kipling",
+      "genre": "Children`s Fantasy",
+      "about": "Enter the jungle and join Mowgli, Baloo, and Bagheera in Rudyard Kipling's classic tales. Filled with adventure, friendship, and moral lessons, 'The Jungle Book' captivates readers of all ages.",
+      "price": 11.99
+    },
+    {
+      "title": "If",
+      "author": "Rudyard Kipling",
+      "genre": "Poetry",
+      "about": "Rudyard Kipling's 'If' is a timeless poem offering wisdom and inspiration. It imparts valuable life lessons and encourages resilience in the face of challenges, making it a classic in the realm of poetry.",
+      "price": 9.99
+    },
+    {
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "genre": "Poetry",
+      "about": "While primarily known as a children's book, 'The Little Prince' is a poetic and philosophical tale that explores the complexities of human relationships and the importance of seeing with the heart.",
+      "price": 12.99
+    },
+    {
+      "title": "Eyre",
+      "author": "Charlotte Brontë",
+      "genre": "Classic fiction",
+      "about": "Charlotte Brontë's 'Jane Eyre' is a classic novel that follows the life of the orphaned Jane as she faces challenges, discovers love, and asserts her independence in a society marked by social class and gender roles.",
+      "price": 12.99
+    },
+    {
+      "title": "Leaves of Grass",
+      "author": "Walt Whitman",
+      "genre": "Poetry",
+      "about": "Walt Whitman's 'Leaves of Grass' is a collection of poems celebrating nature, the human spirit, and the interconnectedness of all things. It is a cornerstone of American poetry and a celebration of life.",
+      "price": 14.99
+    },
+    {
+      "title": "Leaves of Grass",
+      "author": "Walt Whitman",
+      "genre": "Poetry",
+      "about": "Walt Whitman's 'Leaves of Grass' is a collection of poems celebrating nature, the human spirit, and the interconnectedness of all things. It is a cornerstone of American poetry and a celebration of life.",
+      "price": 14.99
+    },
+    {
+      "title": "The Waste Land",
+      "author": "T.S. Eliot",
+      "genre": "Poetry",
+      "about": "T.S. Eliot's 'The Waste Land' is a modernist masterpiece that reflects the disillusionment of post-World War I society. Its fragmented structure and rich symbolism make it a challenging yet rewarding read.",
+      "price": 11.99
+    },
+    {
+      "title": "Ariel",
+      "author": "Sylvia Plath",
+      "genre": "Poetry",
+      "about": "Sylvia Plath's 'Ariel' is a collection of powerful and deeply personal poems that explore themes of identity, womanhood, and the complexities of the human psyche. It remains a significant work in confessional poetry.",
+      "price": 13.49
+    },
+    {
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "genre": "Adventure",
+      "about": "Paulo Coelho's 'The Alchemist' is a philosophical adventure that follows Santiago, a shepherd, on a journey to fulfill his personal legend. Filled with wisdom and mystical elements, it inspires readers to pursue their dreams.",
+      "price": 16.99
+    },
+    {
+      "title": "The Night Circus",
+      "author": "Erin Morgenstern",
+      "genre": "Mystery",
+      "about": "Erin Morgenstern's 'The Night Circus' is a mesmerizing tale of a magical competition between two illusionists. The mysterious and enchanting circus becomes a backdrop for a love story and a battle of extraordinary talents.",
+      "price": 17.99
+    },
+    {
+      "title": "The Notebook",
+      "author": "Nicholas Sparks",
+      "genre": "Romance",
+      "about": "Nicholas Sparks's 'The Notebook' is a heartwarming love story that spans decades. It follows Noah and Allie, whose love withstands the test of time, showcasing the enduring power of true love.",
+      "price": 10.49
+    },
+    {
+      "title": "The Giver",
+      "author": "Lois Lowry",
+      "genre": "Science Fiction",
+      "about": "Lois Lowry's 'The Giver' is a thought-provoking dystopian novel that explores a society with suppressed emotions and memories. Jonas, the protagonist, discovers the harsh realities hidden beneath the facade of perfection.",
+      "price": 15.99
+    },
+    {
+      "title": "The Immortal Life of Henrietta Lacks",
+      "author": "Rebecca Skloot",
+      "genre": "Biography",
+      "about": "Rebecca Skloot's biography, 'The Immortal Life of Henrietta Lacks,' unravels the story of a woman whose cells were used for scientific research without her knowledge. It raises important ethical questions and explores the impact of medical advancements on individuals.",
+      "price": 19.99
+    },
+    {
+      "title": "The Wright Brothers",
+      "author": "David McCullough",
+      "genre": "History",
+      "about": "David McCullough's 'The Wright Brothers' provides a detailed account of the lives and achievements of Orville and Wilbur Wright, pioneers in aviation. It offers insights into their determination and contributions to flight history.",
+      "price": 21.99
+    },
+    {
+      "title": "Jane Eyre",
+      "author": "Charlotte Brontë",
+      "genre": "Classic fiction",
+      "about": "Charlotte Brontë's 'Jane Eyre' is a classic novel that follows the life of the orphaned Jane as she faces challenges, discovers love, and asserts her independence in a society marked by social class and gender roles.",
+      "price": 12.99
+    }
+  ]
+

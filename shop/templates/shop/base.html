@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'shop/css/pico.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'shop/main.css' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair Display SC|La Belle Aurore|Lora">
+	{% if title %}
+		<title>Bookshelf- {{ title }}</title>
+	{% else %}
+		<title>Bookshelf</title>
+	{% endif %}
+</head>
+<body class="container">
+
+	<!-- Navbar -->
+	<div class="navbar">
+		<nav>
+			<ul>
+			  <li><a href="{% url 'shop-home' %}" class="navbar__brand">BS</a></li>
+			</ul>
+			<ul class="navbar__links" data-visible="false">
+				{% for section in sections %}
+					<li>
+						<details class="dropdown">
+							<summary>{{ section.category }}</summary>
+							<ul dir="rtl">
+								{% for genre in section.genres %}
+									<li><a href="{% url 'shop-books' genre.name %}">{{ genre.name }}</a></li>
+								{% endfor %}
+							</ul>
+						</details>
+					</li>
+				{% endfor %}
+			  	<li></li>
+			  	<li><a href="#">About us</a></li>
+			</ul>
+			<ul>
+			  <li>
+			    <a href="#" data-tooltip="Wishlist" data-placement="bottom">
+			      <i class="bi bi-heart"></i>
+			    </a>
+			  </li>
+			  <li>
+			    <a href="#" data-tooltip="Cart" data-placement="bottom">
+			      <i class="bi bi-cart"></i>
+			    </a>
+			  </li>
+			  <li>
+			    <a href="#" class="responsive" data-tooltip="Profile" data-placement="bottom">
+			      <i class="bi bi-person-circle"></i>
+			    </a>
+			  </li>
+			</ul>
+			<ul class="navbar__menu-toggle">
+			  <li>
+			    <button>
+			      <i class="bi bi-list"></i>
+			    </button>
+			  </li>
+			</ul>
+		</nav>
+		<div data-visible="false" class="mobile-highlight"></div>
+		<div class="navbar__search">
+			<form action="/" role="search">
+				<input type="search" id="search" name="search" value="{{ query }}">
+				<input type="submit" value="Search"/>
+			</form>
+		</div>
+	</div>
+
+
+	<!-- Main content -->
+	<main class="container">
+		{% block content %}{% endblock %}
+	</main>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="{% static 'shop/javascript.js' %}"></script>
+</body>
+</html>

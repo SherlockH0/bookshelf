@@ -1,0 +1,27 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <div class="detail__wrapper detail">
+        <div class="detail__cover">
+            <img class="detail__image" src="{{ object.image.url }}" alt="">
+        </div>
+        <hgroup class="detail__title">
+            <small><a href="{% url 'shop-books' object.genre %}">{{ object.genre }}</a></small>
+            <h1 class="detail__book-name">{{ object.name }}</h1>
+            <h3>{{ object.author }}</h3>
+        </hgroup>
+
+        <div>
+            <h3><ins>${{ object.price }}</ins></h3>
+            <div class="detail__buttons">
+                <a href="#" role="button" class="outline">Add to card</a>
+                <a href="#" role="button" class="secondary outline">Add to wishlist</a>
+            </div>
+        </div>
+        <div>
+            <h4>Description</h4>
+            <p class="detail__description">
+                {{ object.about|linebreaksbr }}
+            </p>
+        </div>
+    </div>
+{% endblock content %}

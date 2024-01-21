@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <section id="books" class="books">
+        {% if object_list %}
+            <div class="container books__genre-description">
+                <h1>{{ object_list.0.genre.name }}</h1>
+                <p>{{ object_list.0.genre.about }}</p>
+            </div>
+            {% include 'shop/books.html' with books=object_list %}
+        {% else %}
+            {% include "shop/nothing.html" %}
+        {% endif %}
+    </section>
+{% endblock content %}
