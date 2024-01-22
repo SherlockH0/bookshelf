@@ -1,9 +1,13 @@
-{% extends "shop/base.html" %}
+{% extends "shop/utils/base.html" %}
 {% block content %}
     <section id="books" class="books">
-        <div class="container books__genre-description">
-            <h2>Search results for {{ query }}</h2>
-        </div>
-        {% include 'shop/books.html' %}
+        {% if books %}
+            <div class="container text">
+                <h2>Search results for {{ query }}</h2>
+            </div>
+            {% include 'shop/utils/books.html' %}
+        {% else %}
+            {% include 'shop/utils/nothing.html' %}
+        {% endif %}
     </section>
 {% endblock content %}

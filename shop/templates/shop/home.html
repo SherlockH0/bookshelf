@@ -1,4 +1,4 @@
-{% extends "shop/base.html" %}
+{% extends "shop/utils/base.html" %}
 {% block content %}
 
 	<section id="hero" class="hero">
@@ -30,7 +30,7 @@
             <h3>New books</h3>
             <a href="#">See more</a>
     	</div>
-    	{% include 'shop/books.html' with books=books|slice:"1:" %}
+    	{% include 'shop/utils/books.html' with books=books|slice:"1:" %}
     </section>
 
 {% endblock content %}
