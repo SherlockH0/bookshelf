@@ -28,7 +28,7 @@
 							<summary>{{ section.category }}</summary>
 							<ul dir="rtl">
 								{% for genre in section.genres %}
-									<li><a href="{% url 'shop-books' genre.slug %}">{{ genre.name }}</a></li>
+									<li><a href="{% url 'shop-books-genre' genre.slug %}">{{ genre.name }}</a></li>
 								{% endfor %}
 							</ul>
 						</details>

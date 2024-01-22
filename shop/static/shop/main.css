@@ -99,6 +99,7 @@ main {
 
 .text {
   max-width: 600px;
+  padding-bottom: 3rem;
 }
 
 .sorry {
@@ -206,11 +207,6 @@ main {
   flex-wrap: wrap;
   gap: 2rem 1rem;
   justify-content: center;
-}
-
-.books__genre-description {
-  max-width: 600px;
-  padding-bottom: 3rem;
 }
 
 .card img{

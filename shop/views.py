@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from .models import Book, Genre
+from .models import Book, Genre, Author
 from django.db.models import Q
+from django.urls import reverse
 
 
 def about(request):
@@ -30,13 +31,26 @@ def home(request):
 class BookListView(ListView):
     model = Book
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-        genre = get_object_or_404(
-            Genre,
-            slug=self.kwargs.get('genre'))
+        slug = self.kwargs.get('slug')
+        keyword = 'author'
+        CategoryModel = Author
 
-        return Book.objects.filter(genre=genre)
+        if (self.request.path
+                == reverse('shop-books-genre', kwargs={'slug': slug})):
+            CategoryModel = Genre
+            keyword = 'genre'
+
+        filter_obj = get_object_or_404(
+            CategoryModel,
+            slug=slug)
+
+        context['description'] = filter_obj
+        context['object_list'] = Book.objects.filter(**{keyword: filter_obj})
+
+        return context
 
 
 class BookDetailView(DetailView):
