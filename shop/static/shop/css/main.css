@@ -42,6 +42,14 @@ a[role="button"] {
   align-items: center;
 }
 
+ul li {
+  list-style: none;
+}
+
+ul, li {
+  color: inherit;
+}
+
 /*|| VARIABLES */
 
 [data-theme="light"],
@@ -107,6 +115,10 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.errorlist {
+  font-weight: 700;
 }
 
 /*|| ELEMENTS */

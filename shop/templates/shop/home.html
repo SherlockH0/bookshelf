@@ -1,6 +1,6 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-
+{% if books %}
 	<section id="hero" class="hero">
 		<div class="detail__wrapper">
 			{% with books|first as book %}
@@ -32,5 +32,7 @@
     	</div>
     	{% include 'shop/utils/books.html' with books=books|slice:"1:" %}
     </section>
-
+{% else %}
+	{% include 'shop/utils/nothing.html' %}
+{% endif %}
 {% endblock content %}

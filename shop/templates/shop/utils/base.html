@@ -71,6 +71,27 @@
 		</div>
 	</div>
 
+	<!-- Messages modal -->
+
+	{% if messages %}
+		{% for message in messages %}
+			<dialog open id="message-modal">
+			  <article>
+			  	<header>
+			  		<a href="#close"
+				      aria-label="Close"
+				      class="close"
+				      data-target="message-modal"
+				      onClick="closeModal(event)"></a>
+			  	</header>
+			    <h3>
+			      {{ message }}
+			    </h3>
+			  </article>
+			</dialog>
+		{% endfor %}
+	{% endif %}
+
 
 	<!-- Main content -->
 	<main class="container">
@@ -79,5 +100,6 @@
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="{% static 'shop/js/javascript.js' %}"></script>
+	<script type="text/javascript" src="{% static 'shop/js/modal.js' %}"></script>
 </body>
 </html>
