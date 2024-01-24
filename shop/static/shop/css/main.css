@@ -50,6 +50,10 @@ ul, li {
   color: inherit;
 }
 
+article {
+  padding-block: var(--pico-block-spacing-horizontal);
+}
+
 /*|| VARIABLES */
 
 [data-theme="light"],
@@ -71,8 +75,8 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  margin-top: 7rem;
+body > main {
+  padding-block: 1rem;
 }
 
 /*|| UTILITY CLASSES  */
@@ -83,18 +87,18 @@ main {
   inset: 0;
   background-color: black;
   opacity: 0;
+
 }
 
 /*|| BLOCKS */
 
 .navbar {
-  position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
   top: 0;
   height: auto;
   background-color: var(--pico-background-color);
-  padding: 0 10vw;
   z-index: 99;
 }
 
@@ -123,6 +127,8 @@ main {
 
 
 .alert {
+  margin: auto;
+  width: fit-content;
   margin-bottom: var(--pico-spacing);
   padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
   border-radius: var(--pico-border-radius);
@@ -131,8 +137,8 @@ main {
   border: 1px solid var(--pico-background-color);
   background-image: var(--pico-icon);
   background-position: center left var(--pico-form-element-spacing-vertical);
-  background-size: calc(var(--pico-font-size) * 1.5) auto;
-  padding-left: calc(var(--pico-form-element-spacing-vertical) * 2 + calc(var(--pico-font-size) * 1.5));
+  background-size: 1.5rem auto;
+  padding-left: calc(var(--pico-form-element-spacing-vertical) * 2 + 1.5rem);
 }
 
 .alert-danger {
