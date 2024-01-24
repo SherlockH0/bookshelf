@@ -1,7 +1,7 @@
 <div class="books__container">
     {% for book in books %}
         <div class="card">
-            <img src="{{ book.image.url }}" alt="{{ book.name }} - {{ book.author }}">
+            <img src="{{ book.image.url }}" loading="lazy" alt="{{ book.name }} - {{ book.author }}">
             <hgroup class="card__title">
                 <p>{{ book.name }}</p>
                 <p>{{ book.author }}</p>
