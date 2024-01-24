@@ -3,11 +3,15 @@
 {% block content %}
     <div class="container text">
         <article>
+            <header>
+                <h3>Register</h3>
+            </header>
             <form method="POST">
                 {% csrf_token %}
                 <fieldset>
-                    <legend>Register</legend>
-                    {{ form.non_field_errors }}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-warning">{{ form.non_field_errors }}</div>
+                    {% endif %}
                     <div class="grid">
                         <div>
                             {% render_field form.first_name|add_error_attr:"aria-invalid:true" placeholder="First name" %}
@@ -53,6 +57,11 @@
                 </fieldset>
                 <button type="submit">Sign Up</button>
             </form>
+            <footer>
+                <small>
+                    Already have an account? <a href="{% url 'login' %}">Sign In</a>
+                </small>
+            </footer>
         </article>
     </div>
 {% endblock content %}

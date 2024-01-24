@@ -4,7 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{% static 'shop/css/pico.min.css' %}" />
+	<link
+		  rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css"
+		/>
 	<link rel="stylesheet" href="{% static 'shop/css/main.css' %}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair Display SC|La Belle Aurore|Lora">
 	{% if title %}
@@ -49,9 +52,15 @@
 			    </a>
 			  </li>
 			  <li>
-			    <a href="/register" data-tooltip="Profile" data-placement="bottom">
-			      <i class="bi bi-person-circle"></i>
-			    </a>
+			  	{% if user.is_authenticated %}
+					<a href="{% url 'login' %}" data-tooltip="Log In" data-placement="bottom">
+				      <i class="bi bi-person-circle"></i>
+				    </a>
+			  	{% else %}
+				    <a href="{% url 'login' %}" data-tooltip="Log In" data-placement="bottom">
+				      <i class="bi bi-person-circle"></i>
+				    </a>
+			    {% endif %}
 			  </li>
 			</ul>
 			<ul class="navbar__menu-toggle">

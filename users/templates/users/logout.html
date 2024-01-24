@@ -1,0 +1,15 @@
+{% extends 'shop/utils/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container text">
+        <article>
+            <header>
+                <h3>You have been logged out</h3>
+            </header>
+            <div class="grid">
+                <a href="{% url 'shop-home' %}" role="button">Go home</a>
+                <a href="{% url 'login' %}" role="button" class="secondary">Log in again</a>
+            </div>
+        </article>
+    </div>
+{% endblock content %}

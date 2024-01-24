@@ -1,0 +1,41 @@
+{% extends 'shop/utils/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container text">
+        <article>
+            <header>
+                <h3>Log In</h3>
+            </header>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-warning">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    <div>
+                        {% render_field form.username|add_error_attr:"aria-invalid:true" placeholder=form.username.label %}
+                        {% if form.username.errors %}
+                          <small>
+                            {{ form.username.errors }}
+                          </small>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% render_field form.password|add_error_attr:"aria-invalid:true" placeholder=form.password.label %}
+                        {% if form.password.errors %}
+                          <small>
+                            {{ form.password.errors }}
+                          </small>
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <button type="submit">Login</button>
+            </form>
+            <footer>
+                <small>
+                    Don't have an account? <a href="{% url 'register' %}">Sign Up Now</a>
+                </small>
+            </footer>
+        </article>
+    </div>
+{% endblock content %}

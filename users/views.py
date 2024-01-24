@@ -15,8 +15,8 @@ def register(request):
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
             messages.success(
-                request, f'Account created for {first_name} {last_name}')
-            return redirect('shop-home')
+                request, f'Account created successfully! You now can login!')
+            return redirect('login')
     else:
         form = UserRegisterForm()
 

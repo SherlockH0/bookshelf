@@ -50,12 +50,8 @@ ul, li {
   color: inherit;
 }
 
-article {
-  padding-block: var(--pico-block-spacing-horizontal);
-}
-
 /*|| VARIABLES */
-
+/*
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
   --pico-background-color: rgb(234, 221, 204);
@@ -68,15 +64,11 @@ article {
 
   --pico-form-element-background-color: hsl(0 0% 100% 0);
 }
-
+*/
 /*|| GLOBAL */
 
 body {
   overflow-x: hidden;
-}
-
-body > main {
-  padding-block: 1rem;
 }
 
 /*|| UTILITY CLASSES  */
@@ -87,7 +79,10 @@ body > main {
   inset: 0;
   background-color: black;
   opacity: 0;
+}
 
+.grid {
+  justify-items: center;
 }
 
 /*|| BLOCKS */
@@ -128,7 +123,7 @@ body > main {
 
 .alert {
   margin: auto;
-  width: fit-content;
+  max-width: 600px;
   margin-bottom: var(--pico-spacing);
   padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
   border-radius: var(--pico-border-radius);
@@ -157,6 +152,10 @@ body > main {
   --pico-background-color: #e8f5e9;
   --pico-icon: var(--pico-icon-valid);
   --pico-color: #1b5e20;
+}
+
+.alert * {
+  margin: 0;
 }
 
 /*|| ELEMENTS */
