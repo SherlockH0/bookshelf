@@ -1,0 +1,13 @@
+{% extends 'shop/utils/base.html' %}
+{% block content %}
+    <section>
+        <h2>Shopping cart</h2>
+        <div class="cart__heading">
+            <a href="{% url 'shop-home' %}" role="button" class="secondary">Continue shopping</a>
+            <a href="#" role="button">Checkout (TOTAL: ${{ total }})</a>
+        </div>
+    </section>
+    <section>
+
+    </section>
+{% endblock content %}

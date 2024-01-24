@@ -8,8 +8,9 @@ admin.site.register(Category)
 
 @admin.register(Author, Genre)
 class SubCategoryAdmin(admin.ModelAdmin):
-    exclude = ['slug']
+    # exclude = ['slug']
     search_fields = ['name']
+    fields = ['name', 'about', 'slug']
 
 
 @admin.register(Book)

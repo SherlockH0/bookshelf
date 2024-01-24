@@ -13,5 +13,5 @@ urlpatterns = [
         'author/<slug:slug>/',
         BookListView.as_view(),
         name="shop-books-author"),
-    path('<slug:slug>/', BookDetailView.as_view(), name="book-detail"),
+    path('book/<slug:slug>/', BookDetailView.as_view(), name="book-detail"),
 ]

@@ -33,16 +33,16 @@ hr {
   border-top: 2px solid var(--pico-color);
 }
 
-i {
+.icon {
   font-size: 1.5rem;
 }
 
-a[role="button"] {
+/*a[role="button"] {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
+}*/
 
 ul li {
   list-style: none;
@@ -291,6 +291,15 @@ body {
 
 .card__title :first-child {
   font-weight: 600;
+}
+
+.cart__heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__heading a {
+  width: fit-content;
 }
 
 @keyframes fadein {

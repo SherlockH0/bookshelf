@@ -28,6 +28,7 @@ urlpatterns = [
     path('login/', user_views.CustomLoginView.as_view(), name='login'),
     path('logout/', user_views.CustomLogoutView.as_view(), name='logout'),
     path('', include('shop.urls')),
+    path('', include('orders.urls')),
 ]
 
 if settings.DEBUG:

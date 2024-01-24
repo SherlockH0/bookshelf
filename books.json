@@ -1,4 +1,4 @@
-[
+{ "books": [
     {
       "title": "The Art Book",
       "author": "Editors of Phaidon Press",
@@ -302,3 +302,118 @@
     }
   ]
 
+  "books": [
+    {
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "genre": "Science Fiction",
+      "about": "Set in a distant future amidst a complex interstellar society, 'Dune' explores political intrigue, environmental challenges, and the hero's journey.",
+      "price": 15.99
+    },
+    {
+      "title": "The Lion, the Witch and the Wardrobe",
+      "author": "C.S. Lewis",
+      "genre": "Children's Fantasy",
+      "about": "The first book in 'The Chronicles of Narnia' series, where four siblings discover a magical land through a wardrobe and embark on a quest to save Narnia.",
+      "price": 12.99
+    },
+    {
+      "title": "The Fellowship of the Ring",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "about": "Part of 'The Lord of the Rings' trilogy, this epic fantasy follows the journey of the Fellowship to destroy the One Ring and defeat the Dark Lord Sauron.",
+      "price": 18.99
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "about": "A prelude to 'The Lord of the Rings,' 'The Hobbit' follows Bilbo Baggins on a journey to help dwarves reclaim their homeland from the dragon Smaug.",
+      "price": 14.99
+    },
+    {
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "genre": "Children's Fantasy",
+      "about": "A whimsical tale of a young prince who travels from planet to planet, meeting unique inhabitants and learning profound life lessons.",
+      "price": 10.99
+    },
+    {
+      "title": "Scaramouche",
+      "author": "Rafael Sabatini",
+      "genre": "Historical Fiction",
+      "about": "Set during the French Revolution, 'Scaramouche' follows the adventures of a young lawyer turned swashbuckling hero seeking justice.",
+      "price": 16.99
+    },
+    {
+      "title": "Eugene Onegin",
+      "author": "Alexander Pushkin",
+      "genre": "Classic Fiction",
+      "about": "A novel in verse, 'Eugene Onegin' explores the complexities of love, friendship, and societal norms in 19th-century Russia.",
+      "price": 13.99
+    },
+    {
+      "title": "Hamlet",
+      "author": "William Shakespeare",
+      "genre": "Classic Fiction",
+      "about": "One of Shakespeare's most famous tragedies, 'Hamlet' tells the story of the Prince of Denmark seeking revenge for his father's murder.",
+      "price": 11.99
+    },
+    {
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "Mystery",
+      "about": "A collection of short stories featuring the brilliant detective Sherlock Holmes and his loyal friend Dr. John Watson solving mysterious cases.",
+      "price": 14.99
+    },
+    {
+      "title": "Bread: A Baker's Book of Techniques and Recipes",
+      "author": "Jeffrey Hamelman",
+      "genre": "Cooking",
+      "about": "A comprehensive guide to the art and science of bread baking, covering techniques, recipes, and the principles behind creating perfect bread.",
+      "price": 25.99
+    },
+    {
+      "title": "Twenty Thousand Leagues Under the Sea",
+      "author": "Jules Verne",
+      "genre": "Adventure",
+      "about": "Captain Nemo's underwater adventures aboard the submarine Nautilus are chronicled in this classic science fiction novel.",
+      "price": 17.99
+    },
+    {
+      "title": "The Jungle Book",
+      "author": "Rudyard Kipling",
+      "genre": "Children's Fantasy",
+      "about": "A collection of stories featuring Mowgli, a young boy raised by wolves, and his adventures in the jungles of India.",
+      "price": 12.99
+    },
+    {
+      "title": "Captain Blood",
+      "author": "Rafael Sabatini",
+      "genre": "Historical Fiction",
+      "about": "Follow the exploits of Captain Peter Blood, a former physician turned pirate, in this swashbuckling adventure set in the Caribbean.",
+      "price": 16.99
+    },
+    {
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "genre": "Classic Fiction",
+      "about": "A panoramic novel set against the backdrop of Napoleonic wars, 'War and Peace' explores the lives of several aristocratic families in Russia.",
+      "price": 21.99
+    },
+    {
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Conan Doyle",
+      "genre": "Mystery",
+      "about": "Sherlock Holmes investigates the mysterious death of Sir Charles Baskerville in this classic detective novel set in the moors of Devon.",
+      "price": 14.99
+    },
+    {
+      "title": "The Elements of Style",
+      "author": "William Strunk Jr. and E.B. White",
+      "genre": "Nonfiction",
+      "about": "A timeless guide to writing and grammar, 'The Elements of Style' provides essential rules and principles for effective communication.",
+      "price": 9.99
+    }
+  ]
+}
