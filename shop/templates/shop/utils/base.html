@@ -49,7 +49,7 @@
 			    </a>
 			  </li>
 			  <li>
-			    <a href="#" class="responsive" data-tooltip="Profile" data-placement="bottom">
+			    <a href="/register" data-tooltip="Profile" data-placement="bottom">
 			      <i class="bi bi-person-circle"></i>
 			    </a>
 			  </li>
@@ -71,27 +71,13 @@
 		</div>
 	</div>
 
-	<!-- Messages modal -->
+	<!-- Messages -->
 
 	{% if messages %}
 		{% for message in messages %}
-			<dialog open id="message-modal">
-			  <article>
-			  	<header>
-			  		<a href="#close"
-				      aria-label="Close"
-				      class="close"
-				      data-target="message-modal"
-				      onClick="closeModal(event)"></a>
-			  	</header>
-			    <h3>
-			      {{ message }}
-			    </h3>
-			  </article>
-			</dialog>
+			<div class="alert alert-{{ message.tags }}">{{ message }}</div>
 		{% endfor %}
 	{% endif %}
-
 
 	<!-- Main content -->
 	<main class="container">
