@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm
 from django.contrib.auth import views
 
 # Create your views here.
@@ -16,7 +16,7 @@ def register(request):
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
             messages.success(
-                request, f'Account created successfully! You now can login!')
+                request, f'Account created successfuly! You can now login!')
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -25,14 +25,28 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(
+                    request, 'Your account has been updated!')
+            return redirect('profile')
+    else:
+        form = UserUpdateForm(instance=request.user)
+
+    context = {'form': form}
+
+    return render(request, 'users/profile.html', context)
 
 class CustomLoginView(views.LoginView):
     template_name='users/login.html'
 
     def form_valid(self, form):
         messages.success(
-                self.request, f'You have been successfully logged in!')
+                self.request, f'You have been successfuly logged in!')
         return super().form_valid(form)
 
 class CustomLogoutView(views.LogoutView):

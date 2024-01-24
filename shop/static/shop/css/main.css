@@ -40,6 +40,8 @@ i {
 a[role="button"] {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 ul li {
