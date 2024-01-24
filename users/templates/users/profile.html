@@ -1,0 +1,51 @@
+{% extends 'shop/utils/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container text">
+        <article>
+            <header>
+                <h3>{{ user.get_full_name }}</h3>
+                <p>{{ user.email }}</p>
+            </header>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Profile Info</legend>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-warning">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    <div class="grid">
+                        <div>
+                            {% render_field form.first_name|add_error_attr:"aria-invalid:true" placeholder="First name" %}
+                            {% if form.first_name.errors %}
+                              <small>
+                                {{ form.first_name.errors }}
+                              </small>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% render_field form.last_name|add_error_attr:"aria-invalid:true" placeholder="Last name" %}
+                            {% if form.last_name.errors %}
+                              <small>
+                                {{ form.last_name.errors }}
+                              </small>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div>
+                        {% render_field form.email|add_error_attr:"aria-invalid:true" placeholder=form.email.label %}
+                        {% if form.email.errors %}
+                          <small>
+                            {{ form.email.errors }}
+                          </small>
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <button type="submit" class="outline">Update</button>
+            </form>
+            <footer>
+                <a href="{% url 'logout' %}" role="button" class="contrast">Log Out</a>
+            </footer>
+        </article>
+    </div>
+{% endblock content %}
