@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+from users.models import Customer
 from shop.models import Book
 
 # Create your models here.
@@ -7,7 +7,8 @@ from shop.models import Book
 
 class Order(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
 
@@ -19,7 +20,7 @@ class OrderItem(models.Model):
 
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=1)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -28,7 +29,7 @@ class OrderItem(models.Model):
 
 class Wishlist(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -47,8 +48,9 @@ class WishlistItem(models.Model):
 
 class ShippingDetails(models.Model):
 
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.SET_NULL, null=True)
     adress = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
