@@ -2,13 +2,15 @@
 {% block content %}
     <section id="books" class="books">
         {% if object_list %}
-            <div class="text container">
-                <h3>{{ description.name }}</h3>
-                <p>{{ description.about }}</p>
+            <div class="text container center">
+                <h3>Your wishlist</h3>
             </div>
             {% include 'shop/utils/books.html' with books=object_list %}
         {% else %}
-            {% include "shop/utils/nothing.html" %}
+            <div class="container text center">
+                <h1>Your wishlist is empty</h1>
+                <a href="{% url 'shop-home' %}" role="button">Start shopping</a>
+            </div>
         {% endif %}
     </section>
 {% endblock content %}

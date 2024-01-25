@@ -3,11 +3,29 @@
     <section>
         <h2>Shopping cart</h2>
         <div class="cart__heading">
-            <a href="{% url 'shop-home' %}" role="button" class="secondary">Continue shopping</a>
-            <a href="#" role="button">Checkout (TOTAL: ${{ total }})</a>
+            <a href="{% url 'shop-home' %}" role="button" class="secondary">Back to shop</a>
+
+            <a href="#" role="button">Checkout</a>
         </div>
     </section>
     <section>
+        <div class="cart__table">
+            <hr>
+            <div class="cart__book">
+                <img class="card__image" src="https://m.media-amazon.com/images/I/91Yr0n5lNWL._AC_UF894,1000_QL80_.jpg" alt="">
+                <div>
+                    <hgroup>
+                        <h5><a href="#">The Curious Incident of the Dog in the Night-Time</a></h5>
+                        <p><small>Mark Haddon</small></p>
+                    </hgroup>
+                    <strong>$20{{ price }}</strong>
 
+                    <div>
+                        <input type="number" aria-label="Quantity" />
+                        <button class="outline contra"><i class="bi bi-trash3-fill"></i></button>
+                    </div>
+                </div>
+
+            </div>
     </section>
 {% endblock content %}

@@ -28,21 +28,15 @@ img {
   border-radius: 0.2rem;
 }
 
-hr {
+/*hr {
   border: none;
   border-top: 2px solid var(--pico-color);
-}
+}*/
 
 .icon {
   font-size: 1.5rem;
 }
 
-/*a[role="button"] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}*/
 
 ul li {
   list-style: none;
@@ -50,6 +44,10 @@ ul li {
 
 ul, li {
   color: inherit;
+}
+
+hgroup a {
+  text-decoration: none;
 }
 
 /*|| VARIABLES */
@@ -111,7 +109,7 @@ body {
   padding-bottom: 3rem;
 }
 
-.sorry {
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -260,13 +258,14 @@ body {
   justify-content: center;
 }
 
-.card img{
+.card__image{
   height: clamp(160px, 40vw, 310px);
   max-width: none;
   transition: 0.3s cubic-bezier(.25,.46,.45,.94);
 }
 
-.card:hover > img {
+.card:hover > img,
+.cart__book .card__image:hover {
   transform: scale(1.02);
 }
 
@@ -296,10 +295,28 @@ body {
 .cart__heading {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.cart__heading a {
-  width: fit-content;
+.cart__book {
+  display: flex;
+  gap: 1rem;
+}
+
+.cart__book > div {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.cart__book input {
+  width: 8ch;
+  align-self: center;
+}
+
+.cart__table {
+  display: grid;
+  justify-content: center;
 }
 
 @keyframes fadein {
