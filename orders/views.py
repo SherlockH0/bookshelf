@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from orders.models import Order, Wishlist
+from shop.models import Book
 
 # Create your views here.
 
@@ -27,7 +28,8 @@ def wishlist(request):
     else:
         items = []
 
+    context = {'books': Book.objects.filter(id__in=items.values_list('book'))}
     return render(
         request,
         'orders/wishlist.html',
-        {'object_list': items})
+        context)

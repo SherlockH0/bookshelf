@@ -1,11 +1,11 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
     <section id="books" class="books">
-        {% if object_list %}
+        {% if books %}
             <div class="text container center">
                 <h3>Your wishlist</h3>
             </div>
-            {% include 'shop/utils/books.html' with books=object_list %}
+            {% include 'shop/utils/books.html' %}
         {% else %}
             <div class="container text center">
                 <h1>Your wishlist is empty</h1>
