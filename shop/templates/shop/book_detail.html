@@ -1,5 +1,62 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
+    <!-- Add to cart modal -->
+    <dialog id="add-to-cart-modal">
+        <article>
+            <header>
+                <h3>Added to cart! 🛒</h3>
+            </header>
+            <main class="cart__book">
+                <hgroup>
+                    <h6>
+                        {{ object.name }}
+                    </h6>
+                    <p>was added to your cart</p>
+                </hgroup>
+            </main>
+            <footer>
+                <a href="#"
+                data-target="add-to-cart-modal"
+                onClick="toggleModal(event)"
+                class="outline"
+                role="button" />
+                    Continue shopping
+                </a>
+                <br>
+                <br>
+                <a href="{% url 'cart' %}"
+                role="button" />
+                    Go to cart
+                </a>
+           </footer>
+        </article>
+    </dialog>
+
+    <!-- Add to wishlist modal -->
+    <dialog id="add-to-wishlist-modal">
+        <article>
+            <header>
+                <h3>Added to your wishlist! 🏷️</h3>
+            </header>
+            <main class="cart__book">
+                <hgroup>
+                    <h6>
+                        {{ object.name }}
+                    </h6>
+                    <p>was added to your wishlist</p>
+                </hgroup>
+            </main>
+            <footer>
+                <a href="#"
+                data-target="add-to-wishlist-modal"
+                onClick="toggleModal(event)"
+                role="button" />
+                    Continue shopping
+                </a>
+           </footer>
+        </article>
+    </dialog>
+
     <div class="detail__wrapper detail">
         <div class="detail__cover">
             <img class="detail__image" src="{{ object.image.url }}" alt="">
@@ -13,8 +70,22 @@
         <div>
             <h3><ins>${{ object.price }}</ins></h3>
             <div class="detail__buttons">
-                <a href="#" role="button" class="outline">Add to card</a>
-                <a href="#" role="button" class="secondary outline">Add to wishlist</a>
+                <button
+                    data-book="{{ object.id }}"
+                    data-place="cart"
+                    data-target="add-to-cart-modal"
+                    onClick="toggleModal(event)"
+                    class="outline add-to">
+                    Add to cart
+                </button>
+                <button
+                    data-book="{{ object.id }}"
+                    data-place="wishlist"
+                    data-target="add-to-wishlist-modal"
+                    onClick="toggleModal(event)"
+                    class="secondary outline add-to">
+                    Add to wishlist
+                </button>
             </div>
         </div>
         <div>

@@ -1,0 +1,69 @@
+{% extends "shop/utils/base.html" %}
+{% block content %}
+    <section id="checkout" class="checkout">
+        <div class="checkout__grid container">
+            <article class="checkout__form">
+                <form action="">
+                    <fieldset>
+                        <legend>User informatinon</legend>
+                        <div class="grid">
+                            <input name="first_name" placeholder="First name" value="{{ user.first_name }}">
+                            <input name="last_name" placeholder="Last name" value="{{ user.last_name }}">
+                        </div>
+                        <input name="email" placeholder="Email" value="{{ user.email }}">
+                        {% if not user.is_authenticated %}
+                            <small>Or <a href="{% url 'login' %}?next={% firstof request.path '/' %}">Log in</a> instead</small>
+                        {% endif %}
+                    </fieldset>
+                    <hr>
+                    <fieldset>
+                        <legend>Shipping details</legend>
+
+                        <input name="adress" placeholder="Adress">
+                        <div class="grid">
+                            <input name="city" placeholder="City">
+                            <input name="country" placeholder="Country">
+                        </div>
+                        <input name="email" placeholder="Postal code">
+                    </fieldset>
+                    <hr>
+                    <button type="submit">Continue</button>
+                </form>
+            </article>
+            <article class="checkout__summary">
+                <header>
+                    <p>Order summary</p>
+                    <hr>
+                    <div class="cart__heading">
+                        <p>Items:</p>
+                        <p>6</p>
+                    </div>
+                    <div class="cart__heading">
+                        <p>TOTAL:</p>
+                        <p>$</p>
+                    </div>
+                </header>
+                <figure>
+                    <div>
+                        {% for item in items %}
+                            <div class="checkout__item flex">
+                                <img src="{{ item.book.image.url }}" alt="">
+                                <div>
+                                    <hgroup>
+                                        <p>{{ item.book.name }}</p>
+                                        <p><small>{{ item.book.author }}</small></p>
+                                    </hgroup>
+                                    <div class="cart__heading">
+                                        <ins><strong>${{ item.book.price }}</strong></ins>
+                                        <span>× {{ item.quantity }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </figure>
+            </article>
+        </div>
+    </section>
+{% endblock content %}

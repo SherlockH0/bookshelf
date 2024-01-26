@@ -25,11 +25,25 @@ def wishlist(request):
             customer=request.user.customer)
 
         items = wishlist.wishlistitem_set.all()
+        books = Book.objects.filter(id__in=items.values_list('book'))
     else:
-        items = []
+        books = []
 
-    context = {'books': Book.objects.filter(id__in=items.values_list('book'))}
+    context = {'books': books}
     return render(
         request,
         'orders/wishlist.html',
         context)
+
+
+def checkout(request):
+
+    if request.user.is_authenticated:
+        order, created = Order.objects.get_or_create(
+            customer=request.user.customer, complete=False)
+
+        items = order.orderitem_set.all()
+    else:
+        items = []
+
+    return render(request, 'orders/checkout.html', {'items': items})

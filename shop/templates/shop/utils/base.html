@@ -44,11 +44,13 @@
 			  <li>
 			    <a href="{% url 'wishlist' %}" data-tooltip="Wishlist" data-placement="bottom">
 			      <i class="icon bi bi-heart"></i>
+			      <span class="qty"><small>30</small></span>
 			    </a>
 			  </li>
 			  <li>
 			    <a href="{% url 'cart' %}" data-tooltip="Cart" data-placement="bottom">
 			      <i class="icon bi bi-cart"></i>
+			      <span class="qty"><small>8</small></span>
 			    </a>
 			  </li>
 			  <li>
@@ -93,5 +95,7 @@
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
 </body>
 </html>

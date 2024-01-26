@@ -6,7 +6,7 @@
             <div class="cart__heading">
                 <a href="{% url 'shop-home' %}" role="button" class="secondary">Back to shop</a>
 
-                <a href="#" role="button">Checkout</a>
+                <a href="{% url 'checkout' %}" role="button">Checkout</a>
             </div>
         </section>
         <section>
@@ -17,13 +17,22 @@
                         <img class="card__image" src="{{ item.book.image.url }}" loading="lazy" alt="{{ item.book.name }} - {{ item.book.author }}">
                         <div>
                             <hgroup>
-                                <h5><a href="#">{{ item.book.name }}</a></h5>
+                                <h5><a href="{% url 'book-detail' item.book.slug %}">{{ item.book.name }}</a></h5>
                                 <p><small>{{ item.book.author }}</small></p>
                             </hgroup>
                             <strong>${{ item.book.price }}</strong>
                             <div>
-                                <input type="number" aria-label="Quantity" value="{{ item.quantity }}" />
-                                <button class="outline contra">
+                                <input
+                                    type="number"
+                                    min="1"
+                                    data-item="{{ item.id }}"
+                                    aria-label="Quantity"
+                                    value="{{ item.quantity }}"
+                                    class="change-item"
+                                    />
+                                <button
+                                    class="outline contrast delete-item"
+                                    data-item="{{ item.id }}">
                                     <i class="bi bi-trash3-fill"></i>
                                 </button>
                             </div>

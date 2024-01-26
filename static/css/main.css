@@ -120,7 +120,6 @@ body {
   font-weight: 700;
 }
 
-
 .alert {
   margin: auto;
   max-width: 600px;
@@ -159,6 +158,25 @@ body {
 }
 
 /*|| ELEMENTS */
+
+.qty {
+  text-align: center;
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 9999;
+  background-color: var(--pico-del-color);
+  color: var(--pico-primary-inverse);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100px;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  line-height: 0;
+}
 
 .sorry img {
   width: clamp(100px, 30vw, 200px);
@@ -319,6 +337,47 @@ body {
   justify-content: center;
 }
 
+.checkout__grid {
+  max-width: 1000px;
+  display: flex;
+  gap: var(--pico-grid-column-gap);
+  align-items: start;
+}
+
+.checkout__form {
+  flex-grow: 2;
+}
+
+.checkout__summary {
+  flex-shrink: 2;
+}
+
+.checkout__item {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkout__item > div {
+  flex-grow: 2;
+}
+
+.checkout__item hgroup {
+  max-width: 15ch;
+}
+
+.checkout__item img {
+  width: 10ch;
+}
+
+dialog article {
+  max-width: 400px;
+}
+
+dialog article > footer a {
+  margin-left: 0 !important;
+  width: 100%;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -416,5 +475,8 @@ body {
   }
   .detail .detail__cover {
     max-width: 250px;
+  }
+  .checkout__grid {
+    flex-direction: column;
   }
 }
