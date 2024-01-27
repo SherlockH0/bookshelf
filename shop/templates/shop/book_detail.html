@@ -1,5 +1,11 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
+
+    <!-- Don't reload when adding to cart or wishlist -->
+    <script>
+        reload = () => { return }
+    </script>
+
     <!-- Add to cart modal -->
     <dialog id="add-to-cart-modal">
         <article>
@@ -17,7 +23,7 @@
             <footer>
                 <a href="#"
                 data-target="add-to-cart-modal"
-                onClick="toggleModal(event)"
+                onClick="toggleModal(event);location.reload()"
                 class="outline"
                 role="button" />
                     Continue shopping
@@ -49,7 +55,7 @@
             <footer>
                 <a href="#"
                 data-target="add-to-wishlist-modal"
-                onClick="toggleModal(event)"
+                onClick="toggleModal(event);location.reload()"
                 role="button" />
                     Continue shopping
                 </a>
@@ -73,17 +79,19 @@
                 <button
                     data-book="{{ object.id }}"
                     data-place="cart"
+                    data-action="add"
                     data-target="add-to-cart-modal"
                     onClick="toggleModal(event)"
-                    class="outline add-to">
+                    class="outline update-item">
                     Add to cart
                 </button>
                 <button
                     data-book="{{ object.id }}"
                     data-place="wishlist"
+                    data-action="add"
                     data-target="add-to-wishlist-modal"
                     onClick="toggleModal(event)"
-                    class="secondary outline add-to">
+                    class="secondary outline update-item">
                     Add to wishlist
                 </button>
             </div>

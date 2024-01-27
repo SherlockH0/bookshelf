@@ -36,33 +36,31 @@
                     <hr>
                     <div class="cart__heading">
                         <p>Items:</p>
-                        <p>6</p>
+                        <p>{{ cart_items }}</p>
                     </div>
                     <div class="cart__heading">
                         <p>TOTAL:</p>
-                        <p>$</p>
+                        <p>${{ cart_total }}</p>
                     </div>
                 </header>
-                <figure>
-                    <div>
-                        {% for item in items %}
-                            <div class="checkout__item flex">
-                                <img src="{{ item.book.image.url }}" alt="">
-                                <div>
-                                    <hgroup>
-                                        <p>{{ item.book.name }}</p>
-                                        <p><small>{{ item.book.author }}</small></p>
-                                    </hgroup>
-                                    <div class="cart__heading">
-                                        <ins><strong>${{ item.book.price }}</strong></ins>
-                                        <span>× {{ item.quantity }}</span>
-                                    </div>
+                <div>
+                    {% for item in items %}
+                        <div class="checkout__item flex">
+                            <img src="{{ item.book.image.url }}" alt="">
+                            <div>
+                                <hgroup>
+                                    <p>{{ item.book.name }}</p>
+                                    <p><small>{{ item.book.author }}</small></p>
+                                </hgroup>
+                                <div class="cart__heading">
+                                    <ins><strong>${{ item.book.price }}</strong></ins>
+                                    <span>× {{ item.quantity }}</span>
                                 </div>
                             </div>
-                            <hr>
-                        {% endfor %}
-                    </div>
-                </figure>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
             </article>
         </div>
     </section>

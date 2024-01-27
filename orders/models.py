@@ -15,6 +15,14 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def get_total(self):
+        orderitems = self.orderitem_set.all()
+        return round(sum([item.get_total() for item in orderitems]), 2)
+
+    def get_items(self):
+        orderitems = self.orderitem_set.all()
+        return sum([item.quantity for item in orderitems])
+
 
 class OrderItem(models.Model):
 
@@ -26,6 +34,9 @@ class OrderItem(models.Model):
     def __str__(self):
         return self.book.name
 
+    def get_total(self):
+        return self.book.price * self.quantity
+
 
 class Wishlist(models.Model):
 
@@ -34,6 +45,10 @@ class Wishlist(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def get_items(self):
+        wishlistitems = self.wishlistitem_set.all()
+        return len(wishlistitems)
 
 
 class WishlistItem(models.Model):

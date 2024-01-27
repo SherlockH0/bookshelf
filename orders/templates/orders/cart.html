@@ -2,16 +2,22 @@
 {% block content %}
     {% if items %}
         <section>
-            <h2>Shopping cart</h2>
-            <div class="cart__heading">
-                <a href="{% url 'shop-home' %}" role="button" class="secondary">Back to shop</a>
+            <div >
+                <a href="{% url 'shop-home' %}" role="button" class="contrast outline">Back to shop</a>
+                <hr>
+                <div class="cart__heading">
+                    <strong>Items: {{ cart_items }}<br>
+                    Cart total: ${{ cart_total }}</strong>
+                    <a href="{% url 'checkout' %}" role="button">
+                    Checkout
+                    </a>
+                </div>
 
-                <a href="{% url 'checkout' %}" role="button">Checkout</a>
             </div>
         </section>
         <section>
             <div class="cart__table">
-                {% for item in items%}
+                {% for item in items %}
                     <hr>
                     <div class="cart__book">
                         <img class="card__image" src="{{ item.book.image.url }}" loading="lazy" alt="{{ item.book.name }} - {{ item.book.author }}">
@@ -23,16 +29,20 @@
                             <strong>${{ item.book.price }}</strong>
                             <div>
                                 <input
+                                    autocomplete="false"
                                     type="number"
                                     min="1"
-                                    data-item="{{ item.id }}"
+                                    data-book="{{ item.book.id }}"
                                     aria-label="Quantity"
+                                    name="quantity-{{ item.book.id }}"
                                     value="{{ item.quantity }}"
                                     class="change-item"
                                     />
                                 <button
-                                    class="outline contrast delete-item"
-                                    data-item="{{ item.id }}">
+                                    class="outline contrast update-item"
+                                    data-book="{{ item.book.id }}"
+                                    data-place="cart"
+                                    data-action="delete">
                                     <i class="bi bi-trash3-fill"></i>
                                 </button>
                             </div>
