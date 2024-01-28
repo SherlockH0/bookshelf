@@ -3,14 +3,14 @@
     <section id="checkout" class="checkout">
         <div class="checkout__grid container">
             <article class="checkout__form">
-                <form action="">
+                <form action="" id="form">
                     <fieldset>
                         <legend>User informatinon</legend>
                         <div class="grid">
-                            <input name="first_name" placeholder="First name" value="{{ user.first_name }}">
-                            <input name="last_name" placeholder="Last name" value="{{ user.last_name }}">
+                            <input required name="first_name" placeholder="First name" value="{{ user.first_name }}">
+                            <input required name="last_name" placeholder="Last name" value="{{ user.last_name }}">
                         </div>
-                        <input name="email" placeholder="Email" value="{{ user.email }}">
+                        <input required name="email" placeholder="Email" value="{{ user.email }}">
                         {% if not user.is_authenticated %}
                             <small>Or <a href="{% url 'login' %}?next={% firstof request.path '/' %}">Log in</a> instead</small>
                         {% endif %}
@@ -19,26 +19,28 @@
                     <fieldset>
                         <legend>Shipping details</legend>
 
-                        <input name="adress" placeholder="Adress">
+                        <input required name="adress" placeholder="Adress">
                         <div class="grid">
-                            <input name="city" placeholder="City">
-                            <input name="country" placeholder="Country">
+                            <input required name="city" placeholder="City">
+                            <input required name="country" placeholder="Country">
                         </div>
-                        <input name="email" placeholder="Postal code">
+                        <input required name="postal_code" placeholder="Postal code">
                     </fieldset>
                     <hr>
-                    <button type="submit">Continue</button>
+                    <button type="submit" id="form-button">Continue</button>
                 </form>
             </article>
             <article class="checkout__summary">
                 <header>
-                    <p>Order summary</p>
+                    <a href="{% url 'cart' %}" role="button" class="contrast outline">Back to Cart</a>
                     <hr>
-                    <div class="cart__heading">
+                    <h3>Order summary</h3>
+                    <hr>
+                    <div class="space-between">
                         <p>Items:</p>
                         <p>{{ cart_items }}</p>
                     </div>
-                    <div class="cart__heading">
+                    <div class="space-between">
                         <p>TOTAL:</p>
                         <p>${{ cart_total }}</p>
                     </div>
@@ -52,7 +54,7 @@
                                     <p>{{ item.book.name }}</p>
                                     <p><small>{{ item.book.author }}</small></p>
                                 </hgroup>
-                                <div class="cart__heading">
+                                <div class="space-between">
                                     <ins><strong>${{ item.book.price }}</strong></ins>
                                     <span>× {{ item.quantity }}</span>
                                 </div>
@@ -62,6 +64,69 @@
                     {% endfor %}
                 </div>
             </article>
+            <article id="payment-info" class="hidden">
+                Pay me!
+                <button id="make-payment">Make payment</button>
+            </article>
         </div>
     </section>
+    <script>
+        const form = document.getElementById('form')
+        const total = '{{ cart_total }}'
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            document.getElementById('form-button').classList.add('hidden')
+            document.getElementById('payment-info').classList.remove('hidden')
+            document.getElementById('payment-info').scrollIntoView({behavior: 'smooth'});
+        })
+
+        document.getElementById('make-payment').addEventListener('click', () => {
+            submitFormData()
+        })
+
+        function submitFormData() {
+            console.log('Payment button clicked')
+
+            var userFormData = {
+                'first_name': null,
+                'last_name': null,
+                'email': null,
+                'total': total
+            }
+
+            if (user == 'AnonymousUser') {
+                userFormData.first_name = form.first_name.value
+                userFormData.last_name = form.last_name.value
+                userFormData.email = form.email.value
+            }
+
+            var shippingInfo = {
+                'adress': form.adress.value,
+                'city': form.city.value,
+                'country': form.country.value,
+                'postal_code': form.postal_code.value
+            }
+
+            const url = '/process_order/'
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({
+                    'form': userFormData,
+                    'shipping': shippingInfo
+                })
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                alert('Transaction completed')
+                window.location.href = "{% url 'shop-home' %}"
+            })
+        }
+    </script>
 {% endblock content %}

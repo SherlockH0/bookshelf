@@ -50,7 +50,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     about = models.TextField()
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     image = models.ImageField(default='default.jpeg', upload_to='book_covers')
     date_created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(default="", null=True, blank=True)

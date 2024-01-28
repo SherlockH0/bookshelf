@@ -11,6 +11,7 @@ class Order(models.Model):
         Customer, on_delete=models.CASCADE, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
+    transaction_id = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return str(self.id)

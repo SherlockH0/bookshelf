@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from orders.models import Order, Wishlist, OrderItem, WishlistItem
+from orders.models import *
 from shop.models import Book
 from django.http import JsonResponse
 import json
+import datetime
 
 # Create your views here.
 
@@ -94,3 +95,32 @@ def update_item(request):
             item.save()
 
     return JsonResponse(f'item was {action}', safe=False)
+
+
+def process_order(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == order.get_total():
+            order.complete = True
+        order.save()
+
+        ShippingDetails.objects.create(
+            customer=customer,
+            order=order,
+            adress=data['shipping']['adress'],
+            city=data['shipping']['city'],
+            country=data['shipping']['country'],
+            postal_code=data['shipping']['postal_code']
+        )
+
+    else:
+        print('User is not authenticated')
+    return JsonResponse('Payment complete!', safe=False)

@@ -85,6 +85,10 @@ body {
   justify-items: center;
 }
 
+.hidden {
+  display: none;
+}
+
 /*|| BLOCKS */
 
 .navbar {
@@ -316,6 +320,11 @@ body {
   align-items: center;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart__book {
   display: flex;
   gap: 1rem;
@@ -339,7 +348,8 @@ body {
 
 .checkout__grid {
   max-width: 1000px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   gap: var(--pico-grid-column-gap);
   align-items: start;
 }
@@ -349,7 +359,9 @@ body {
 }
 
 .checkout__summary {
-  flex-shrink: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
 }
 
 .checkout__item {
@@ -477,6 +489,11 @@ dialog article > footer a {
     max-width: 250px;
   }
   .checkout__grid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+  .checkout__summary {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
   }
 }
