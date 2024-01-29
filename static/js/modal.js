@@ -48,6 +48,7 @@ const closeModal = (modal) => {
     document.documentElement.style.removeProperty("--scrollbar-width");
     modal.removeAttribute("open");
   }, animationDuration);
+  location.reload();
 };
 
 // Close with a click outside

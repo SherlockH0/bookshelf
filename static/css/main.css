@@ -89,6 +89,10 @@ body {
   display: none;
 }
 
+.big {
+  width: 100%;
+}
+
 /*|| BLOCKS */
 
 .navbar {
@@ -139,7 +143,7 @@ body {
   padding-left: calc(var(--pico-form-element-spacing-vertical) * 2 + 1.5rem);
 }
 
-.alert-danger {
+.alert-error {
   --pico-background-color: #ffebee;
   --pico-icon: var(--pico-icon-invalid);
   --pico-color: #b71c1c;
@@ -388,6 +392,13 @@ dialog article {
 dialog article > footer a {
   margin-left: 0 !important;
   width: 100%;
+}
+
+.card .update-item {
+  position: absolute;
+  z-index: 99;
+  right: -0.5rem;
+  top: -0.5rem;
 }
 
 @keyframes fadein {

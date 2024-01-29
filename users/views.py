@@ -13,15 +13,14 @@ def register(request):
         if form.is_valid():
             form.save()
 
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
             messages.success(
-                request, f'Account created successfuly! You can now login!')
+                request, 'Account created successfuly! You can now login!')
             return redirect('login')
     else:
         form = UserRegisterForm()
 
     return render(request, 'users/register.html', {'form': form})
+
 
 @login_required
 def profile(request):
@@ -32,7 +31,7 @@ def profile(request):
             form.save()
 
             messages.success(
-                    request, 'Your account has been updated!')
+                request, 'Your account has been updated!')
             return redirect('profile')
     else:
         form = UserUpdateForm(instance=request.user)
@@ -41,14 +40,15 @@ def profile(request):
 
     return render(request, 'users/profile.html', context)
 
+
 class CustomLoginView(views.LoginView):
-    template_name='users/login.html'
+    template_name = 'users/login.html'
 
     def form_valid(self, form):
         messages.success(
-                self.request, f'You have been successfuly logged in!')
+            self.request, f'You have been successfuly logged in!')
         return super().form_valid(form)
 
-class CustomLogoutView(views.LogoutView):
-    template_name='users/logout.html'
 
+class CustomLogoutView(views.LogoutView):
+    template_name = 'users/logout.html'

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from orders.models import *
+from django.contrib import messages
 from shop.models import Book
 from django.http import JsonResponse
+from utils.shop_data import OrderData, WishlistData
 import json
 import datetime
 
@@ -10,32 +12,18 @@ import datetime
 
 def cart(request):
 
-    if request.user.is_authenticated:
-        order, created = Order.objects.get_or_create(
-            customer=request.user.customer, complete=False)
-
-        items = order.orderitem_set.all()
-    else:
-        items = []
-        order = {'get_total': 0, 'get_items': 0}
+    data = OrderData(request)
 
     return render(request, 'orders/cart.html',
-                  {'order': order,
-                   'items': items})
+                  {'order': data.order,
+                   'items': data.items})
 
 
 def wishlist(request):
 
-    if request.user.is_authenticated:
-        wishlist, created = Wishlist.objects.get_or_create(
-            customer=request.user.customer)
+    data = WishlistData(request)
 
-        items = wishlist.wishlistitem_set.all()
-        books = Book.objects.filter(id__in=items.values_list('book'))
-    else:
-        books = []
-
-    context = {'books': books}
+    context = {'items': data.items}
     return render(
         request,
         'orders/wishlist.html',
@@ -44,15 +32,12 @@ def wishlist(request):
 
 def checkout(request):
 
-    if request.user.is_authenticated:
-        order, created = Order.objects.get_or_create(
-            customer=request.user.customer, complete=False)
-
-        items = order.orderitem_set.all()
-    else:
-        items = []
-
-    return render(request, 'orders/checkout.html', {'items': items})
+    data = OrderData(request)
+    return render(
+        request,
+        'orders/checkout.html',
+        {'order': data.order,
+         'items': data.items})
 
 
 def update_item(request):
@@ -60,10 +45,6 @@ def update_item(request):
     bookId = data['bookId']
     action = data['action']
     place = data['place']
-
-    print('Book:', bookId)
-    print('Action:', action)
-    print('Place:', place)
 
     customer = request.user.customer
     book = Book.objects.get(id=bookId)
@@ -88,9 +69,7 @@ def update_item(request):
         item.delete()
 
     elif action.startswith('set-to-'):
-        quantity = action.replace('set-to-', '')
-        print(quantity)
-        if quantity.isdigit():
+        if (quantity := action.replace('set-to-', '')).isdigit():
             item.quantity = int(quantity)
             item.save()
 
@@ -101,26 +80,34 @@ def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer, complete=False)
-        total = float(data['form']['total'])
-        order.transaction_id = transaction_id
+    order_data = OrderData(request)
 
-        if total == order.get_total():
-            order.complete = True
-        order.save()
+    first_name = data['form']['first_name']
+    last_name = data['form']['last_name']
+    email = data['form']['email']
 
-        ShippingDetails.objects.create(
-            customer=customer,
-            order=order,
-            adress=data['shipping']['adress'],
-            city=data['shipping']['city'],
-            country=data['shipping']['country'],
-            postal_code=data['shipping']['postal_code']
-        )
+    customer, created = Customer.objects.get_or_create(email=email)
+    customer.first_name = first_name
+    customer.last_name = last_name
+    customer.save()
 
+    order = order_data.get_real(customer)
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+
+    if total == order.get_total():
+        order.complete = True
     else:
-        print('User is not authenticated')
+        messages.error(request, "Sorry, something went wrong :(")
+    order.save()
+
+    ShippingDetails.objects.create(
+        customer=customer,
+        order=order,
+        adress=data['shipping']['adress'],
+        city=data['shipping']['city'],
+        country=data['shipping']['country'],
+        postal_code=data['shipping']['postal_code']
+    )
+
     return JsonResponse('Payment complete!', safe=False)

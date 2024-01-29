@@ -14,13 +14,13 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return str(self.id)
+        return f'{self.id} by {self.customer}'
 
     def get_total(self):
         orderitems = self.orderitem_set.all()
         return round(sum([item.get_total() for item in orderitems]), 2)
 
-    def get_items(self):
+    def get_item_count(self):
         orderitems = self.orderitem_set.all()
         return sum([item.quantity for item in orderitems])
 
@@ -36,7 +36,7 @@ class OrderItem(models.Model):
         return self.book.name
 
     def get_total(self):
-        return self.book.price * self.quantity
+        return float(self.book.price * self.quantity)
 
 
 class Wishlist(models.Model):
@@ -47,7 +47,7 @@ class Wishlist(models.Model):
     def __str__(self):
         return str(self.id)
 
-    def get_items(self):
+    def get_item_count(self):
         wishlistitems = self.wishlistitem_set.all()
         return len(wishlistitems)
 

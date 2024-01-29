@@ -6,8 +6,8 @@
                 <a href="{% url 'shop-home' %}" role="button" class="contrast outline">Back to shop</a>
                 <hr>
                 <div class="cart__heading">
-                    <strong>Items: {{ cart_items }}<br>
-                    Cart total: ${{ cart_total }}</strong>
+                    <strong>Items: {{ order.get_item_count }}<br>
+                    Cart total: ${{ order.get_total }}</strong>
                     <a href="{% url 'checkout' %}" role="button">
                     Checkout
                     </a>
@@ -42,7 +42,9 @@
                                     class="outline contrast update-item"
                                     data-book="{{ item.book.id }}"
                                     data-place="cart"
-                                    data-action="delete">
+                                    data-action="delete"
+                                    data-tooltip="Remove from cart"
+                                    data-placement="right">
                                     <i class="bi bi-trash3-fill"></i>
                                 </button>
                             </div>

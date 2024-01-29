@@ -30,6 +30,22 @@
 		    return cookieValue;
 		}
 		const csrftoken = getCookie('csrftoken');
+		var cart = JSON.parse(getCookie('cart'));
+		var wishlist = JSON.parse(getCookie('wishlist'));
+
+		console.log('Cart:', cart)
+		console.log('Wishlist:', wishlist)
+
+		if (cart == null) {
+			cart = {}
+			console.log('Cart was created!')
+			document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;samesite=none;secure'
+		}
+		if (wishlist == null) {
+			wishlist = {}
+			console.log('Wishlist was created!')
+			document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;samesite=none;secure'
+		}
 
 		function reload() {
 			location.reload()
@@ -70,16 +86,16 @@
 			  <li>
 			    <a href="{% url 'wishlist' %}" data-tooltip="Wishlist" data-placement="bottom">
 			      <i class="icon bi bi-heart"></i>
-			      {% if not wishlist_items == 0 %}
-			      		<span class="qty"><small>{{ wishlist_items }}</small></span>
+			      {% if not wishlist_item_count == 0 %}
+			      		<span class="qty"><small>{{ wishlist_item_count }}</small></span>
 			      {% endif %}
 			    </a>
 			  </li>
 			  <li>
 			    <a href="{% url 'cart' %}" data-tooltip="Cart" data-placement="bottom">
 			      	<i class="icon bi bi-cart"></i>
-			      	{% if not cart_items == 0 %}
-			      		<span class="qty"><small>{{ cart_items }}</small></span>
+			      	{% if not cart_item_count == 0 %}
+			      		<span class="qty"><small>{{ cart_item_count }}</small></span>
 			      	{% endif %}
 			    </a>
 			  </li>

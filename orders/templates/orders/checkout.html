@@ -11,9 +11,6 @@
                             <input required name="last_name" placeholder="Last name" value="{{ user.last_name }}">
                         </div>
                         <input required name="email" placeholder="Email" value="{{ user.email }}">
-                        {% if not user.is_authenticated %}
-                            <small>Or <a href="{% url 'login' %}?next={% firstof request.path '/' %}">Log in</a> instead</small>
-                        {% endif %}
                     </fieldset>
                     <hr>
                     <fieldset>
@@ -32,17 +29,17 @@
             </article>
             <article class="checkout__summary">
                 <header>
-                    <a href="{% url 'cart' %}" role="button" class="contrast outline">Back to Cart</a>
+                    <a href="{% url 'cart' %}" role="button" class="contrast outline big">Back to Cart</a>
                     <hr>
                     <h3>Order summary</h3>
                     <hr>
                     <div class="space-between">
                         <p>Items:</p>
-                        <p>{{ cart_items }}</p>
+                        <p>{{ order.get_item_count }}</p>
                     </div>
                     <div class="space-between">
                         <p>TOTAL:</p>
-                        <p>${{ cart_total }}</p>
+                        <p>${{ order.get_total }}</p>
                     </div>
                 </header>
                 <div>
@@ -72,7 +69,7 @@
     </section>
     <script>
         const form = document.getElementById('form')
-        const total = '{{ cart_total }}'
+        const total = '{{ order.get_total }}'
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -86,19 +83,12 @@
         })
 
         function submitFormData() {
-            console.log('Payment button clicked')
 
             var userFormData = {
-                'first_name': null,
-                'last_name': null,
-                'email': null,
+                'first_name': form.first_name.value,
+                'last_name': form.last_name.value,
+                'email': form.email.value,
                 'total': total
-            }
-
-            if (user == 'AnonymousUser') {
-                userFormData.first_name = form.first_name.value
-                userFormData.last_name = form.last_name.value
-                userFormData.email = form.email.value
             }
 
             var shippingInfo = {
@@ -123,8 +113,9 @@
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
-                alert('Transaction completed')
+                cart = {}
+                document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;samesite=none;secure'
+
                 window.location.href = "{% url 'shop-home' %}"
             })
         }
