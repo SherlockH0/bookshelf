@@ -143,6 +143,15 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  scrollbar-gutter: stable;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding: 10rem;
+}
+
 /*|| UTILITY CLASSES  */
 .mobile-highlight {
   z-index: 200;
@@ -175,6 +184,11 @@ body {
   height: auto;
   background-color: var(--pico-background-color);
   z-index: 99;
+  transition: transform .5s ease;
+}
+
+.nav--hidden {
+  transform: translateY(-100%);
 }
 
 .card {

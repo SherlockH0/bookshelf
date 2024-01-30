@@ -18,17 +18,16 @@
 				</div>
 
 				<div class="detail__buttons hero">
-					<a href="{% url 'book-detail' book.slug %}" role="button" class="outline">Buy now</a>
-					<a href="#books" role="button" class="secondary outline">See more</a>
+					<a href="{% url 'book-detail' book.slug %}" role="button">Buy now</a>
+					<a href="#books" role="button" class="secondary">See more</a>
 				</div>
 			{% endwith %}
 		</div>
     </section>
     <hr>
     <section id="books" class="books">
-    	<div class="books__title">
+    	<div>
             <h3>New books</h3>
-            <a href="#">See more</a>
     	</div>
     	{% include 'shop/utils/books.html' with books=books|slice:"1:" %}
     </section>

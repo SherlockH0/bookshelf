@@ -52,7 +52,7 @@ class Book(models.Model):
     about = models.TextField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
     image = models.ImageField(default='default.jpeg', upload_to='book_covers')
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(default="", null=True, blank=True)
 
     def __str__(self):
