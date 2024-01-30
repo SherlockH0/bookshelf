@@ -3,25 +3,26 @@
     <section id="checkout" class="checkout">
         <div class="checkout__grid container">
             <article class="checkout__form">
-                <form action="" id="form">
+                <form id="form">
+                    {% csrf_token %}
                     <fieldset>
                         <legend>User informatinon</legend>
                         <div class="grid">
-                            <input required name="first_name" placeholder="First name" value="{{ user.first_name }}">
-                            <input required name="last_name" placeholder="Last name" value="{{ user.last_name }}">
+                            <input required type="text" name="first_name" placeholder="First name" value="{{ user.first_name }}" autocomplete="given-name">
+                            <input required type="text" name="last_name" placeholder="Last name" value="{{ user.last_name }}" autocomplete="family-name">
                         </div>
-                        <input required name="email" placeholder="Email" value="{{ user.email }}">
+                        <input required type="email" name="email" placeholder="Email" value="{{ user.email }}" autocomplete="email">
                     </fieldset>
                     <hr>
                     <fieldset>
                         <legend>Shipping details</legend>
 
-                        <input required name="adress" placeholder="Adress">
+                        <input required type="text" name="adress" placeholder="Adress" autocomplete="shipping street-address">
                         <div class="grid">
-                            <input required name="city" placeholder="City">
-                            <input required name="country" placeholder="Country">
+                            <input required name="city" placeholder="City" autocomplete="shipping address-level2">
+                            <input required name="country" placeholder="Country" autocomplete="shipping country-name">
                         </div>
-                        <input required name="postal_code" placeholder="Postal code">
+                        <input required name="postal_code" placeholder="Postal code" autocomplete="shipping postal-code">
                     </fieldset>
                     <hr>
                     <button type="submit" id="form-button">Continue</button>
@@ -62,24 +63,49 @@
                 </div>
             </article>
             <article id="payment-info" class="hidden">
-                Pay me!
-                <button id="make-payment">Make payment</button>
+                 <script src="https://www.paypal.com/sdk/js?client-id=ASnf1xj7m6fBt2IPaTnhDHmn80dgoloGoLJWdRr1xnod-DJFSJLT7c-vTROa78M-agayZM9lMotBSMxD&currency=USD&intent=capture"></script>
+                <div id="paypal-button-container"></div>
             </article>
         </div>
     </section>
+
     <script>
-        const form = document.getElementById('form')
         const total = '{{ order.get_total }}'
+        const form = document.getElementById('form')
+
+        csrftoken = form.getElementsByTagName('input')[0].value
+
+        paypal.Buttons({
+          style: {
+            layout: 'vertical',
+            color:  'white',
+            shape:  'rect',
+            label:  'paypal'
+          },
+          createOrder: function (data, actions) {
+            return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [
+                    {
+                        amount: {
+                            value: total,
+                        },
+                    },
+                ],
+            })
+          },
+          onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                submitFormData()
+            })
+          },
+        }).render('#paypal-button-container');
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             document.getElementById('form-button').classList.add('hidden')
             document.getElementById('payment-info').classList.remove('hidden')
             document.getElementById('payment-info').scrollIntoView({behavior: 'smooth'});
-        })
-
-        document.getElementById('make-payment').addEventListener('click', () => {
-            submitFormData()
         })
 
         function submitFormData() {

@@ -138,3 +138,5 @@ AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = 'shop-home'
 LOGIN_URL = 'login'
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
