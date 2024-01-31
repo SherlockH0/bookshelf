@@ -6,23 +6,40 @@
                 <form id="form">
                     {% csrf_token %}
                     <fieldset>
-                        <legend>User informatinon</legend>
+                        <legend><strong>User informatinon</strong></legend>
                         <div class="grid">
-                            <input required type="text" name="first_name" placeholder="First name" value="{{ user.first_name }}" autocomplete="given-name">
-                            <input required type="text" name="last_name" placeholder="Last name" value="{{ user.last_name }}" autocomplete="family-name">
+                            <label for="first_name">
+                                First name
+                                <input required type="text" name="first_name" placeholder="First name" value="{{ user.first_name }}" autocomplete="given-name">
+                            </label>
+                            <label for="last_name">
+                                Last name
+                                <input required type="text" name="last_name" placeholder="Last name" value="{{ user.last_name }}" autocomplete="family-name">
+                            </label>
                         </div>
                         <input required type="email" name="email" placeholder="Email" value="{{ user.email }}" autocomplete="email">
                     </fieldset>
                     <hr>
                     <fieldset>
-                        <legend>Shipping details</legend>
-
-                        <input required type="text" name="adress" placeholder="Adress" autocomplete="shipping street-address">
+                        <legend><strong>Shipping details</strong></legend>
+                        <label for="adress">
+                            Adress
+                            <input required type="text" name="adress" placeholder="Adress" autocomplete="shipping street-address">
+                        </label>
                         <div class="grid">
-                            <input required name="city" placeholder="City" autocomplete="shipping address-level2">
-                            <input required name="country" placeholder="Country" autocomplete="shipping country-name">
+                            <label for="city">
+                                City
+                                <input required name="city" placeholder="City" autocomplete="shipping address-level2">
+                            </label>
+                            <label for="country">
+                                Country
+                                <input required name="country" placeholder="Country" autocomplete="shipping country-name">
+                            </label>
                         </div>
-                        <input required name="postal_code" placeholder="Postal code" autocomplete="shipping postal-code">
+                        <label for="postal_code">
+                            Postal code
+                            <input required name="postal_code" placeholder="Postal code" autocomplete="shipping postal-code">
+                        </label>
                     </fieldset>
                     <hr>
                     <button type="submit" id="form-button">Continue</button>
@@ -35,11 +52,11 @@
                     <h3>Order summary</h3>
                     <hr>
                     <div class="space-between">
-                        <p>Items:</p>
+                        <p><strong>Items:</strong></p>
                         <p>{{ order.get_item_count }}</p>
                     </div>
                     <div class="space-between">
-                        <p>TOTAL:</p>
+                        <p><strong>TOTAL:</strong></p>
                         <p>${{ order.get_total }}</p>
                     </div>
                 </header>

@@ -6,13 +6,14 @@
             <header>
                 <h3>Log In</h3>
             </header>
-            <form method="POST">
+            <form method="post">
                 {% csrf_token %}
                 <fieldset>
                     {% if form.non_field_errors %}
                         <div class="alert alert-warning">{{ form.non_field_errors }}</div>
                     {% endif %}
                     <div>
+                        {{ form.username.label_tag }}
                         {% render_field form.username|add_error_attr:"aria-invalid:true" placeholder=form.username.label %}
                         {% if form.username.errors %}
                           <small>
@@ -21,6 +22,7 @@
                         {% endif %}
                     </div>
                     <div>
+                        {{ form.password.label_tag }}
                         {% render_field form.password|add_error_attr:"aria-invalid:true" placeholder=form.password.label %}
                         {% if form.password.errors %}
                           <small>

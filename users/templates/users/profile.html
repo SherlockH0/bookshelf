@@ -10,12 +10,13 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset>
-                    <legend>Profile Info</legend>
+                    <legend><strong>Profile Info</strong></legend>
                     {% if form.non_field_errors %}
                         <div class="alert alert-warning">{{ form.non_field_errors }}</div>
                     {% endif %}
                     <div class="grid">
                         <div>
+                            {{ form.first_name.label_tag }}
                             {% render_field form.first_name|add_error_attr:"aria-invalid:true" placeholder="First name" %}
                             {% if form.first_name.errors %}
                               <small>
@@ -24,6 +25,7 @@
                             {% endif %}
                         </div>
                         <div>
+                            {{ form.last_name.label_tag }}
                             {% render_field form.last_name|add_error_attr:"aria-invalid:true" placeholder="Last name" %}
                             {% if form.last_name.errors %}
                               <small>
@@ -33,6 +35,7 @@
                         </div>
                     </div>
                     <div>
+                        {{ form.email.label_tag }}
                         {% render_field form.email|add_error_attr:"aria-invalid:true" placeholder=form.email.label %}
                         {% if form.email.errors %}
                           <small>
@@ -44,7 +47,10 @@
                 <button type="submit" class="outline">Update</button>
             </form>
             <footer>
-                <a href="{% url 'logout' %}" role="button" class="contrast big">Log Out</a>
+                <form id="logout-form" method="post" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="contrast">Log out</button>
+                </form>
             </footer>
         </article>
     </div>

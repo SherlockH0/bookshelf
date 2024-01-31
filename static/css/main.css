@@ -156,21 +156,8 @@ main {
 html {
   scroll-behavior: smooth;
   scroll-padding: 10rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--pico-form-element-border-color) var(--pico-form-element-background-color);
 }
 
-html::-webkit-scrollbar {
-  width: 2vw;
-}
-
-html::-webkit-scrollbar-thumb {
-  background-color: var(--pico-form-element-border-color)
-}
-
-html::-webkit-scrollbar-track {
-  background-color: var(--pico-form-element-background-color)
-}
 /*|| UTILITY CLASSES  */
 .mobile-highlight {
   z-index: 200;
