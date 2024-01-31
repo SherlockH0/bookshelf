@@ -97,6 +97,7 @@ def process_order(request):
 
     if total == order.get_total():
         order.complete = True
+        messages.success(request, "Transaction complete successfuly")
     else:
         messages.error(request, "Sorry, something went wrong :(")
     order.save()

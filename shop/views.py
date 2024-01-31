@@ -9,6 +9,10 @@ def about(request):
     return render(request, 'shop/about.html')
 
 
+def contacts(request):
+    return render(request, 'shop/contacts.html')
+
+
 def home(request):
     context = {'books': Book.objects.all().order_by('-date_created')}
 

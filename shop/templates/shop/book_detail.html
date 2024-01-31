@@ -32,7 +32,7 @@
                 <br>
                 <a href="{% url 'cart' %}"
                 role="button" />
-                    Go to cart
+                    Go to cart 🛒
                 </a>
            </footer>
         </article>
@@ -82,7 +82,7 @@
                     data-action="add"
                     data-target="add-to-cart-modal"
                     onClick="toggleModal(event)"
-                    class="outline update-item">
+                    class="update-item">
                     Add to cart
                 </button>
                 <button
@@ -91,8 +91,9 @@
                     data-action="add"
                     data-target="add-to-wishlist-modal"
                     onClick="toggleModal(event)"
+                    data-tooltip="Add to wishlist"
                     class="secondary update-item">
-                    Add to wishlist
+                    ❤️
                 </button>
             </div>
         </div>

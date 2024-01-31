@@ -51,8 +51,8 @@ function updateCookieData(bookId, action, place) {
         }
     }
 
-    document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;samesite=none;secure'
-    document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;samesite=none;secure'
+    document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;'
+    document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;'
 
     reload()
 }
