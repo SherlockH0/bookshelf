@@ -381,6 +381,10 @@ html {
   font-family: "Playfair Display SC";
 }
 
+.navbar__logo {
+  height: 1.5rem;
+}
+
 .navbar__menu-toggle {
   display: none;
   z-index: 999;
@@ -823,5 +827,8 @@ dialog article > footer a {
     grid-row-end: 3;
     -ms-grid-column: 1;
         grid-column-start: 1;
+  }
+  .navbar__text {
+    display: none;
   }
 }
