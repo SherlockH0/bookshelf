@@ -150,7 +150,9 @@ STORAGES = {
     "default": {
         "BACKEND": "storages.backends.dropbox.DropboxStorage",
         "OPTIONS": {
-            "oauth2_access_token": os.environ.get('DROPBOX_OAUTH2_TOKEN'),
+            "oauth2_refresh_token": os.environ.get('DROPBOX_OAUTH2_REFRESH_TOKEN'),
+            "app_secret": os.environ.get('DROPBOX_APP_SECRET'),
+            "app_key": os.environ.get('DROPBOX_APP_KEY'),
             "root_path": "/media"
         }
     },
