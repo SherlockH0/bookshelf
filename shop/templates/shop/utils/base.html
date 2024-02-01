@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="https://www.dropbox.com/scl/fi/4vq952ixt0ilpim0sk2pv/logo.svg?rlkey=vy9ukx4q6i06d0dkme2v8amcl&dl=0">
+	<link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
 	<link
 		  rel="stylesheet"
 		  href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css"
@@ -65,7 +65,7 @@
 	<div class="navbar">
 		<nav>
 			<ul>
-			  <li><a href="{% url 'shop-home' %}" class="navbar__brand"><img class="brand__logo" src="https://www.dropbox.com/scl/fi/4vq952ixt0ilpim0sk2pv/logo.svg?rlkey=vy9ukx4q6i06d0dkme2v8amcl&dl=0g">BookShelf</a></li>
+			  <li><a href="{% url 'shop-home' %}" class="navbar__brand"><img class="brand__logo" src="{% static 'logo.svg' %}">BookShelf</a></li>
 			</ul>
 			<ul class="navbar__links" data-visible="false">
 				{% for section in sections %}
