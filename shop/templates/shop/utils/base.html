@@ -65,7 +65,12 @@
 	<div class="navbar">
 		<nav>
 			<ul>
-			  <li><a href="{% url 'shop-home' %}" class="navbar__brand"><img class="brand__logo" src="{% static 'logo.svg' %}">BookShelf</a></li>
+			  <li>
+			  	<a href="{% url 'shop-home' %}" class="navbar__brand">
+				  <img class="brand__logo" src="{% static 'logo.svg' %}">
+				  <span class="brand__text">BookShelf</span>
+			  	</a>
+			  </li>
 			</ul>
 			<ul class="navbar__links" data-visible="false">
 				{% for section in sections %}
