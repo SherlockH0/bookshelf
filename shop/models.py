@@ -51,8 +51,7 @@ class Book(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     about = models.TextField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    image = models.ImageField(
-        default='https://m.media-amazon.com/images/I/81QPHl7zgbL._AC_UF1000,1000_QL80_.jpg', upload_to='book_covers')
+    image = models.ImageField(default='default.jpeg', upload_to='book_covers')
     date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(default="", null=True, blank=True)
 
