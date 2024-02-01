@@ -14,7 +14,7 @@ def contacts(request):
 
 
 def home(request):
-    context = {'books': Book.objects.all().order_by('-date_created')}
+    context = {'books': Book.objects.all().order_by('-date_created')[:15]}
 
     if 'search' in request.GET and request.GET['search'] != '':
         query = request.GET['search']
