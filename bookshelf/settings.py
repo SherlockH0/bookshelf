@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dotenv
 
-# dotenv.load_dotenv()
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,13 +126,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Storage
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.dropbox.DropboxStorage",
-    },
-}
-DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
+
+# DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -149,6 +144,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Storage
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.dropbox.DropboxStorage",
+        "OPTIONS": {
+            "oauth2_access_token": os.environ.get('DROPBOX_OAUTH2_TOKEN'),
+            "root_path": "/media"
+        }
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 
 AUTH_USER_MODEL = "users.User"
 
