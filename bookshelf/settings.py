@@ -130,9 +130,6 @@ USE_TZ = True
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.dropbox.DropboxStorage",
-        "OPTIONS": {
-
-        },
     },
 }
 DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
