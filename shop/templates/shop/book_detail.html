@@ -1,11 +1,6 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
 
-    <!-- Don't reload when adding to cart or wishlist -->
-    <script>
-        reload = () => { return }
-    </script>
-
     <!-- Add to cart modal -->
     <dialog id="add-to-cart-modal">
         <article>
@@ -38,31 +33,6 @@
         </article>
     </dialog>
 
-    <!-- Add to wishlist modal -->
-    <dialog id="add-to-wishlist-modal">
-        <article>
-            <header>
-                <h3>Added to your wishlist! 🏷️</h3>
-            </header>
-            <main class="cart__book">
-                <hgroup>
-                    <h6>
-                        {{ object.name }}
-                    </h6>
-                    <p>was added to your wishlist</p>
-                </hgroup>
-            </main>
-            <footer>
-                <a href="#"
-                data-target="add-to-wishlist-modal"
-                onClick="toggleModal(event)"
-                role="button" />
-                    Continue shopping
-                </a>
-           </footer>
-        </article>
-    </dialog>
-
     <div class="detail__wrapper detail">
         <div class="detail__cover">
             <img class="detail__image" src="{{ object.image.url }}" alt="">
@@ -82,18 +52,19 @@
                     data-action="add"
                     data-target="add-to-cart-modal"
                     onClick="toggleModal(event)"
-                    class="update-item">
-                    Add to cart
+                    class="update-item add-to-cart">
+                    <i class="bi bi-cart"></i>
+                    <span>Add to cart</span>
                 </button>
                 <button
                     data-book="{{ object.id }}"
                     data-place="wishlist"
                     data-action="add"
                     data-target="add-to-wishlist-modal"
-                    onClick="toggleModal(event)"
+                    onClick="location.reload()"
                     data-tooltip="Add to wishlist"
-                    class="secondary update-item">
-                    ❤️
+                    class="update-item add-to-wishlist outline contarst">
+                    <i class="bi bi-heart"></i>
                 </button>
             </div>
         </div>
@@ -104,4 +75,31 @@
             </p>
         </div>
     </div>
+
+    <script>
+        // Don't reload when adding to cart or wishlist
+        reload = () => { return }
+
+        // If item already in the cart or in the wishlist, show it
+        const item_id = '{{ object.id }}'
+        const cart_items = Object.keys(cart)
+        const wishlist_items = Object.keys(wishlist)
+
+        if (cart_items.includes(item_id)) {
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            addToCartBtn.outerHTML = `
+<a href={% url 'cart' %} class="outline" role="button">
+    <i class="bi bi-cart"></i>
+    In cart
+</a>`
+            addToCartBtn.classList.add('outline')
+        }
+        if (wishlist_items.includes(item_id)) {
+            const addToWishlistBtn = document.querySelector('.add-to-wishlist');
+            addToWishlistBtn.innerHTML = '<i class="bi bi-heart-fill"></i>'
+            addToWishlistBtn.dataset.action = 'delete'
+            addToWishlistBtn.dataset.tooltip = 'Remove from wishlist'
+        }
+
+    </script>
 {% endblock content %}
