@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 from .models import Book, Genre, Author
 from django.db.models import Q
 from django.urls import reverse
+from utils.shop_data import OrderData, WishlistData
 
 
 def about(request):
@@ -59,3 +60,12 @@ class BookListView(ListView):
 
 class BookDetailView(DetailView):
     model = Book
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['cart_items'] = \
+            OrderData(self.request).order.get_item_ids()
+        context['wishlist_items'] = \
+            WishlistData(self.request).wishlist.get_item_ids()
+        return context

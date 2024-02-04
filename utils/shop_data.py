@@ -9,8 +9,10 @@ def get_cookie(cookies, name):
 
 def safe_get(model, id):
     try:
-        return model.objects.get(id=id)
+        return model.objects.get(
+            id=id)
     except Exception:
+        print(Exception)
         return None
 
 
@@ -28,6 +30,9 @@ def get_book(book):
 class CookieModel:
     def get_item_count(self):
         return self.item_count
+
+    def get_item_ids(self):
+        return [item['book']['id'] for item in self.items]
 
 
 class CookieOrder(CookieModel):

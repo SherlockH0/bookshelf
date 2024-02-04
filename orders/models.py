@@ -24,6 +24,9 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         return sum([item.quantity for item in orderitems])
 
+    def get_item_ids(self):
+        return [item.book.id for item in self.orderitem_set.all()]
+
 
 class OrderItem(models.Model):
 
@@ -50,6 +53,9 @@ class Wishlist(models.Model):
     def get_item_count(self):
         wishlistitems = self.wishlistitem_set.all()
         return len(wishlistitems)
+
+    def get_item_ids(self):
+        return [item.book.id for item in self.wishlistitem_set.all()]
 
 
 class WishlistItem(models.Model):

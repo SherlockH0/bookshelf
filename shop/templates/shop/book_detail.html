@@ -61,7 +61,6 @@
                     data-place="wishlist"
                     data-action="add"
                     data-target="add-to-wishlist-modal"
-                    onClick="location.reload()"
                     data-tooltip="Add to wishlist"
                     style="color: var(--pico-del-color);"
                     class="update-item add-to-wishlist outline secondary">
@@ -78,13 +77,11 @@
     </div>
 
     <script>
-        // Don't reload when adding to cart or wishlist
-        reload = () => { return }
 
         // If item already in the cart or in the wishlist, show it
-        const item_id = '{{ object.id }}'
-        const cart_items = Object.keys(cart)
-        const wishlist_items = Object.keys(wishlist)
+        const item_id = {{ object.id }}
+        const cart_items = {{ cart_items }}
+        const wishlist_items = {{ wishlist_items }}
 
         if (cart_items.includes(item_id)) {
             const addToCartBtn = document.querySelector('.add-to-cart');
