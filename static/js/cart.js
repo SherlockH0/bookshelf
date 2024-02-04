@@ -34,6 +34,8 @@ function updateCookieData(bookId, action, place) {
     if (place == 'cart'){
         if (action == 'add' && cart[bookId] == undefined) {
             cart[bookId] = {'quantity': 1, 'date_added': now}
+            // Don't reload when adding to cart
+            reload = () => { return }
         } else if (action == 'delete') {
             delete cart[bookId]
         } else if (action.startsWith('set-to-')) {

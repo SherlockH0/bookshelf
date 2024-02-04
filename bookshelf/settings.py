@@ -146,20 +146,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Storage
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.dropbox.DropboxStorage",
-#         "OPTIONS": {
-#             "oauth2_refresh_token": os.environ.get('DROPBOX_OAUTH2_REFRESH_TOKEN'),
-#             "app_secret": os.environ.get('DROPBOX_APP_SECRET'),
-#             "app_key": os.environ.get('DROPBOX_APP_KEY'),
-#             "root_path": "/media"
-#         }
-#     },
-#     "staticfiles": {
-#         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-#     },
-# }
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.dropbox.DropboxStorage",
+        "OPTIONS": {
+            "oauth2_refresh_token": os.environ.get('DROPBOX_OAUTH2_REFRESH_TOKEN'),
+            "app_secret": os.environ.get('DROPBOX_APP_SECRET'),
+            "app_key": os.environ.get('DROPBOX_APP_KEY'),
+            "root_path": "/media"
+        }
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 
 AUTH_USER_MODEL = "users.User"
