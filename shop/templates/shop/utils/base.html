@@ -47,10 +47,6 @@
 			console.log('Wishlist was created!')
 			document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;'
 		}
-
-		function reload() {
-			location.reload()
-		}
 	</script>
 
 	{% if title %}

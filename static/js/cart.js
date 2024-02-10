@@ -7,7 +7,6 @@ updateBtns.forEach((button) => {
         var place = button.dataset.place
         var action = button.dataset.action
         updateData(bookId, action, place)
-
     })
 });
 
@@ -20,22 +19,20 @@ changeItem.forEach((input) => {
     })
 });
 
-function updateData(bookId, action, place) {
+function updateData(bookId, action, place, reload=true) {
     if (user == 'AnonymousUser') {
-        updateCookieData(bookId, action, place)
+        updateCookieData(bookId, action, place, reload)
     } else {
-        updateUserData(bookId, action, place)
+        updateUserData(bookId, action, place, reload)
     }
 }
 
-function updateCookieData(bookId, action, place) {
+function updateCookieData(bookId, action, place, reload) {
     const now = Date.now()
 
     if (place == 'cart'){
         if (action == 'add' && cart[bookId] == undefined) {
             cart[bookId] = {'quantity': 1, 'date_added': now}
-            // Don't reload when adding to cart
-            reload = () => { return }
         } else if (action == 'delete') {
             delete cart[bookId]
         } else if (action.startsWith('set-to-')) {
@@ -56,10 +53,10 @@ function updateCookieData(bookId, action, place) {
     document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;'
     document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;'
 
-    reload()
+    if (reload) location.reload()
 }
 
-function updateUserData(bookId, action, place) {
+function updateUserData(bookId, action, place, reload) {
     const url = '/update_item/'
 
     fetch(url, {
@@ -79,6 +76,6 @@ function updateUserData(bookId, action, place) {
     })
 
     .then((data) => {
-        reload()
+        if (reload) location.reload()
     })
 }

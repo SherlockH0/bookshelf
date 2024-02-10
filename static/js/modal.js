@@ -5,6 +5,9 @@
  * Copyright 2019-2023 - Licensed under MIT
  */
 
+// Changed by SherlockH0
+// USE ONLY FOR ADD TO CART MODAL!!!! (SEE LINE 45)
+
 // Config
 const isOpenClass = "modal-is-open";
 const openingClass = "modal-is-opening";
@@ -37,6 +40,14 @@ const openModal = (modal) => {
     document.documentElement.classList.remove(openingClass);
   }, animationDuration);
   modal.setAttribute("open", true);
+
+  // My custom code
+  // Add item to cart after modal is opened
+
+  var bookId = modal.dataset.book
+  var place = modal.dataset.place
+  var action = modal.dataset.action
+  updateData(bookId, action, place, false)
 };
 
 // Close modal
@@ -48,7 +59,9 @@ const closeModal = (modal) => {
     document.documentElement.style.removeProperty("--scrollbar-width");
     modal.removeAttribute("open");
   }, animationDuration);
-  location.reload();
+
+  // Custom code
+  location.reload()
 };
 
 // Close with a click outside

@@ -2,7 +2,10 @@
 {% block content %}
 
     <!-- Add to cart modal -->
-    <dialog id="add-to-cart-modal">
+    <dialog id="add-to-cart-modal"
+                    data-book="{{ object.id }}"
+                    data-place="cart"
+                    data-action="add">
         <article>
             <header>
                 <h3>Added to cart! 🛒</h3>
@@ -47,12 +50,9 @@
             <h3><ins>${{ object.price }}</ins></h3>
             <div class="detail__buttons">
                 <button
-                    data-book="{{ object.id }}"
-                    data-place="cart"
-                    data-action="add"
                     data-target="add-to-cart-modal"
                     onClick="toggleModal(event)"
-                    class="update-item add-to-cart">
+                    class="add-to-cart">
                     <i class="bi bi-cart"></i>
                     <span>Add to cart</span>
                 </button>
