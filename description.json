@@ -7,7 +7,7 @@
         "password": "testing321"
     },
     "tech": "Django, HTML, CSS, JavaScript, Vercel, Dropbox, PayPal Checkout",
-    "image_url": "",
+    "image_url": "https://raw.githubusercontent.com/SherlockH0/bookshelf/main/preview.jpg",
     "website_url": "https://bookshelf-ochre.vercel.app",
     "github_url": "https://github.com/SherlockH0/bookshelf"
 }
