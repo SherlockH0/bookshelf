@@ -1,6 +1,6 @@
 {
     "title1": "Bookshelf",
-    "title": "Bookshop\ne-comerce\nwebsite",
+    "title2": "Bookshop\ne-comerce\nwebsite",
     "description": "I really love books, so, I decided to create this bookshop website.\nI implemented cart, wishlist and checkout funcionality, both for authintinicated and guest users.\nYou can also checkout using PayPal payment system.",
     "test_user": {
         "email": "testuser321@gmail.com",
