@@ -1,0 +1,13 @@
+{
+    "title1": "Bookshelf",
+    "title2": "Bookshop<br>e-comerce<br>website",
+    "description": "I really love books, so, I decided to create this bookshop website.<br>I implemented cart, wishlist and checkout funcionality, both for authintinicated and guest users.<br>You can also checkout using PayPal payment system.",
+    "test_user": {
+        "email": "testuser321@gmail.com",
+        "password": "testing321"
+    },
+    "tech": "Django, HTML, CSS, JavaScript, Vercel, Dropbox, PayPal Checkout",
+    "image_url": "https://raw.githubusercontent.com/SherlockH0/bookshelf/main/preview.jpg",
+    "website_url": "https://bookshelf-ochre.vercel.app",
+    "github_url": "https://github.com/SherlockH0/bookshelf"
+}
