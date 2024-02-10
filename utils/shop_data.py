@@ -96,7 +96,6 @@ class ModelData:
                 self.items,
                 key=lambda item: -item['date_added'])
 
-
 class OrderData(ModelData):
 
     def auth_init(self):
