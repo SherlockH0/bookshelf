@@ -1,7 +1,6 @@
 {
     "title": "Bookshelf",
-    "description": "Bookshelf is a simple e-commerce bookshop website.
-I implemented cart and wishlist, both for authenticated and guest users, in-site search and integrated PayPal Checkout. ",
+    "description": "Bookshelf is a simple e-commerce bookshop website.<br>I implemented cart and wishlist, both for authenticated and guest users, in-site search and integrated PayPal Checkout. ",
     "tech": "Django, HTML&CSS, JavaScript, PayPal Checkout",
     "image_url": "https://raw.githubusercontent.com/SherlockH0/bookshelf/main/preview.jpg",
     "website_url": "https://bookshelf-ochre.vercel.app",
