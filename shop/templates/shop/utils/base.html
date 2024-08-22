@@ -1,18 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-	<meta charset="UTF-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
-	<link
-		  rel="stylesheet"
-		  href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css"
-		/>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair Display SC|Lora">
-
-	<script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Playfair Display SC|Lora">
+    <script>
 		const user = '{{ request.user }}'
 
 		function getCookie(name) {
@@ -34,118 +32,115 @@
 		var cart = JSON.parse(getCookie('cart'));
 		var wishlist = JSON.parse(getCookie('wishlist'));
 
-		console.log('Cart:', cart)
-		console.log('Wishlist:', wishlist)
-
 		if (cart == null) {
 			cart = {}
-			console.log('Cart was created!')
 			document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/;'
 		}
 		if (wishlist == null) {
 			wishlist = {}
-			console.log('Wishlist was created!')
 			document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;'
 		}
-	</script>
 
-	{% if title %}
-		<title>Bookshelf - {{ title }}</title>
-	{% else %}
-		<title>Bookshelf</title>
-	{% endif %}
-</head>
-<body class="container">
-
-	<!-- Navbar -->
-	<div class="navbar">
-		<nav>
-			<ul>
-			  <li>
-			  	<a href="{% url 'shop-home' %}" class="navbar__brand">
-				  <img class="brand__logo" src="{% static 'logo.svg' %}">
-				  <span class="brand__text">BookShelf</span>
-			  	</a>
-			  </li>
-			</ul>
-			<ul class="navbar__links" data-visible="false">
-				{% for section in sections %}
-					<li>
-						<details class="dropdown">
-							<summary>{{ section.category }}</summary>
-							<ul dir="rtl">
-								{% for genre in section.genres %}
-									<li><a href="{% url 'shop-books-genre' genre.slug %}">{{ genre.name }}</a></li>
-								{% endfor %}
-							</ul>
-						</details>
-					</li>
-				{% endfor %}
-			  	<li></li>
-			  	<li><a href="{% url 'shop-about' %}">About us</a></li>
-			  	<li><a href="{% url 'shop-contacts' %}">Contacts</a></li>
-			</ul>
-			<ul>
-			  <li>
-			    <a href="{% url 'wishlist' %}" data-tooltip="Wishlist" data-placement="bottom">
-			      <i class="icon bi bi-heart"></i>
-			      {% if not wishlist_item_count == 0 %}
-			      		<span class="qty"><small>{{ wishlist_item_count }}</small></span>
-			      {% endif %}
-			    </a>
-			  </li>
-			  <li>
-			    <a href="{% url 'cart' %}" data-tooltip="Cart" data-placement="bottom">
-			      	<i class="icon bi bi-cart"></i>
-			      	{% if not cart_item_count == 0 %}
-			      		<span class="qty"><small>{{ cart_item_count }}</small></span>
-			      	{% endif %}
-			    </a>
-			  </li>
-			  <li>
-			  	{% if user.is_authenticated %}
-					<a href="{% url 'profile' %}" data-tooltip="Profile" data-placement="bottom">
-				      <i class="icon bi bi-person-circle"></i>
-				    </a>
-			  	{% else %}
-				    <a href="{% url 'login' %}" data-tooltip="Log In" data-placement="bottom">
-				      <i class="icon bi bi-person-circle"></i>
-				    </a>
-			    {% endif %}
-			  </li>
-			</ul>
-			<ul class="navbar__menu-toggle">
-			  	<li>
-			        <div class="menu-btn">
-        				<div class="menu-btn__burger">
-        				</div>
-					</div>
-			  	</li>
-			</ul>
-		</nav>
-		<div data-visible="false" class="mobile-highlight"></div>
-		<div class="navbar__search">
-			<form action="/" role="search">
-				<input type="search" id="search" name="search" value="{{ query }}">
-				<input type="submit" value="Search"/>
-			</form>
-		</div>
-	</div>
-
-	<!-- Main content -->
-	<main class="container">
-			<!-- Messages -->
-			{% if messages %}
-				{% for message in messages %}
-					<div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-				{% endfor %}
-			{% endif %}
-		{% block content %}{% endblock %}
-	</main>
-
-	<!-- Scripts -->
-	<script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
-</body>
+    </script>
+    {% if title %}
+      <title>Bookshelf - {{ title }}</title>
+    {% else %}
+      <title>Bookshelf</title>
+    {% endif %}
+  </head>
+  <body class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'shop-home' %}" class="navbar__brand">
+              <img class="brand__logo" src="{% static 'logo.svg' %}">
+              <span class="brand__text">BookShelf</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar__links" data-visible="false">
+          {% for section in sections %}
+            <li>
+              <details class="dropdown">
+                <summary>{{ section.category }}</summary>
+                <ul dir="rtl">
+                  {% for genre in section.genres %}
+                    <li>
+                      <a href="{% url 'shop-books-genre' genre.slug %}">{{ genre.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </details>
+            </li>
+          {% endfor %}
+          <li></li>
+          <li>
+            <a href="{% url 'shop-about' %}">About us</a>
+          </li>
+          <li>
+            <a href="{% url 'shop-contacts' %}">Contacts</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="{% url 'wishlist' %}"
+               data-tooltip="Wishlist"
+               data-placement="bottom">
+              <i class="icon bi bi-heart"></i>
+              {% if not wishlist_item_count == 0 %}<span class="qty"><small>{{ wishlist_item_count }}</small></span>{% endif %}
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'cart' %}" data-tooltip="Cart" data-placement="bottom">
+              <i class="icon bi bi-cart"></i>
+              {% if not cart_item_count == 0 %}<span class="qty"><small>{{ cart_item_count }}</small></span>{% endif %}
+            </a>
+          </li>
+          <li>
+            {% if user.is_authenticated %}
+              <a href="{% url 'profile' %}"
+                 data-tooltip="Profile"
+                 data-placement="bottom">
+                <i class="icon bi bi-person-circle"></i>
+              </a>
+            {% else %}
+              <a href="{% url 'login' %}"
+                 data-tooltip="Log In"
+                 data-placement="bottom">
+                <i class="icon bi bi-person-circle"></i>
+              </a>
+            {% endif %}
+          </li>
+        </ul>
+        <ul class="navbar__menu-toggle">
+          <li>
+            <div class="menu-btn">
+              <div class="menu-btn__burger"></div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div data-visible="false" class="mobile-highlight"></div>
+      <div class="navbar__search">
+        <form action="/" role="search">
+          <input type="search" id="search" name="search" value="{{ query }}">
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+    </div>
+    <!-- Main content -->
+    <main class="container">
+      <!-- Messages -->
+      {% if messages %}
+        {% for message in messages %}<div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>{% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+    <!-- Scripts -->
+    <script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+  </body>
 </html>
