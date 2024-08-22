@@ -18,7 +18,9 @@
         {% for item in items %}
           <hr>
           <div class="cart__book">
-            <img class="card__image"
+            <img width="200"
+                 height="310"
+                 class="card__image"
                  src="{{ item.book.image_preview.url }}"
                  loading="lazy"
                  alt="{{ item.book.name }} - {{ item.book.author }}">

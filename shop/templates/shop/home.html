@@ -5,7 +5,11 @@
       <div class="detail__wrapper">
         {% with books|first as book %}
           <div class="detail__cover hero">
-            <img class="detail__image" src="{{ book.image.url }}" alt="">
+            <img width="300"
+                 height="480"
+                 class="detail__image"
+                 src="{{ book.image.url }}"
+                 alt="">
           </div>
           <hgroup class="detail__title hero">
             <h1 class="detail__book-name">{{ book.name }}</h1>
