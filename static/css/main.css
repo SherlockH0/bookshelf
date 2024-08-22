@@ -56,6 +56,13 @@ footer * {
     color: var(--pico-muted-color);
 }
 
+details.dropdown summary {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 /*|| VARIABLES */
 [data-theme=light],
 :root:not([data-theme=dark]) {
