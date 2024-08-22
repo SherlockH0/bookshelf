@@ -17,7 +17,7 @@ def contacts(request):
 
 
 def home(request):
-    # context = {'books': Book.objects.all().order_by('-date_created')[:15]}
+    context = {"books": Book.objects.all().order_by("-date_created")}
 
     if "search" in request.GET and request.GET["search"] != "":
         query = request.GET["search"]
@@ -33,7 +33,7 @@ def home(request):
 
         return render(request, "shop/search_results.html", context)
 
-    return render(request, "shop/home.html")
+    return render(request, "shop/home.html", context)
 
 
 class BookListView(ListView):
