@@ -1,83 +1,71 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-
-    <!-- Add to cart modal -->
-    <dialog id="add-to-cart-modal"
-                    data-book="{{ object.id }}"
-                    data-place="cart"
-                    data-action="add">
-        <article>
-            <header>
-                <h3>Added to cart! 🛒</h3>
-            </header>
-            <main class="cart__book">
-                <hgroup>
-                    <h6>
-                        {{ object.name }}
-                    </h6>
-                    <p>was added to your cart</p>
-                </hgroup>
-            </main>
-            <footer>
-                <a href="#"
-                data-target="add-to-cart-modal"
-                onClick="toggleModal(event)"
-                class="outline"
-                role="button" />
-                    Continue shopping
-                </a>
-                <br>
-                <br>
-                <a href="{% url 'cart' %}"
-                role="button" />
-                    Go to cart 🛒
-                </a>
-           </footer>
-        </article>
-    </dialog>
-
-    <div class="detail__wrapper detail">
-        <div class="detail__cover">
-            <img class="detail__image" src="{{ object.image.url }}" alt="">
-        </div>
-        <hgroup class="detail__title">
-            <small><a href="{% url 'shop-books-genre' object.genre.slug %}">{{ object.genre }}</a></small>
-            <h1 class="detail__book-name">{{ object.name }}</h1>
-            <h3><a href="{% url 'shop-books-author' object.author.slug %}">{{ object.author }}</a></h3>
+  <!-- Add to cart modal -->
+  <dialog id="add-to-cart-modal"
+          data-book="{{ object.id }}"
+          data-place="cart"
+          data-action="add">
+    <article>
+      <header>
+        <h3>Added to cart! 🛒</h3>
+      </header>
+      <main class="cart__book">
+        <hgroup>
+          <h6>{{ object.name }}</h6>
+          <p>was added to your cart</p>
         </hgroup>
-
-        <div>
-            <h3><ins>${{ object.price }}</ins></h3>
-            <div class="detail__buttons">
-                <button
-                    data-target="add-to-cart-modal"
-                    onClick="toggleModal(event)"
-                    class="add-to-cart">
-                    <i class="bi bi-cart"></i>
-                    <span>Add to cart</span>
-                </button>
-                <button
-                    data-book="{{ object.id }}"
-                    data-place="wishlist"
-                    data-action="add"
-                    data-target="add-to-wishlist-modal"
-                    data-tooltip="Add to wishlist"
-                    style="color: var(--pico-del-color);"
-                    class="update-item add-to-wishlist outline secondary">
-                    <i class="bi bi-heart"></i>
-                </button>
-            </div>
-        </div>
-        <div>
-            <h4>Description</h4>
-            <p class="detail__description">
-                {{ object.about|linebreaksbr }}
-            </p>
-        </div>
+      </main>
+      <footer>
+        <a href="#"
+           data-target="add-to-cart-modal"
+           onClick="toggleModal(event)"
+           class="outline"
+           role="button" />Continue shopping</a>
+        <br>
+        <br>
+        <a href="{% url 'cart' %}" role="button" />Go to cart 🛒</a>
+      </footer>
+    </article>
+  </dialog>
+  <div class="detail__wrapper detail">
+    <div class="detail__cover">
+      <img class="detail__image" src="{{ object.image_cover.url }}" alt="">
     </div>
-
-    <script>
-
+    <hgroup class="detail__title">
+      <small><a href="{% url 'shop-books-genre' object.genre.slug %}">{{ object.genre }}</a></small>
+      <h1 class="detail__book-name">{{ object.name }}</h1>
+      <h3>
+        <a href="{% url 'shop-books-author' object.author.slug %}">{{ object.author }}</a>
+      </h3>
+    </hgroup>
+    <div>
+      <h3>
+        <ins>${{ object.price }}</ins>
+      </h3>
+      <div class="detail__buttons">
+        <button data-target="add-to-cart-modal"
+                onClick="toggleModal(event)"
+                class="add-to-cart">
+          <i class="bi bi-cart"></i>
+          <span>Add to cart</span>
+        </button>
+        <button data-book="{{ object.id }}"
+                data-place="wishlist"
+                data-action="add"
+                data-target="add-to-wishlist-modal"
+                data-tooltip="Add to wishlist"
+                style="color: var(--pico-del-color)"
+                class="update-item add-to-wishlist secondary outline">
+          <i class="bi bi-heart"></i>
+        </button>
+      </div>
+    </div>
+    <div>
+      <h4>Description</h4>
+      <p class="detail__description">{{ object.about|linebreaksbr }}</p>
+    </div>
+  </div>
+  <script>
         // If item already in the cart or in the wishlist, show it
         const item_id = {{ object.id }}
         const cart_items = {{ cart_items }}
@@ -99,5 +87,5 @@
             addToWishlistBtn.dataset.tooltip = 'Remove from wishlist'
         }
 
-    </script>
+  </script>
 {% endblock content %}

@@ -1,36 +1,33 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-{% if books %}
-	<section id="hero" class="hero">
-		<div class="detail__wrapper">
-			{% with books|first as book %}
-				<div class="detail__cover hero">
-					<img class="detail__image" src="{{ book.image.url }}" alt="">
-				</div>
-				<hgroup class="detail__title hero">
-					<h1 class="detail__book-name">{{ book.name }}</h1>
-					<h3>{{ book.author }}</h3>
-				</hgroup>
-				<div>
-					<p class="detail__description hero">
-						{{ book.about|linebreaksbr }}
-					</p>
-				</div>
-
-				<div class="detail__buttons hero">
-					<a href="{% url 'book-detail' book.slug %}" role="button">Buy now</a>
-				</div>
-			{% endwith %}
-		</div>
+  {% if books %}
+    <section id="hero" class="hero">
+      <div class="detail__wrapper">
+        {% with books|first as book %}
+          <div class="detail__cover hero">
+            <img class="detail__image" src="{{ book.image_cover.url }}" alt="">
+          </div>
+          <hgroup class="detail__title hero">
+            <h1 class="detail__book-name">{{ book.name }}</h1>
+            <h3>{{ book.author }}</h3>
+          </hgroup>
+          <div>
+            <p class="detail__description hero">{{ book.about|linebreaksbr }}</p>
+          </div>
+          <div class="detail__buttons hero">
+            <a href="{% url 'book-detail' book.slug %}" role="button">Buy now</a>
+          </div>
+        {% endwith %}
+      </div>
     </section>
     <hr>
     <section id="books" class="books">
-    	<div>
-            <h3>New books</h3>
-    	</div>
-    	{% include 'shop/utils/books.html' with books=books|slice:"1:" %}
+      <div>
+        <h3>New books</h3>
+      </div>
+      {% include 'shop/utils/books.html' with books=books|slice:"1:" %}
     </section>
-{% else %}
-	{% include 'shop/utils/nothing.html' %}
-{% endif %}
+  {% else %}
+    {% include 'shop/utils/nothing.html' %}
+  {% endif %}
 {% endblock content %}

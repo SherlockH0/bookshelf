@@ -1,5 +1,7 @@
 #For Windows testing
 media/
+images_input/
+images_generated/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,62 +1,63 @@
 {% extends 'shop/utils/base.html' %}
 {% block content %}
-    {% if items %}
-        <section>
-            <div >
-                <a href="{% url 'shop-home' %}" role="button" class="contrast outline">Back to shop</a>
-                <hr>
-                <div class="cart__heading">
-                    <strong>Items: {{ order.get_item_count }}<br>
-                    Cart total: ${{ order.get_total }}</strong>
-                    <a href="{% url 'checkout' %}" role="button">
-                    Checkout
-                    </a>
-                </div>
-
-            </div>
-        </section>
-        <section>
-            <div class="cart__table">
-                {% for item in items %}
-                    <hr>
-                    <div class="cart__book">
-                        <img class="card__image" src="{{ item.book.image.url }}" loading="lazy" alt="{{ item.book.name }} - {{ item.book.author }}">
-                        <div>
-                            <hgroup>
-                                <h5><a href="{% url 'book-detail' item.book.slug %}">{{ item.book.name }}</a></h5>
-                                <p><small>{{ item.book.author }}</small></p>
-                            </hgroup>
-                            <strong>${{ item.book.price }}</strong>
-                            <div>
-                                <input
-                                    autocomplete="false"
-                                    type="number"
-                                    min="1"
-                                    data-book="{{ item.book.id }}"
-                                    aria-label="Quantity"
-                                    name="quantity-{{ item.book.id }}"
-                                    value="{{ item.quantity }}"
-                                    class="change-item"
-                                    />
-                                <button
-                                    class="outline contrast update-item"
-                                    data-book="{{ item.book.id }}"
-                                    data-place="cart"
-                                    data-action="delete"
-                                    data-tooltip="Remove from cart"
-                                    data-placement="right">
-                                    <i class="bi bi-trash3-fill"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-        </section>
-    {% else %}
-        <div class="container text center">
-            <h1>Your cart is empty</h1>
-            <a href="{% url 'shop-home' %}" role="button">Start shopping</a>
+  {% if items %}
+    <section>
+      <div>
+        <a href="{% url 'shop-home' %}" role="button" class="contrast outline">Back to shop</a>
+        <hr>
+        <div class="cart__heading">
+          <strong>Items: {{ order.get_item_count }}
+            <br>
+          Cart total: ${{ order.get_total }}</strong>
+          <a href="{% url 'checkout' %}" role="button">Checkout</a>
         </div>
+      </div>
+    </section>
+    <section>
+      <div class="cart__table">
+        {% for item in items %}
+          <hr>
+          <div class="cart__book">
+            <img class="card__image"
+                 src="{{ item.book.image_preview.url }}"
+                 loading="lazy"
+                 alt="{{ item.book.name }} - {{ item.book.author }}">
+            <div>
+              <hgroup>
+                <h5>
+                  <a href="{% url 'book-detail' item.book.slug %}">{{ item.book.name }}</a>
+                </h5>
+                <p>
+                  <small>{{ item.book.author }}</small>
+                </p>
+              </hgroup>
+              <strong>${{ item.book.price }}</strong>
+              <div>
+                <input autocomplete="false"
+                       type="number"
+                       min="1"
+                       data-book="{{ item.book.id }}"
+                       aria-label="Quantity"
+                       name="quantity-{{ item.book.id }}"
+                       value="{{ item.quantity }}"
+                       class="change-item" />
+                <button class="contrast update-item outline"
+                        data-book="{{ item.book.id }}"
+                        data-place="cart"
+                        data-action="delete"
+                        data-tooltip="Remove from cart"
+                        data-placement="right">
+                  <i class="bi bi-trash3-fill"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    {% else %}
+      <div class="text center container">
+        <h1>Your cart is empty</h1>
+        <a href="{% url 'shop-home' %}" role="button">Start shopping</a>
+      </div>
     {% endif %}
-
-{% endblock content %}
+  {% endblock content %}

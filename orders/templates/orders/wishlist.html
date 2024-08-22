@@ -1,40 +1,42 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-    <section id="books" class="books">
-        {% if items %}
-            <div class="text container center">
-                <h3>Your wishlist</h3>
+  <section id="books" class="books">
+    {% if items %}
+      <div class="text center container">
+        <h3>Your wishlist</h3>
+      </div>
+      <div class="books__container">
+        {% for item in items %}
+          {% with book=item.book %}
+            <div class="card">
+              <button class="contrast update-item"
+                      data-book="{{ book.id }}"
+                      data-place="wishlist"
+                      data-action="delete"
+                      data-tooltip="Remove from wishlist">
+                <i class="bi bi-trash3-fill"></i>
+              </button>
+              <img class="card__image"
+                   src="{{ book.image_preview.url }}"
+                   loading="lazy"
+                   alt="{{ book.name }} - {{ book.author }}">
+              <hgroup class="card__title">
+                <p>{{ book.name }}</p>
+                <p>{{ book.author }}</p>
+              </hgroup>
+              <small>
+                <ins>${{ book.price }}</ins>
+              </small>
+              <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
             </div>
-            <div class="books__container">
-            {% for item in items %}
-                {% with book=item.book %}
-                <div class="card">
-                    <button
-                        class="contrast update-item"
-                        data-book="{{ book.id }}"
-                        data-place="wishlist"
-                        data-action="delete"
-                        data-tooltip="Remove from wishlist">
-                        <i class="bi bi-trash3-fill"></i>
-                    </button>
-                    <img class="card__image" src="{{ book.image.url }}" loading="lazy" alt="{{ book.name }} - {{ book.author }}">
-                    <hgroup class="card__title">
-                        <p>{{ book.name }}</p>
-                        <p>{{ book.author }}</p>
-                    </hgroup>
-                    <small>
-                        <ins>${{ book.price }}</ins>
-                    </small>
-                    <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
-                </div>
-                {% endwith %}
-            {% endfor %}
-            </div>
-        {% else %}
-            <div class="container text center">
-                <h1>Your wishlist is empty</h1>
-                <a href="{% url 'shop-home' %}" role="button">Start shopping</a>
-            </div>
-        {% endif %}
-    </section>
+          {% endwith %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text center container">
+        <h1>Your wishlist is empty</h1>
+        <a href="{% url 'shop-home' %}" role="button">Start shopping</a>
+      </div>
+    {% endif %}
+  </section>
 {% endblock content %}

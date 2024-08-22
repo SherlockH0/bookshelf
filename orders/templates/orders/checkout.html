@@ -1,92 +1,129 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-    <section id="checkout" class="checkout">
-        <div class="checkout__grid container">
-            <article class="checkout__form">
-                <form id="form">
-                    {% csrf_token %}
-                    <fieldset>
-                        <legend><strong>User informatinon</strong></legend>
-                        <div class="grid">
-                            <label for="first_name">
-                                First name
-                                <input required type="text" name="first_name" placeholder="First name" value="{{ user.first_name }}" autocomplete="given-name">
-                            </label>
-                            <label for="last_name">
-                                Last name
-                                <input required type="text" name="last_name" placeholder="Last name" value="{{ user.last_name }}" autocomplete="family-name">
-                            </label>
-                        </div>
-                        <input required type="email" name="email" placeholder="Email" value="{{ user.email }}" autocomplete="email">
-                    </fieldset>
-                    <hr>
-                    <fieldset>
-                        <legend><strong>Shipping details</strong></legend>
-                        <label for="adress">
-                            Adress
-                            <input required type="text" name="adress" placeholder="Adress" autocomplete="shipping street-address">
-                        </label>
-                        <div class="grid">
-                            <label for="city">
-                                City
-                                <input required name="city" placeholder="City" autocomplete="shipping address-level2">
-                            </label>
-                            <label for="country">
-                                Country
-                                <input required name="country" placeholder="Country" autocomplete="shipping country-name">
-                            </label>
-                        </div>
-                        <label for="postal_code">
-                            Postal code
-                            <input required name="postal_code" placeholder="Postal code" autocomplete="shipping postal-code">
-                        </label>
-                    </fieldset>
-                    <hr>
-                    <button type="submit" id="form-button">Continue</button>
-                </form>
-            </article>
-            <article class="checkout__summary">
-                <header>
-                    <a href="{% url 'cart' %}" role="button" class="contrast outline big">Back to Cart</a>
-                    <hr>
-                    <h3>Order summary</h3>
-                    <hr>
-                    <div class="space-between">
-                        <p><strong>Items:</strong></p>
-                        <p>{{ order.get_item_count }}</p>
-                    </div>
-                    <div class="space-between">
-                        <p><strong>TOTAL:</strong></p>
-                        <p>${{ order.get_total }}</p>
-                    </div>
-                </header>
-                <div>
-                    {% for item in items %}
-                        <div class="checkout__item flex">
-                            <img src="{{ item.book.image.url }}" alt="">
-                            <div>
-                                <hgroup>
-                                    <p>{{ item.book.name }}</p>
-                                    <p><small>{{ item.book.author }}</small></p>
-                                </hgroup>
-                                <div class="space-between">
-                                    <ins><strong>${{ item.book.price }}</strong></ins>
-                                    <span>× {{ item.quantity }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    {% endfor %}
+  <section id="checkout" class="checkout">
+    <div class="checkout__grid container">
+      <article class="checkout__form">
+        <form id="form">
+          {% csrf_token %}
+          <fieldset>
+            <legend>
+              <strong>User informatinon</strong>
+            </legend>
+            <div class="grid">
+              <label for="first_name">
+                First name
+                <input required
+                       type="text"
+                       name="first_name"
+                       placeholder="First name"
+                       value="{{ user.first_name }}"
+                       autocomplete="given-name">
+              </label>
+              <label for="last_name">
+                Last name
+                <input required
+                       type="text"
+                       name="last_name"
+                       placeholder="Last name"
+                       value="{{ user.last_name }}"
+                       autocomplete="family-name">
+              </label>
+            </div>
+            <input required
+                   type="email"
+                   name="email"
+                   placeholder="Email"
+                   value="{{ user.email }}"
+                   autocomplete="email">
+          </fieldset>
+          <hr>
+          <fieldset>
+            <legend>
+              <strong>Shipping details</strong>
+            </legend>
+            <label for="adress">
+              Adress
+              <input required
+                     type="text"
+                     name="adress"
+                     placeholder="Adress"
+                     autocomplete="shipping street-address">
+            </label>
+            <div class="grid">
+              <label for="city">
+                City
+                <input required
+                       name="city"
+                       placeholder="City"
+                       autocomplete="shipping address-level2">
+              </label>
+              <label for="country">
+                Country
+                <input required
+                       name="country"
+                       placeholder="Country"
+                       autocomplete="shipping country-name">
+              </label>
+            </div>
+            <label for="postal_code">
+              Postal code
+              <input required
+                     name="postal_code"
+                     placeholder="Postal code"
+                     autocomplete="shipping postal-code">
+            </label>
+          </fieldset>
+          <hr>
+          <button type="submit" id="form-button">Continue</button>
+        </form>
+      </article>
+      <article class="checkout__summary">
+        <header>
+          <a href="{% url 'cart' %}" role="button" class="contrast big outline">Back to Cart</a>
+          <hr>
+          <h3>Order summary</h3>
+          <hr>
+          <div class="space-between">
+            <p>
+              <strong>Items:</strong>
+            </p>
+            <p>{{ order.get_item_count }}</p>
+          </div>
+          <div class="space-between">
+            <p>
+              <strong>TOTAL:</strong>
+            </p>
+            <p>${{ order.get_total }}</p>
+          </div>
+        </header>
+        <div>
+          {% for item in items %}
+            <div class="checkout__item flex">
+              <img src="{{ item.book.image_preview.url }}" alt="">
+              <div>
+                <hgroup>
+                  <p>{{ item.book.name }}</p>
+                  <p>
+                    <small>{{ item.book.author }}</small>
+                  </p>
+                </hgroup>
+                <div class="space-between">
+                  <ins><strong>${{ item.book.price }}</strong></ins>
+                  <span>× {{ item.quantity }}</span>
                 </div>
-            </article>
-            <article id="payment-info" class="hidden">
-                 <script src="https://www.paypal.com/sdk/js?client-id=ASnf1xj7m6fBt2IPaTnhDHmn80dgoloGoLJWdRr1xnod-DJFSJLT7c-vTROa78M-agayZM9lMotBSMxD&currency=USD&intent=capture"></script>
-                <div id="paypal-button-container"></div>
-            </article>
+              </div>
+            </div>
+            <hr>
+          {% endfor %}
         </div>
-    </section>
-
-    <script>
+      </article>
+      <article id="payment-info" class="hidden">
+        <script src="https://www.paypal.com/sdk/js?client-id=ASnf1xj7m6fBt2IPaTnhDHmn80dgoloGoLJWdRr1xnod-DJFSJLT7c-vTROa78M-agayZM9lMotBSMxD&currency=USD&intent=capture"></script>
+        <div id="paypal-button-container"></div>
+      </article>
+    </div>
+  </section>
+  <script>
         const total = '{{ order.get_total }}'
         const form = document.getElementById('form')
 
@@ -162,5 +199,5 @@
                 window.location.href = "{% url 'shop-home' %}"
             })
         }
-    </script>
+  </script>
 {% endblock content %}
