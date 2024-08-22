@@ -33,7 +33,7 @@ def home(request):
 
         return render(request, "shop/search_results.html", context)
 
-    return render(request, "shop/home.html", context)
+    return render(request, "shop/home.html")
 
 
 class BookListView(ListView):
