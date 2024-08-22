@@ -61,8 +61,8 @@ details.dropdown summary {
   padding: 0 !important;
   box-shadow: none !important;
   background-color: transparent !important;
-  color: var(--pico-primary);
-  height: 60%;
+  color: var(--pico-primary) !important;
+  height: 60% !important;
 }
 
 /*|| VARIABLES */
