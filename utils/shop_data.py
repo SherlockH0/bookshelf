@@ -23,6 +23,7 @@ def get_book(book):
         'author': book.author,
         'price': book.price,
         'image': book.image,
+        'image_preview': book.image_preview,
         'slug': book.slug
     }
 

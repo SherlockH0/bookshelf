@@ -99,8 +99,13 @@
         <div>
           {% for item in items %}
             <div class="checkout__item flex">
-              <img width="200"
-           height="310" src="{{ item.book.image_preview.url }}" alt="">
+              {% with item.image_preview as image %}
+              
+              <img width="{{image.width}}"
+              height="{{image.height}}"
+                   src="{{ image.url }}"
+                   alt="">
+              {% endwith %}
               <div>
                 <hgroup>
                   <p>{{ item.book.name }}</p>

@@ -54,7 +54,7 @@ class Book(models.Model):
     image_preview = models.ImageField(help_text="height 310px", default='default_preview.webp', upload_to='book_covers')
     image = models.ImageField(help_text="width 300px", default='default_cover.webp', upload_to='book_covers')
     date_created = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(default="", null=True, blank=True)
+    slug = models.SlugField(max_length=100, default="", null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} by {self.author}'

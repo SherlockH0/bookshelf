@@ -16,12 +16,15 @@
                       data-tooltip="Remove from wishlist">
                 <i class="bi bi-trash3-fill"></i>
               </button>
-              <img width="200"
-                   height="310"
+              {% with book.image_preview as image %}
+              
+              <img width="{{image.width}}"
+              height="{{image.height}}"
                    class="card__image"
-                   src="{{ book.image_preview.url }}"
+                   src="{{ image.url }}"
                    loading="lazy"
                    alt="{{ book.name }} - {{ book.author }}">
+              {% endwith %}
               <hgroup class="card__title">
                 <p>{{ book.name }}</p>
                 <p>{{ book.author }}</p>

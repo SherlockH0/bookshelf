@@ -18,12 +18,15 @@
         {% for item in items %}
           <hr>
           <div class="cart__book">
-            <img width="200"
-                 height="310"
+            {% with item.book.image_preview as image %}
+            
+            <img width="{{image.width}}"
+            height="{{image.height}}"
                  class="card__image"
-                 src="{{ item.book.image_preview.url }}"
+                 src="{{ image.url }}"
                  loading="lazy"
                  alt="{{ item.book.name }} - {{ item.book.author }}">
+            {% endwith %}
             <div>
               <hgroup>
                 <h5>
