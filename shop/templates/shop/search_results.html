@@ -1,9 +1,15 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
     <section id="books" class="books">
+          <div class="navbar__search">
+            <form action="/" role="search">
+              <input type="search" id="search" name="search" value="{{ query }}">
+              <input type="submit" value="Search" />
+            </form>
+          </div>
         {% if books %}
-            <div class="container text">
-                <h2>Search results for {{ query }}</h2>
+            <div class="text">
+                <h2>Search results for "{{ query }}"</h2>
             </div>
             {% include 'shop/utils/books.html' %}
         {% else %}

@@ -1,22 +1,22 @@
 <div class="books__container">
   {% for book in books %}
-  <div class="card">
-    <img
-      width="200"
-      height="310"
-      class="card__image"
-      src="{{ book.image_preview.url }}"
-      loading="lazy"
-      alt="{{ book.name }} - {{ book.author }}"
-    />
-    <hgroup class="card__title">
-      <p>{{ book.name }}</p>
-      <p>{{ book.author }}</p>
-    </hgroup>
-    <small>
-      <ins>${{ book.price }}</ins>
-    </small>
-    <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
-  </div>
+    <div class="card">
+      {% with book.image_preview as image %}
+        <img width="{{ image.width }}"
+             height="{{ image.height }}"
+             class="card__image"
+             src="{{ image.url }}"
+             loading="lazy"
+             alt="{{ book.name }} - {{ book.author }}" />
+      {% endwith %}
+      <hgroup class="card__title">
+        <p>{{ book.name }}</p>
+        <p>{{ book.author }}</p>
+      </hgroup>
+      <small>
+        <ins>${{ book.price }}</ins>
+      </small>
+      <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+    </div>
   {% endfor %}
 </div>

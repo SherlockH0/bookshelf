@@ -9,7 +9,9 @@
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Playfair Display SC|Lora">
+          href="https://fonts.googleapis.com/css?family=Lora">
+
+    <link rel="stylesheet" href="{% static "css/sentient.css" %}">
     <script>
 		const user = '{{ request.user }}'
 
@@ -128,12 +130,6 @@
         </ul>
       </nav>
       <div data-visible="false" class="mobile-highlight"></div>
-      <div class="navbar__search">
-        <form action="/" role="search">
-          <input type="search" id="search" name="search" value="{{ query }}">
-          <input type="submit" value="Search" />
-        </form>
-      </div>
     </div>
     <!-- Main content -->
     <main class="container">

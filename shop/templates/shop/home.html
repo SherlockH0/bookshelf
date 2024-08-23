@@ -2,14 +2,62 @@
 {% block content %}
   {% if books %}
     <section id="hero" class="hero">
-      <div class="detail__wrapper">
+      <div class="hero__grid">
+        {% with books|first as book %}
+          <div class="card">
+            {% with book.image_preview as image %}
+              <img width="{{ image.width }}"
+                   height="{{ image.height }}"
+                   class="card__image"
+                   src="{{ image.url }}"
+                   loading="lazy"
+                   alt="{{ book.name }} - {{ book.author }}" />
+            {% endwith %}
+            <hgroup class="card__title">
+              <p>{{ book.name }}</p>
+              <p>{{ book.author }}</p>
+            </hgroup>
+            <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+          </div>
+        {% endwith %}
+        <div class="hero__heading">
+          <hgroup class="hero__hgroup">
+            <h1>Books for Every Chapter of Your&nbsp;Life</h1>
+            <p>
+              From childhood favorites to life-changing reads, we have something for every stage of your journey. Discover stories that resonate and books that become lifelong&nbsp;companions.
+            </p>
+          </hgroup>
+          <div class="navbar__search">
+            <form action="/" role="search">
+              <input type="search" id="search" name="search" value="{{ query }}">
+              <input type="submit" value="Search" />
+            </form>
+          </div>
+        </div>
+        {% with books.1 as book %}
+          <div class="card right">
+            <hgroup class="card__title">
+              <p>{{ book.name }}</p>
+              <p>{{ book.author }}</p>
+            </hgroup>
+            {% with book.image_preview as image %}
+              <img width="{{ image.width }}"
+                   height="{{ image.height }}"
+                   class="card__image"
+                   src="{{ image.url }}"
+                   loading="lazy"
+                   alt="{{ book.name }} - {{ book.author }}" />
+            {% endwith %}
+            <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+          </div>
+        {% endwith %}
+      </div>
+      <!-- <div class="detail__wrapper">
         {% with books|first as book %}
           <div class="detail__cover hero">
-            <img width="300"
-                 height="480"
-                 class="detail__image"
-                 src="{{ book.image.url }}"
-                 alt="">
+            {% with book.image as image %}
+              <img width="{{ image.width }}" height="{{ image.height }}" class="detail__image" src="{{ image.url }}" alt="">
+            {% endwith %}
           </div>
           <hgroup class="detail__title hero">
             <h1 class="detail__book-name">{{ book.name }}</h1>
@@ -22,7 +70,7 @@
             <a href="{% url 'book-detail' book.slug %}" role="button">Buy now</a>
           </div>
         {% endwith %}
-      </div>
+      </div> -->
     </section>
     <hr>
     <section id="books" class="books">
