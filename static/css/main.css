@@ -188,10 +188,6 @@ html {
   opacity: 0;
 }
 
-.grid {
-  justify-items: center;
-}
-
 .hidden {
   display: none;
 }
@@ -732,7 +728,7 @@ dialog article > footer a {
 
 .card .update-item {
   position: absolute;
-  z-index: 99;
+  z-index: 2;
   right: -0.5rem;
   top: -0.5rem;
 }
@@ -838,6 +834,7 @@ dialog article > footer a {
     display: block;
     -webkit-animation: 0.5s ease-in-out fadein forwards;
     animation: 0.5s ease-in-out fadein forwards;
+    z-index: 200;
   }
 
   .mobile-highlight[closing] {

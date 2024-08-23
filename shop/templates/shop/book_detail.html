@@ -30,12 +30,11 @@
   <div class="detail__wrapper detail">
     <div class="detail__cover">
       {% with object.image as image %}
-      
-      <img width="{{image.width}}"
-      height="{{image.height}}"
-           class="detail__image"
-           src="{{ image.url }}"
-           alt="">
+        <img width="{{image.width}}"
+             height="{{image.height}}"
+             class="detail__image"
+             src="{{ image.url }}"
+             alt="">
       {% endwith %}
     </div>
     <hgroup class="detail__title">
