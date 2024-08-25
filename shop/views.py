@@ -1,3 +1,5 @@
+from random import choice
+
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -17,12 +19,18 @@ def contacts(request):
 
 
 def home(request):
-    context = {"books": Book.objects.all().order_by("-date_created")}
+
+    books = Book.objects.all()
+    pks = books.values_list("pk", flat=True)
+    random_pk = choice(pks)
+    random_book = str(books.get(pk=random_pk))
+
+    context = {"books": books, "random_book": random_book}
 
     if "search" in request.GET and request.GET["search"] != "":
         query = request.GET["search"]
         context = {
-            "books": Book.objects.filter(
+            "books": books.filter(
                 Q(name__icontains=query)
                 | Q(author__name__icontains=query)
                 | Q(about__icontains=query)

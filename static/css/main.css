@@ -321,6 +321,16 @@ html {
   margin: 0;
 }
 
+.add-to-wishlist {
+  padding: 0.5rem;
+}
+
+.add-to-cart {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .5rem;
+}
+
 /*|| ELEMENTS */
 
 .hero__hgroup {
@@ -531,7 +541,7 @@ html {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -724,6 +734,10 @@ dialog article {
 dialog article > footer a {
   margin-left: 0 !important;
   width: 100%;
+}
+
+.update-item {
+  padding: .7rem;
 }
 
 .card .update-item {

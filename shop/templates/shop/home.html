@@ -11,7 +11,7 @@
                    class="card__image"
                    src="{{ image.url }}"
                    loading="lazy"
-                   alt="{{ book.name }} - {{ book.author }}" />
+                   alt="{{book}}" />
             {% endwith %}
             <hgroup class="card__title">
               <p>{{ book.name }}</p>
@@ -29,7 +29,7 @@
           </hgroup>
           <div class="navbar__search">
             <form action="/" role="search">
-              <input type="search" id="search" name="search" placeholder="{{books.1}}">
+              <input type="search" id="search" name="search" placeholder="{{ random_book }}">
               <input type="submit" value="Search" />
             </form>
           </div>
@@ -46,31 +46,12 @@
                    class="card__image"
                    src="{{ image.url }}"
                    loading="lazy"
-                   alt="{{ book.name }} - {{ book.author }}" />
+                   alt="{{book}}" />
             {% endwith %}
             <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
           </div>
         {% endwith %}
       </div>
-      <!-- <div class="detail__wrapper">
-        {% with books|first as book %}
-          <div class="detail__cover hero">
-            {% with book.image as image %}
-              <img width="{{ image.width }}" height="{{ image.height }}" class="detail__image" src="{{ image.url }}" alt="">
-            {% endwith %}
-          </div>
-          <hgroup class="detail__title hero">
-            <h1 class="detail__book-name">{{ book.name }}</h1>
-            <h3>{{ book.author }}</h3>
-          </hgroup>
-          <div>
-            <p class="detail__description hero">{{ book.about|linebreaksbr }}</p>
-          </div>
-          <div class="detail__buttons hero">
-            <a href="{% url 'book-detail' book.slug %}" role="button">Buy now</a>
-          </div>
-        {% endwith %}
-      </div> -->
     </section>
     <hr>
     <section id="books" class="books">

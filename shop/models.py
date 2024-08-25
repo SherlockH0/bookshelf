@@ -51,8 +51,8 @@ class Book(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     about = models.TextField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    image_preview = models.ImageField(help_text="height 310px", default='default_preview.webp', upload_to='book_covers')
-    image = models.ImageField(help_text="width 300px", default='default_cover.webp', upload_to='book_covers')
+    image_preview = models.ImageField(help_text="height 310px",  upload_to='book_covers', null=True, blank=True)
+    image = models.ImageField(help_text="width 300px",  upload_to='book_covers', null=True, blank=True)
     date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=100, default="", null=True, blank=True)
 

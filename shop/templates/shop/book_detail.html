@@ -1,4 +1,5 @@
 {% extends "shop/utils/base.html" %}
+{% load markdown_processing %}
 {% block content %}
   <!-- Add to cart modal -->
   <dialog id="add-to-cart-modal"
@@ -30,11 +31,11 @@
   <div class="detail__wrapper detail">
     <div class="detail__cover">
       {% with object.image as image %}
-        <img width="{{image.width}}"
-             height="{{image.height}}"
+        <img width="{{ image.width }}"
+             height="{{ image.height }}"
              class="detail__image"
              src="{{ image.url }}"
-             alt="">
+             alt="{{ object }}">
       {% endwith %}
     </div>
     <hgroup class="detail__title">
@@ -52,7 +53,10 @@
         <button data-target="add-to-cart-modal"
                 onClick="toggleModal(event)"
                 class="add-to-cart">
-          <i class="bi bi-cart"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+	<path fill="currentColor" fill-rule="evenodd" d="M19.148 5.25H5.335l-1.18-2.115A.75.75 0 0 0 3.5 2.75H2a.75.75 0 0 0 0 1.5h1.06l1.164 2.088L6.91 12.28l.003.006l.237.523l-2.697 2.877a.75.75 0 0 0 .462 1.258l2.458.281a40.7 40.7 0 0 0 9.254 0l2.458-.28a.75.75 0 0 0-.17-1.491l-2.458.28a39.3 39.3 0 0 1-8.914 0l-.975-.11l1.98-2.112l.053-.064l.752.098c1.055.138 2.122.165 3.182.08a9.3 9.3 0 0 0 6.366-3.268l.579-.685l.053-.072l1.078-1.642c.764-1.164-.071-2.71-1.463-2.71M8.656 11.944a.48.48 0 0 1-.377-.278l-.002-.003l-2.22-4.913h13.09a.25.25 0 0 1 .21.387l-1.053 1.604l-.549.65a7.8 7.8 0 0 1-5.338 2.741c-.957.076-1.919.052-2.87-.072z" clip-rule="evenodd" />
+	<path fill="currentColor" d="M6.5 18.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M16 20a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0" />
+</svg>
           <span>Add to cart</span>
         </button>
         <button data-book="{{ object.id }}"
@@ -62,13 +66,15 @@
                 data-tooltip="Add to wishlist"
                 style="color: var(--pico-del-color)"
                 class="update-item add-to-wishlist secondary outline">
-          <i class="bi bi-heart"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M3.25 10.03c0-2.7 2.37-4.78 5.15-4.78c1.433 0 2.695.672 3.6 1.542c.905-.87 2.166-1.542 3.6-1.542c2.78 0 5.15 2.08 5.15 4.78c0 1.85-.789 3.476-1.882 4.852c-1.09 1.372-2.518 2.537-3.884 3.484c-.523.362-1.05.695-1.534.941c-.453.231-.975.443-1.45.443s-.996-.212-1.45-.443a14 14 0 0 1-1.533-.941c-1.367-.947-2.794-2.112-3.885-3.484C4.039 13.506 3.25 11.88 3.25 10.03M8.4 6.75c-2.08 0-3.65 1.53-3.65 3.28c0 1.403.596 2.71 1.556 3.918c.962 1.21 2.257 2.279 3.565 3.185c.495.343.96.634 1.36.838c.428.218.676.279.769.279s.341-.061.77-.28a12 12 0 0 0 1.36-.837c1.307-.906 2.602-1.974 3.564-3.185c.96-1.208 1.556-2.515 1.556-3.918c0-1.75-1.57-3.28-3.65-3.28c-1.194 0-2.31.713-3.005 1.619a.75.75 0 0 1-1.19 0C10.71 7.463 9.595 6.75 8.4 6.75" clip-rule="evenodd" />
+          </svg>
         </button>
       </div>
     </div>
     <div>
-      <h4>Description</h4>
-      <p class="detail__description">{{ object.about|linebreaksbr }}</p>
+      <h2>Description</h2>
+      <p class="detail__description">{{ object.about|markdown|safe }}</p>
     </div>
   </div>
   <script>
@@ -78,17 +84,23 @@
         const wishlist_items = {{ wishlist_items }}
 
         if (cart_items.includes(item_id)) {
-            const addToCartBtn = document.querySelector('.add-to-cart');
+            const addToCartBtn = document.querySelector('button.add-to-cart');
             addToCartBtn.outerHTML = `
-<a href={% url 'cart' %} class="outline" role="button">
-    <i class="bi bi-cart"></i>
+<a href={% url 'cart' %} class="outline add-to-cart" role="button">
+<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+	<path fill="currentColor" fill-rule="evenodd" d="M19.148 5.25H5.335l-1.18-2.115A.75.75 0 0 0 3.5 2.75H2a.75.75 0 0 0 0 1.5h1.06l1.164 2.088L6.91 12.28l.003.006l.237.523l-2.697 2.877a.75.75 0 0 0 .462 1.258l2.458.281a40.7 40.7 0 0 0 9.254 0l2.458-.28a.75.75 0 0 0-.17-1.491l-2.458.28a39.3 39.3 0 0 1-8.914 0l-.975-.11l1.98-2.112l.053-.064l.752.098c1.055.138 2.122.165 3.182.08a9.3 9.3 0 0 0 6.366-3.268l.579-.685l.053-.072l1.078-1.642c.764-1.164-.071-2.71-1.463-2.71M8.656 11.944a.48.48 0 0 1-.377-.278l-.002-.003l-2.22-4.913h13.09a.25.25 0 0 1 .21.387l-1.053 1.604l-.549.65a7.8 7.8 0 0 1-5.338 2.741c-.957.076-1.919.052-2.87-.072z" clip-rule="evenodd" />
+	<path fill="currentColor" d="M6.5 18.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M16 20a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0" />
+</svg>
     In cart
 </a>`
-            addToCartBtn.classList.add('outline')
         }
         if (wishlist_items.includes(item_id)) {
             const addToWishlistBtn = document.querySelector('.add-to-wishlist');
-            addToWishlistBtn.innerHTML = '<i class="bi bi-heart-fill"></i>'
+            addToWishlistBtn.innerHTML = `
+<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+	<path fill="currentColor" d="M8.4 5.25c-2.78 0-5.15 2.08-5.15 4.78c0 1.863.872 3.431 2.028 4.73c1.153 1.295 2.64 2.382 3.983 3.292l2.319 1.57a.75.75 0 0 0 .84 0l2.319-1.57c1.344-.91 2.83-1.997 3.982-3.292c1.157-1.299 2.029-2.867 2.029-4.73c0-2.7-2.37-4.78-5.15-4.78c-1.434 0-2.695.672-3.6 1.542c-.905-.87-2.167-1.542-3.6-1.542" />
+</svg>
+`
             addToWishlistBtn.dataset.action = 'delete'
             addToWishlistBtn.dataset.tooltip = 'Remove from wishlist'
         }
