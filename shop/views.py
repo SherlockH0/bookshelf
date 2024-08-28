@@ -1,4 +1,4 @@
-from random import choice
+from random import randint
 
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
@@ -21,17 +21,12 @@ def contacts(request):
 def home(request):
 
     books = Book.objects.all()
-    pks = books.values_list("pk", flat=True)
-    random_pk = choice(pks)
-    random_book = str(books.get(pk=random_pk))
-
-    context = {"books": books, "random_book": random_book}
 
     if "search" in request.GET and request.GET["search"] != "":
         query = request.GET["search"]
         context = {
             "books": books.filter(
-                Q(name__icontains=query)
+                Q(name__icontains=query)  # pyright: ignore
                 | Q(author__name__icontains=query)
                 | Q(about__icontains=query)
                 | Q(genre__name__icontains=query)
@@ -40,6 +35,12 @@ def home(request):
         }
 
         return render(request, "shop/search_results.html", context)
+
+    pks = len(books)
+    random_pk = randint(0, pks - 1)
+    random_book = str(books[random_pk])
+
+    context = {"books": books, "random_book": random_book}
 
     return render(request, "shop/home.html", context)
 

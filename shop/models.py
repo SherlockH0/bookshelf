@@ -14,7 +14,7 @@ class Author(models.Model):
     slug = models.SlugField(default="", null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -26,7 +26,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Genre(models.Model):
@@ -37,12 +37,15 @@ class Genre(models.Model):
     slug = models.SlugField(default="", null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
 
+class BookManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().select_related("author", "genre")
 
 class Book(models.Model):
 
@@ -55,6 +58,8 @@ class Book(models.Model):
     image = models.ImageField(help_text="width 300px",  upload_to='book_covers', null=True, blank=True)
     date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=100, default="", null=True, blank=True)
+
+    objects = BookManager()
 
     def __str__(self):
         return f'{self.name} by {self.author}'
