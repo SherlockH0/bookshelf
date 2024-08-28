@@ -2,9 +2,7 @@ asgiref==3.7.2
 certifi==2023.11.17
 charset-normalizer==3.3.2
 Django==4.2.9
-django-storages==1.14.2
 django-widget-tweaks==1.5.0
-dropbox==11.36.2
 idna==3.6
 pillow==10.2.0
 ply==3.11
