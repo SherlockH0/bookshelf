@@ -17,5 +17,3 @@ typing_extensions==4.9.0
 tzdata==2023.4
 urllib3==2.2.0
 Markdown==3.7
-django-cloudinary-storage==0.3.0
-django-debug-toolbar==4.4.6
