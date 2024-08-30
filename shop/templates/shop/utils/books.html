@@ -1,13 +1,9 @@
+{% load cloudinary %}
 <div class="books__container">
   {% for book in books %}
     <div class="card">
-      {% with book.image_preview as image %}
-        <img width="{{ image.width }}"
-             height="{{ image.height }}"
-             class="card__image"
-             src="{{ image.url }}"
-             loading="lazy"
-             alt="{{book}}" />
+      {% with book.image as image %}
+        {% cloudinary image class="card__image" loading="lazy" alt=book %}
       {% endwith %}
       <hgroup class="card__title">
         <p>{{ book.name }}</p>

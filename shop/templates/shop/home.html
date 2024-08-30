@@ -1,4 +1,5 @@
 {% extends "shop/utils/base.html" %}
+{% load cloudinary %}
 {% block content %}
   {% if books %}
     <section id="hero" class="hero">
@@ -6,12 +7,7 @@
         {% with books|first as book %}
           <div class="card">
             {% with book.image_preview as image %}
-              <img width="{{ image.width }}"
-                   height="{{ image.height }}"
-                   class="card__image"
-                   src="{{ image.url }}"
-                   loading="lazy"
-                   alt="{{book}}" />
+              {% cloudinary image class="card__image" loading="lazy" alt=book %}
             {% endwith %}
             <hgroup class="card__title">
               <p>{{ book.name }}</p>
@@ -29,7 +25,10 @@
           </hgroup>
           <div class="navbar__search">
             <form action="/" role="search">
-              <input type="search" id="search" name="search" placeholder="{{ random_book }}">
+              <input type="search"
+                     id="search"
+                     name="search"
+                     placeholder="{{ random_book }}">
               <input type="submit" value="Search" />
             </form>
           </div>
@@ -41,12 +40,7 @@
               <p>{{ book.author }}</p>
             </hgroup>
             {% with book.image_preview as image %}
-              <img width="{{ image.width }}"
-                   height="{{ image.height }}"
-                   class="card__image"
-                   src="{{ image.url }}"
-                   loading="lazy"
-                   alt="{{book}}" />
+              {% cloudinary image class="card__image" loading="lazy" alt=book %}
             {% endwith %}
             <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
           </div>

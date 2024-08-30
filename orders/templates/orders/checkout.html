@@ -1,4 +1,5 @@
 {% extends "shop/utils/base.html" %}
+{% load cloudinary %}
 {% block content %}
   <section id="checkout" class="checkout">
     <div class="checkout__grid container">
@@ -100,10 +101,7 @@
           {% for item in items %}
             <div class="checkout__item flex">
               {% with item.book.image_preview as image %}
-                <img width="{{image.width}}"
-                     height="{{image.height}}"
-                     src="{{ image.url }}"
-                     alt="{{object}}">
+                {% cloudinary image loading="lazy" alt=item.book %}
               {% endwith %}
               <div>
                 <hgroup>
