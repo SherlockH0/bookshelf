@@ -20,12 +20,12 @@
           <hr>
           <div class="cart__book">
             {% with item.book.image_preview as image %}
-              {% cloudinary image loading="lazy" alt=item.book %}
+              {% cloudinary image alt=item.book loading="lazy" class="card__image" %}
             {% endwith %}
             <div>
               <hgroup>
                 <h5>
-                  <a href="{% url 'book-detail' item.book.slug %}">{{ item.book.name }}</a>
+                  <a href="{{ item.book.get_absolute_url }}">{{ item.book.name }}</a>
                 </h5>
                 <p>
                   <small>{{ item.book.author }}</small>

@@ -13,7 +13,7 @@
               <p>{{ book.name }}</p>
               <p>{{ book.author }}</p>
             </hgroup>
-            <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+            <a href="{{ book.get_absolute_url }}" class="card__link"></a>
           </div>
         {% endwith %}
         <div class="hero__heading">
@@ -42,7 +42,7 @@
             {% with book.image_preview as image %}
               {% cloudinary image class="card__image" loading="lazy" alt=book %}
             {% endwith %}
-            <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+            <a href="{{ book.get_absolute_url }}" class="card__link"></a>
           </div>
         {% endwith %}
       </div>

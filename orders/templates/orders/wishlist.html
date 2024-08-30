@@ -33,7 +33,7 @@
               <small>
                 <ins>${{ book.price }}</ins>
               </small>
-              <a href="{% url 'book-detail' book.slug %}" class="card__link"></a>
+              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
             </div>
           {% endwith %}
         {% endfor %}

@@ -1,6 +1,7 @@
 from cloudinary.models import CloudinaryField
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -20,6 +21,9 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("shop-books-author", args=[self.slug])
 
 
 class Category(models.Model):
@@ -44,6 +48,9 @@ class Genre(models.Model):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("shop-books-genre", args=[self.slug])
+
 
 class BookManager(models.Manager):
     def get_queryset(self):
@@ -61,6 +68,7 @@ class Book(models.Model):
     image = CloudinaryField("image", help_text="width 300px")
     date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=100, default="", null=True, blank=True)
+    on_display = models.BooleanField(default=False)
 
     objects = BookManager()
 
@@ -70,3 +78,6 @@ class Book(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("book-detail", args=[self.slug])

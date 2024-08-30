@@ -74,7 +74,7 @@
                 <ul dir="rtl">
                   {% for genre in category.list %}
                     <li>
-                      <a href="{% url 'shop-books-genre' genre.slug %}">{{ genre.name }}</a>
+                      <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
                     </li>
                   {% endfor %}
                 </ul>
