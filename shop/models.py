@@ -54,7 +54,12 @@ class Genre(models.Model):
 
 class BookManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().select_related("author", "genre")
+        return (
+            super()
+            .get_queryset()
+            .select_related("author", "genre")
+            .order_by("date_created")
+        )
 
 
 class Book(models.Model):

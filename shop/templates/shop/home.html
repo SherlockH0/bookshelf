@@ -4,17 +4,19 @@
   {% if books %}
     <section id="hero" class="hero">
       <div class="hero__grid">
-        {% with books|first as book %}
-          <div class="card">
-            {% with book.image_preview as image %}
-              {% cloudinary image class="card__image" loading="lazy" alt=book %}
-            {% endwith %}
-            <hgroup class="card__title">
-              <p>{{ book.name }}</p>
-              <p>{{ book.author }}</p>
-            </hgroup>
-            <a href="{{ book.get_absolute_url }}" class="card__link"></a>
-          </div>
+        {% with display|first as book %}
+          {% if book %}
+            <div class="card">
+              {% with book.image_preview as image %}
+                {% cloudinary image class="card__image" loading="lazy" alt=book %}
+              {% endwith %}
+              <hgroup class="card__title">
+                <p>{{ book.name }}</p>
+                <p>{{ book.author }}</p>
+              </hgroup>
+              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
+            </div>
+          {% endif %}
         {% endwith %}
         <div class="hero__heading">
           <hgroup class="hero__hgroup">
@@ -33,26 +35,55 @@
             </form>
           </div>
         </div>
-        {% with books.1 as book %}
-          <div class="card right">
-            <hgroup class="card__title">
-              <p>{{ book.name }}</p>
-              <p>{{ book.author }}</p>
-            </hgroup>
-            {% with book.image_preview as image %}
-              {% cloudinary image class="card__image" loading="lazy" alt=book %}
-            {% endwith %}
-            <a href="{{ book.get_absolute_url }}" class="card__link"></a>
-          </div>
+        {% with display.1 as book %}
+          {% if book %}
+            <div class="card right">
+              <hgroup class="card__title">
+                <p>{{ book.name }}</p>
+                <p>{{ book.author }}</p>
+              </hgroup>
+              {% with book.image_preview as image %}
+                {% cloudinary image class="card__image" loading="lazy" alt=book %}
+              {% endwith %}
+              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
+            </div>
+          {% endif %}
         {% endwith %}
       </div>
     </section>
     <hr>
     <section id="books" class="books">
-      <div>
-        <h3>New books</h3>
-      </div>
-      {% include 'shop/utils/books.html' with books=books|slice:"1:" %}
+      <hgroup>
+        <h2>Bestsellers</h2>
+        <p>Discover the most popular books loved by readers worldwide!</p>
+      </hgroup>
+      {% with books|slice:"3:6" as books %}
+        <div class="books__container large">
+          {% for book in books %}
+            <div class="card">
+              {% with book.image as image %}
+                {% cloudinary image class="card__image large" loading="lazy" alt=book %}
+              {% endwith %}
+              <hgroup class="card__title">
+                <p>{{ book.name }}</p>
+                <p>{{ book.author }}</p>
+              </hgroup>
+              <small>
+                <ins>${{ book.price }}</ins>
+              </small>
+              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endwith %}
+    </section>
+    <hr>
+    <section id="books" class="books">
+      <hgroup>
+        <h2>New Arrival</h2>
+        <p>Explore the latest books fresh off the press!</p>
+      </hgroup>
+      {% include 'shop/utils/books.html' with books=books|slice:"1:" classes="space-evenly" %}
     </section>
   {% else %}
     {% include 'shop/utils/nothing.html' %}

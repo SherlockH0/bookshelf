@@ -1,14 +1,14 @@
 {% extends "shop/utils/base.html" %}
 {% block content %}
-    <section id="books" class="books">
-        {% if object_list %}
-            <div class="text container">
-                <h3>{{ description.name }}</h3>
-                <p>{{ description.about }}</p>
-            </div>
-            {% include 'shop/utils/books.html' with books=object_list %}
-        {% else %}
-            {% include "shop/utils/nothing.html" %}
-        {% endif %}
-    </section>
+  <section id="books" class="books">
+    {% if object_list %}
+      <div class="text container">
+        <h1>{{ description.name }}</h1>
+        <p>{{ description.about }}</p>
+      </div>
+      {% include 'shop/utils/books.html' with books=object_list %}
+    {% else %}
+      {% include "shop/utils/nothing.html" %}
+    {% endif %}
+  </section>
 {% endblock content %}

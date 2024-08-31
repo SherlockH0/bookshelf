@@ -27,6 +27,11 @@ h1 {
   letter-spacing: -0.02375rem;
 }
 
+.books > hgroup {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
 p {
   line-height: 1.5;
 }
@@ -179,6 +184,12 @@ html {
 
 /*|| UTILITY CLASSES  */
 
+.icon_button {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .mobile-highlight {
   z-index: 200;
   position: fixed;
@@ -330,6 +341,12 @@ html {
   display: inline-flex !important;
   align-items: center;
   gap: 0.5rem;
+}
+
+.cart_container {
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*|| ELEMENTS */
@@ -511,10 +528,6 @@ html {
   width: 100%;
 }
 
-.detail__book-name {
-  margin-bottom: 0;
-}
-
 .hero__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -527,11 +540,16 @@ html {
   grid-column: span 3 / span 3;
 }
 
-.hero .detail__description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
+.hero .card__image {
+  transform: rotate(4deg);
+}
+
+.hero .right .card__image {
+  transform: rotate(-3deg);
+}
+
+.hero .card:hover .card__image {
+  transform: rotate(-1deg) scale(1.02);
 }
 
 .detail__buttons {
@@ -578,9 +596,17 @@ html {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 2rem 1rem;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
+}
+.books__container.large {
+  justify-content: space-evenly;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.books__container.large > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 1rem;
 }
 
 .card__image {
@@ -593,8 +619,24 @@ html {
   transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.card:hover > img,
-.cart__book .card__image:hover {
+.card__image.large {
+  max-height: 440px;
+  width: 100%;
+}
+
+.large .card {
+  width: auto;
+}
+
+.large .card:nth-child(odd) {
+  margin-top: 1.5rem;
+}
+
+.large .card:nth-child(even) {
+  margin-bottom: 1.5rem;
+}
+
+.card:hover > img {
   -webkit-transform: scale(1.02);
   -ms-transform: scale(1.02);
   transform: scale(1.02);
@@ -629,15 +671,13 @@ html {
 }
 
 .cart__heading {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  justify-content: space-between;
+  gap: 2rem;
   align-items: center;
+}
+.space-evenly {
+  justify-content: space-evenly;
 }
 
 .space-between {
@@ -653,6 +693,8 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: space-between;
+  text-align: right;
   gap: 1rem;
 }
 
@@ -672,10 +714,8 @@ html {
 }
 
 .cart__table {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -868,6 +908,18 @@ dialog article > footer a {
 /*|| MEDIA */
 @media (max-width: 768px) {
   /*  || ELEMENTS */
+
+  .large .card:last-child {
+    display: none;
+  }
+  .large .card {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .books__container.large {
+    grid-template-columns: repeat(2, auto);
+  }
 
   .detail__wrapper.detail {
     -ms-grid-columns: none;

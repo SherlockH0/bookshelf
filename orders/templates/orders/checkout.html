@@ -80,7 +80,17 @@
       </article>
       <article class="checkout__summary">
         <header>
-          <a href="{% url 'cart' %}" role="button" class="contrast big outline">Back to Cart</a>
+          <a href="{% url 'cart' %}"
+             role="button"
+             class="contrast big icon_button outline">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="1.5em"
+                 height="1.5em"
+                 viewBox="0 0 24 24">
+              <path fill="currentColor" d="M11.03 8.53a.75.75 0 1 0-1.06-1.06l-4 4a.75.75 0 0 0 0 1.06l4 4a.75.75 0 1 0 1.06-1.06l-2.72-2.72H18a.75.75 0 0 0 0-1.5H8.31z" />
+            </svg>
+            <span>Back to Cart</span>
+          </a>
           <hr>
           <h3>Order summary</h3>
           <hr>

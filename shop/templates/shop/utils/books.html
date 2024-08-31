@@ -1,5 +1,5 @@
 {% load cloudinary %}
-<div class="books__container">
+<div class="{{ classes }} books__container ">
   {% for book in books %}
     <div class="card">
       {% with book.image as image %}

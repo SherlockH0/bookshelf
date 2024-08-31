@@ -35,7 +35,7 @@
       {% endwith %}
     </div>
     <hgroup class="detail__title">
-      <small><a href="{{ object.genre.get_absolute_url }}">{{ object.genre }}</a></small>
+      <small><a href="{{ object.genre.get_absolute_url }}"><i>{{ object.genre }}</i></a></small>
       <h1 class="detail__book-name">{{ object.name }}</h1>
       <h3>
         <a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a>
