@@ -16,6 +16,6 @@ class SubCategoryAdmin(admin.ModelAdmin):
 class BookAdmin(admin.ModelAdmin):
     search_fields = ["name", "author__name", "genre__name"]
     list_select_related = ["author", "genre"]
-    list_display = ["name", "author", "genre", "price", "on_display"]
-    list_editable = ["on_display", "price"]
+    list_display = ["name", "author", "genre", "price", "on_display", "is_bestseller"]
+    list_editable = ["on_display", "is_bestseller", "price"]
     list_per_page = 10

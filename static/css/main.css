@@ -541,15 +541,28 @@ html {
 }
 
 .hero .card__image {
-  transform: rotate(4deg);
+  transform: rotate(3deg);
 }
 
 .hero .right .card__image {
-  transform: rotate(-3deg);
+  transform: rotate(-2deg);
 }
 
 .hero .card:hover .card__image {
   transform: rotate(-1deg) scale(1.02);
+}
+
+.bestseller_badge {
+  position: absolute;
+  top: 50%;
+  left: -0.2rem;
+  z-index: 10;
+  padding: 0.5rem;
+  padding-inline-end: 1rem;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  background: var(--pico-primary) / 50;
+  color: var(--pico-primary-inverse);
 }
 
 .detail__buttons {

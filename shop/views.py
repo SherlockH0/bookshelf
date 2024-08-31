@@ -39,9 +39,10 @@ def home(request):
     pks = len(books)
     random_pk = randint(0, pks - 1)
     random_book = str(books[random_pk])
-    display = books.filter(on_display=True)
+    display = books.filter(on_display=True)[:2]
+    bestsellers = books.filter(is_bestseller=True)[:3]
 
-    context = {"books": books, "random_book": random_book, "display": display}
+    context = {"books": books, "random_book": random_book, "display": display, "bestsellers": bestsellers}
 
     return render(request, "shop/home.html", context)
 

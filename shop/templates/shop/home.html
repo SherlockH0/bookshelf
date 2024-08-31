@@ -57,7 +57,7 @@
         <h2>Bestsellers</h2>
         <p>Discover the most popular books loved by readers worldwide!</p>
       </hgroup>
-      {% with books|slice:"3:6" as books %}
+      {% with bestsellers as books %}
         <div class="books__container large">
           {% for book in books %}
             <div class="card">

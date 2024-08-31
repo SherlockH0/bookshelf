@@ -58,7 +58,7 @@ class BookManager(models.Manager):
             super()
             .get_queryset()
             .select_related("author", "genre")
-            .order_by("date_created")
+            .order_by("-date_created")
         )
 
 
@@ -74,6 +74,7 @@ class Book(models.Model):
     date_created = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=100, default="", null=True, blank=True)
     on_display = models.BooleanField(default=False)
+    is_bestseller = models.BooleanField(default=False)
 
     objects = BookManager()
 
