@@ -83,7 +83,7 @@
         <h2>New Arrival</h2>
         <p>Explore the latest books fresh off the press!</p>
       </hgroup>
-      {% include 'shop/utils/books.html' with books=books|slice:"1:" classes="space-evenly" %}
+      {% include 'shop/utils/books.html' with books=books classes="space-evenly" %}
     </section>
   {% else %}
     {% include 'shop/utils/nothing.html' %}

@@ -2,7 +2,11 @@
 <div class="{{ classes }} books__container ">
   {% for book in books %}
     <div class="card">
-      {% if book.is_bestseller %}<div class="bestseller_badge">Best Seller</div>{% endif %}
+      {% if book.is_bestseller %}
+        <div class="bestseller_badge">
+          <small>Best Seller</small>
+        </div>
+      {% endif %}
       {% with book.image as image %}
         {% cloudinary image class="card__image" loading="lazy" alt=book %}
       {% endwith %}

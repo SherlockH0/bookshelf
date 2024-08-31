@@ -30,6 +30,11 @@
   </dialog>
   <div class="detail__wrapper detail">
     <div class="detail__cover">
+      {% if book.is_bestseller %}
+        <div class="bestseller_badge">
+          <small>Best Seller</small>
+        </div>
+      {% endif %}
       {% with object.image as image %}
         {% cloudinary image class="detail__image" loading="lazy" alt=object %}
       {% endwith %}
