@@ -563,12 +563,17 @@ html {
   padding: 0.1rem 0.4rem;
   z-index: 2;
   border-radius: var(--pico-border-radius);
-  background: #eaddcc99;
+  background: #eaddcc;
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
-  backdrop-filter: brightness(2) blur(12px);
   transition: 300ms ease-out;
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .bestseller_badge {
+    background: #eaddcc99;
+    backdrop-filter: brightness(2) blur(12px);
+  }
 }
 
 .detail__cover:hover .bestseller_badge,
@@ -627,6 +632,9 @@ html {
   justify-items: center;
   display: grid;
   grid-template-columns: repeat(3, auto);
+}
+.wishlist .books__container {
+  justify-content: space-evenly;
 }
 
 .card__image {
@@ -734,12 +742,6 @@ html {
   align-self: center;
 }
 
-.cart__table {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .checkout__grid {
   max-width: 1000px;
   display: -ms-grid;
@@ -803,8 +805,8 @@ dialog article > footer a {
 
 .card .update-item {
   position: absolute;
-  z-index: 2;
-  right: -0.5rem;
+  z-index: 5;
+  left: -0.5rem;
   top: -0.5rem;
 }
 
@@ -975,5 +977,11 @@ dialog article > footer a {
     grid-row-end: 3;
     -ms-grid-column: 1;
     grid-column-start: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-tooltip][data-placement="left"]:focus::after, [data-tooltip][data-placement="left"]:hover::after {
+    --pico-tooltip-caret-slide-to: translate(0.28rem, -50%);
   }
 }

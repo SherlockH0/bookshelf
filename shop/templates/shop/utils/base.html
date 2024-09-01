@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="{% static "css/sentient.css" %}">
+    {% block css %}
+    {% endblock %}
     <script>
 		const user = '{{ request.user }}'
 
@@ -163,5 +165,7 @@
     <script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
   </body>
 </html>
