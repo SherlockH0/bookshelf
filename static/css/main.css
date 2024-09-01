@@ -88,7 +88,7 @@ details.dropdown summary {
   --pico-primary-hover-underline: var(--pico-primary-hover);
   --pico-primary-focus: rgba(61, 52, 139, 0.5);
   --pico-primary-inverse: #eaddcc;
-  --pico-secondary: #ddb577;
+  --pico-secondary: rgb(221, 181, 119);
   --pico-secondary-background: #ddb577;
   --pico-secondary-border: var(--pico-secondary-background);
   --pico-secondary-underline: rgba(221, 181, 119, 0.5);
@@ -555,13 +555,25 @@ html {
 
 .bestseller_badge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 10;
-  padding: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  z-index: 2;
   border-radius: var(--pico-border-radius);
-  background: var(--pico-tooltip-background-color);
-  color: var(--pico-tooltip-color);
+  background: #eaddcc99;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  backdrop-filter: brightness(2) blur(12px);
+  transition: 300ms ease-out;
+}
+
+.detail__cover:hover .bestseller_badge,
+.card:hover .bestseller_badge {
+  opacity: 0.2;
 }
 
 .detail__buttons {
@@ -617,10 +629,6 @@ html {
   grid-template-columns: repeat(3, auto);
 }
 
-.books__container.large > :not([hidden]) ~ :not([hidden]) {
-  margin-left: 1rem;
-}
-
 .card__image {
   max-height: clamp(160px, 40vw, 310px);
   max-width: none;
@@ -667,6 +675,7 @@ html {
 .card__link {
   position: absolute;
   inset: 0;
+  z-index: 3;
   width: 100%;
 }
 
