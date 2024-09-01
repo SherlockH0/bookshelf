@@ -97,7 +97,7 @@
       <p class="detail__description">{{ object.about|markdown|safe }}</p>
     </div>
   </div>
-  <script>
+  <script type="module">
         // If item already in the cart or in the wishlist, show it
         const item_id = {{ object.id }}
         const cart_items = {{ cart_items }}
@@ -124,12 +124,20 @@
             addToWishlistBtn.dataset.action = 'delete'
             addToWishlistBtn.dataset.tooltip = 'Remove from wishlist'
         }
+        const viewer = new Viewer(document.querySelector(".detail__image"), {
+          toolbar: false,
+          navbar: false,
+          viewed() {
+            viewer.zoomTo(1);
+          },
+        });
+
 
   </script>
 {% endblock content %}
-{% block script %}
+{% block scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"
           integrity="sha512-EC3CQ+2OkM+ZKsM1dbFAB6OGEPKRxi6EDRnZW9ys8LghQRAq6cXPUgXCCujmDrXdodGXX9bqaaCRtwj4h4wgSQ=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"></script>
-{% endblock script %}
+{% endblock scripts %}

@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
+    {% block css %}
+    {% endblock %}
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="{% static "css/sentient.css" %}">
-    {% block css %}
-    {% endblock %}
     <script>
 		const user = '{{ request.user }}'
 

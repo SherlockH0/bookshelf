@@ -523,10 +523,49 @@ html {
   -ms-flex-pack: center;
   justify-content: center;
   position: relative;
+  cursor: zoom-in;
 }
 
 .detail__image {
   width: 100%;
+}
+
+.viewer-button {
+  -webkit-app-region: no-drag;
+  background-color: #19161080;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: background-color .15s;
+  width: 2rem;
+  height: 2rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: 300ms ease-out;
+}
+.viewer-button::before {
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  position: absolute;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPgoJPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWFkZGNjIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41IiBkPSJtOC40NjQgMTUuNTM1bDcuMDcyLTcuMDdtLTcuMDcyIDBsNy4wNzIgNy4wNyIgLz4KPC9zdmc+");
+  background-position: revert;
+  background-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+.viewer-button:hover,
+.viewer-button:focus {
+  background-color: #191610a0;
+}
+
+.viewer-button:focus {
+  box-shadow: 0 0 0 var(--pico-outline-width) var(--pico-primary-focus);
 }
 
 .hero__grid {
