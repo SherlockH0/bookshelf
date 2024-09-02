@@ -200,17 +200,18 @@ html {
   width: 100%;
 }
 
-.social {
-  color: var(--pico-contrast);
-  font-size: 3rem;
-}
-
 .socials {
+  font-size: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 2rem;
 }
+
+.socials a {
+  --pico-color: var(--pico-contrast);
+}
+
 
 .no_touch {
   -webkit-user-select: none;
