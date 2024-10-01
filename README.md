@@ -10,7 +10,7 @@
 
 ## Demo
 
-[Live deployment](https://bookshelf-ochre.vercel.app/) (may take several seconds to load on cold start)
+[Live deployment](https://bookshelf-ochre.vercel.app/) (may take several seconds to load on a cold start)
 [![Main page preview](https://raw.githubusercontent.com/SherlockH0/bookshelf/main/preview.png "Main page preview")](https://bookshelf-ochre.vercel.app/)
 
 ## Features
