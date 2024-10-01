@@ -1,4 +1,4 @@
-# [Bookshelf](https://bookshelf-ochre.vercel.app/)
+# Bookshelf
 
 <div align="center">
 <div style="display: flex; gap:.5rem">
