@@ -1,11 +1,9 @@
 # Bookshelf
 
-<div align="center">
 <div style="display: flex; gap:.5rem">
 <img alt="Static Badge" src="https://img.shields.io/badge/Django-%23092E20?style=flat-square&logo=django">
 <img alt="Static Badge" src="https://img.shields.io/badge/Vercel-black?style=flat-square&logo=vercel">
 <img alt="Static Badge" src="https://img.shields.io/badge/HTML-%23E34F26?style=flat-square&logo=html5&logoColor=white">
-</div>
 </div>
 
 ## Bookshelf is a full-featured bookshop website built with Django
