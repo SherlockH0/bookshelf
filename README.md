@@ -36,4 +36,4 @@
 
 ## Lessons Learned
 
-This was a really interesting project for me, being my first experience with using cookies, PayPall Checkout and deploing a web application.
+This was a really interesting project for me, being my first experience with using cookies, PayPall Checkout, and deploing a web application.
