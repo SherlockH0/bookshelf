@@ -15,3 +15,6 @@ dependencies = [
   "python-dotenv==1.0.1",
   "urllib3==1.26.6",
 ]
+
+[tool.vercel.scripts]
+build = "python manage.py migrate; python manage.py collectstatic --noinput"
