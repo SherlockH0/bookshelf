@@ -1,0 +1,17 @@
+[project]
+name = "bookshelf"
+version = "0.1.0"
+description = "Bookshelf is a simple e-commerce bookshop website."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "cloudinary==1.41.0",
+  "django==4.2.9",
+  "django-widget-tweaks==1.5.0",
+  "markdown==3.7",
+  "pillow==10.2.0",
+  "psycopg==3.1.17",
+  "psycopg2-binary==2.9.9",
+  "python-dotenv==1.0.1",
+  "urllib3==1.26.6",
+]
