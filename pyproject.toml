@@ -3,7 +3,7 @@ name = "bookshelf"
 version = "0.1.0"
 description = "Bookshelf is a simple e-commerce bookshop website."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.9, <3.10"
 dependencies = [
   "cloudinary==1.41.0",
   "django==4.2.9",
