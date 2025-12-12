@@ -4,20 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0006_alter_book_date_created'),
+        ("shop", "0006_alter_book_date_created"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='book',
-            name='image_preview',
-            field=models.ImageField(default='default.jpeg', help_text='height 310px', upload_to='book_covers'),
+            model_name="book",
+            name="image_preview",
+            field=models.ImageField(
+                default="default.jpeg",
+                help_text="height 310px",
+                upload_to="book_covers",
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='image',
-            field=models.ImageField(default='default.jpeg', help_text='width 300px', upload_to='book_covers'),
+            model_name="book",
+            name="image",
+            field=models.ImageField(
+                default="default.jpeg", help_text="width 300px", upload_to="book_covers"
+            ),
         ),
     ]

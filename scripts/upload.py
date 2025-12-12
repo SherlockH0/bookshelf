@@ -2,7 +2,6 @@ import os
 from pprint import pprint
 
 import cloudinary.uploader
-from django.core.files import File
 
 from bookshelf.settings import BASE_DIR
 
@@ -13,7 +12,6 @@ import django
 
 django.setup()
 
-import pyperclip
 
 SUFFIX = "Write a 2 paragraph book description (NO SPOILERS) in a bookshop using markdown for the book {0}\n"
 
@@ -70,7 +68,7 @@ genres = cursor.fetchall()
 pprint(type(authors[0]))
 
 
-print(f'{WARNING}{"-"*20}ADDING AUTHORS{"-"*20}{ENDC}')
+print(f"{WARNING}{'-' * 20}ADDING AUTHORS{'-' * 20}{ENDC}")
 
 for author in authors:
     name = author[1]
@@ -89,7 +87,7 @@ for author in authors:
     finally:
         print(ENDC)
 
-print(f'{WARNING}{"-"*20}ADDING GENRES{"-"*20}{ENDC}')
+print(f"{WARNING}{'-' * 20}ADDING GENRES{'-' * 20}{ENDC}")
 
 for genre in genres:
     name = genre[1]
@@ -119,7 +117,7 @@ for genre in genres:
     finally:
         print(ENDC)
 #
-print(f'{WARNING}{"-"*20}ADDING BOOKS{"-"*20}{ENDC}')
+print(f"{WARNING}{'-' * 20}ADDING BOOKS{'-' * 20}{ENDC}")
 
 for book in books:
     name = book[1]

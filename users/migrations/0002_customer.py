@@ -6,20 +6,35 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name="Customer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=128)),
-                ('last_name', models.CharField(max_length=128)),
-                ('email', models.EmailField(max_length=254)),
-                ('user', models.OneToOneField(default=None, null=True, on_delete=django.db.models.deletion.SET_DEFAULT, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=128)),
+                ("last_name", models.CharField(max_length=128)),
+                ("email", models.EmailField(max_length=254)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_DEFAULT,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

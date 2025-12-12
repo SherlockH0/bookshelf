@@ -6,15 +6,20 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('users', '0002_customer'),
+        ("users", "0002_customer"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customer',
-            name='user',
-            field=models.OneToOneField(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_DEFAULT, to=settings.AUTH_USER_MODEL),
+            model_name="customer",
+            name="user",
+            field=models.OneToOneField(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_DEFAULT,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

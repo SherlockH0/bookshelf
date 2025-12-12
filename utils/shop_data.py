@@ -37,7 +37,6 @@ class CookieModel:
 
 
 class CookieOrder(CookieModel):
-
     def __init__(self, cart):
         self.items = []
         self.item_count = 0
@@ -45,7 +44,6 @@ class CookieOrder(CookieModel):
 
         books = Book.objects.filter(pk__in=cart.keys())
         for book in books:
-
             pk = str(book.pk)
             quantity = cart[pk]["quantity"]
 
@@ -64,7 +62,6 @@ class CookieOrder(CookieModel):
 
 
 class CookieWishlist(CookieModel):
-
     def __init__(self, wishlist):
         self.items = []
 
@@ -98,7 +95,6 @@ class ModelData:
 
 
 class OrderData(ModelData):
-
     def auth_init(self):
         self.order, c = Order.objects.get_or_create(
             customer=self.user.customer, complete=False

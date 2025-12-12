@@ -7,4 +7,4 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'email', 'user']
+    list_display = ["__str__", "email", "user"]

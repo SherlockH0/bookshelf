@@ -4,22 +4,21 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0001_initial'),
+        ("shop", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='author',
-            name='slug',
+            model_name="author",
+            name="slug",
         ),
         migrations.RemoveField(
-            model_name='book',
-            name='slug',
+            model_name="book",
+            name="slug",
         ),
         migrations.RemoveField(
-            model_name='genre',
-            name='slug',
+            model_name="genre",
+            name="slug",
         ),
     ]

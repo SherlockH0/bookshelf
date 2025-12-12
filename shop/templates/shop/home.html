@@ -45,7 +45,9 @@
               {% with book.image_preview as image %}
                 {% cloudinary image class="card__image" loading="lazy" alt=book %}
               {% endwith %}
-              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
+              <a href="{{ book.get_absolute_url }}"
+                 class="card__link"
+                 title="Buy {{ book.name }}"></a>
             </div>
           {% endif %}
         {% endwith %}
@@ -71,7 +73,9 @@
               <small>
                 <ins>${{ book.price }}</ins>
               </small>
-              <a href="{{ book.get_absolute_url }}" class="card__link"></a>
+              <a href="{{ book.get_absolute_url }}"
+                 class="card__link"
+                 title="Buy {{ book.name }}"></a>
             </div>
           {% endfor %}
         </div>

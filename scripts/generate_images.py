@@ -18,7 +18,8 @@ def generate(base_dir: Path):
 
     for image_name in input_images:
 
-        out_name = lambda suffix: os.path.splitext(image_name)[0] + suffix + ".webp"
+        def out_name(suffix):
+            return os.path.splitext(image_name)[0] + suffix + ".webp"
 
         out_preview = output_dir / out_name("_preview")
         out_cover = output_dir / out_name("_cover")
@@ -39,6 +40,5 @@ def generate(base_dir: Path):
 
 
 if __name__ == "__main__":
-
     base_dir = Path(__file__).resolve()
     generate(base_dir)

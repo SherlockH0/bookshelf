@@ -5,52 +5,105 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('portrait', models.ImageField(default='default_author.jpeg', upload_to='author_portraits')),
-                ('about', models.TextField()),
-                ('slug', models.SlugField(default='')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                (
+                    "portrait",
+                    models.ImageField(
+                        default="default_author.jpeg", upload_to="author_portraits"
+                    ),
+                ),
+                ("about", models.TextField()),
+                ("slug", models.SlugField(default="")),
             ],
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('about', models.TextField()),
-                ('slug', models.SlugField(default='')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shop.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                ("about", models.TextField()),
+                ("slug", models.SlugField(default="")),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="shop.category"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('about', models.TextField()),
-                ('price', models.FloatField()),
-                ('image', models.ImageField(default='default.jpeg', upload_to='book_covers')),
-                ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('slug', models.SlugField(default='')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shop.author')),
-                ('genre', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shop.genre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("about", models.TextField()),
+                ("price", models.FloatField()),
+                (
+                    "image",
+                    models.ImageField(default="default.jpeg", upload_to="book_covers"),
+                ),
+                ("date_created", models.DateTimeField(auto_now_add=True)),
+                ("slug", models.SlugField(default="")),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="shop.author"
+                    ),
+                ),
+                (
+                    "genre",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="shop.genre"
+                    ),
+                ),
             ],
         ),
     ]

@@ -4,25 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0003_author_slug_book_slug_genre_slug'),
+        ("shop", "0003_author_slug_book_slug_genre_slug"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='author',
-            name='slug',
-            field=models.SlugField(blank=True, default='', null=True),
+            model_name="author",
+            name="slug",
+            field=models.SlugField(blank=True, default="", null=True),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='slug',
-            field=models.SlugField(blank=True, default='', null=True),
+            model_name="book",
+            name="slug",
+            field=models.SlugField(blank=True, default="", null=True),
         ),
         migrations.AlterField(
-            model_name='genre',
-            name='slug',
-            field=models.SlugField(blank=True, default='', null=True),
+            model_name="genre",
+            name="slug",
+            field=models.SlugField(blank=True, default="", null=True),
         ),
     ]

@@ -39,7 +39,9 @@
               {% with item.book.image_preview as image %}
                 {% cloudinary image alt=item.book loading="lazy" class="card__image" %}
               {% endwith %}
-              <a href="{{ item.book.get_absolute_url }}" class="card__link"></a>
+              <a href="{{ item.book.get_absolute_url }}"
+                 class="card__link"
+                 title="Buy {{ item.book.name }}"></a>
             </div>
             <div>
               <hgroup>

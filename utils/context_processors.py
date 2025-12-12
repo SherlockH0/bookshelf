@@ -1,6 +1,4 @@
-from django.db.models import OuterRef, Subquery
-
-from shop.models import Category, Genre
+from shop.models import Genre
 
 from .shop_data import OrderData, WishlistData
 

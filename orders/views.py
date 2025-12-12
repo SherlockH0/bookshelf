@@ -13,7 +13,6 @@ from utils.shop_data import OrderData, WishlistData
 
 
 def cart(request):
-
     data = OrderData(request)
 
     return render(
@@ -22,7 +21,6 @@ def cart(request):
 
 
 def wishlist(request):
-
     data = WishlistData(request)
 
     context = {"items": data.items}
@@ -30,7 +28,6 @@ def wishlist(request):
 
 
 def checkout(request):
-
     data = OrderData(request)
     return render(
         request, "orders/checkout.html", {"order": data.order, "items": data.items}
@@ -47,13 +44,11 @@ def update_item(request):
     book = Book.objects.get(id=bookId)
 
     if place == "cart":
-
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
         item, created = OrderItem.objects.get_or_create(order=order, book=book)
 
     elif place == "wishlist":
-
         wishlist, created = Wishlist.objects.get_or_create(customer=customer)
 
         item, created = WishlistItem.objects.get_or_create(wishlist=wishlist, book=book)

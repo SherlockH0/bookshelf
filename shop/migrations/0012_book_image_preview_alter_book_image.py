@@ -5,21 +5,20 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0011_remove_book_image_preview'),
+        ("shop", "0011_remove_book_image_preview"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='book',
-            name='image_preview',
-            field=cloudinary.models.CloudinaryField(default='', max_length=255),
+            model_name="book",
+            name="image_preview",
+            field=cloudinary.models.CloudinaryField(default="", max_length=255),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='book',
-            name='image',
+            model_name="book",
+            name="image",
             field=cloudinary.models.CloudinaryField(max_length=255),
         ),
     ]

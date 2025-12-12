@@ -7,7 +7,6 @@ from django.urls import reverse
 
 
 class Author(models.Model):
-
     name = models.CharField(max_length=50)
     portrait = models.ImageField(
         default="default_author.jpeg", upload_to="author_portraits"
@@ -27,7 +26,6 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -35,7 +33,6 @@ class Category(models.Model):
 
 
 class Genre(models.Model):
-
     name = models.CharField(max_length=50)
     about = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -63,7 +60,6 @@ class BookManager(models.Manager):
 
 
 class Book(models.Model):
-
     name = models.CharField(max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)

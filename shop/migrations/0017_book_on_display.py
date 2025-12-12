@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0016_alter_book_image_alter_book_image_preview'),
+        ("shop", "0016_alter_book_image_alter_book_image_preview"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='book',
-            name='on_display',
+            model_name="book",
+            name="on_display",
             field=models.BooleanField(default=False),
         ),
     ]

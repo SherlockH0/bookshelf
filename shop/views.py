@@ -1,6 +1,8 @@
 from random import randint
+from typing import TYPE_CHECKING, Union
 
 from django.db.models import Q
+from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views.generic import DetailView, ListView
@@ -9,24 +11,26 @@ from utils.shop_data import OrderData, WishlistData
 
 from .models import Author, Book, Genre
 
+if TYPE_CHECKING:
+    from django.db.models import BaseManager
 
-def about(request):
+
+def about(request: HttpRequest):
     return render(request, "shop/about.html")
 
 
-def contacts(request):
+def contacts(request: HttpRequest):
     return render(request, "shop/contacts.html")
 
 
-def home(request):
-
+def home(request: HttpRequest):
     books = Book.objects.all()
 
-    if "search" in request.GET and request.GET["search"] != "":
-        query = request.GET["search"]
-        context = {
+    query: str = request.GET.get("search", "")
+    if query:
+        context: dict[str, Union[str, BaseManager[Book]]] = {
             "books": books.filter(
-                Q(name__icontains=query)  # pyright: ignore
+                Q(name__icontains=query)
                 | Q(author__name__icontains=query)
                 | Q(about__icontains=query)
                 | Q(genre__name__icontains=query)
@@ -36,13 +40,20 @@ def home(request):
 
         return render(request, "shop/search_results.html", context)
 
-    pks = len(books)
+    pks = books.count()
+    if not pks:
+        return render(request, "shop/home.html")
     random_pk = randint(0, pks - 1)
     random_book = str(books[random_pk])
     display = books.filter(on_display=True)[:2]
     bestsellers = books.filter(is_bestseller=True)[:3]
 
-    context = {"books": books, "random_book": random_book, "display": display, "bestsellers": bestsellers}
+    context = {
+        "books": books,
+        "random_book": random_book,
+        "display": display,
+        "bestsellers": bestsellers,
+    }
 
     return render(request, "shop/home.html", context)
 

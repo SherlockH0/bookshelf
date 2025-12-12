@@ -5,44 +5,60 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('users', '0003_alter_customer_user'),
-        ('orders', '0003_alter_order_user'),
+        ("users", "0003_alter_customer_user"),
+        ("orders", "0003_alter_order_user"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='order',
-            name='user',
+            model_name="order",
+            name="user",
         ),
         migrations.RemoveField(
-            model_name='shippingdetails',
-            name='user',
+            model_name="shippingdetails",
+            name="user",
         ),
         migrations.RemoveField(
-            model_name='wishlist',
-            name='user',
+            model_name="wishlist",
+            name="user",
         ),
         migrations.AddField(
-            model_name='order',
-            name='customer',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='users.customer'),
+            model_name="order",
+            name="customer",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="users.customer",
+            ),
         ),
         migrations.AddField(
-            model_name='shippingdetails',
-            name='customer',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.customer'),
+            model_name="shippingdetails",
+            name="customer",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="users.customer",
+            ),
         ),
         migrations.AddField(
-            model_name='wishlist',
-            name='customer',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='users.customer'),
+            model_name="wishlist",
+            name="customer",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="users.customer",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='shippingdetails',
-            name='order',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='orders.order'),
+            model_name="shippingdetails",
+            name="order",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="orders.order",
+            ),
         ),
     ]

@@ -4,20 +4,27 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0007_book_image_preview_alter_book_image'),
+        ("shop", "0007_book_image_preview_alter_book_image"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='image',
-            field=models.ImageField(default='default_cover.webp', help_text='width 300px', upload_to='book_covers'),
+            model_name="book",
+            name="image",
+            field=models.ImageField(
+                default="default_cover.webp",
+                help_text="width 300px",
+                upload_to="book_covers",
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='image_preview',
-            field=models.ImageField(default='default_preview.webp', help_text='height 310px', upload_to='book_covers'),
+            model_name="book",
+            name="image_preview",
+            field=models.ImageField(
+                default="default_preview.webp",
+                help_text="height 310px",
+                upload_to="book_covers",
+            ),
         ),
     ]

@@ -4,9 +4,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{% static 'logo.svg' %}">
-    {% block css %}
-    {% endblock %}
+    <!-- Default favicon (fallback for unsupported browsers) -->
+    <link rel="icon"
+          href="{% static "favicon-light.svg" %}"
+          type="image/x-icon">
+    <!-- Light mode favicon -->
+    <link rel="icon"
+          href="{% static "favicon-light.svg" %}"
+          type="image/x-icon"
+          media="(prefers-color-scheme: light)">
+    <!-- Dark mode favicon -->
+    <link rel="icon"
+          href="{% static "favicon-dark.svg" %}"
+          type="image/x-icon"
+          media="(prefers-color-scheme: dark)">
+    {% block css %}{% endblock %}
+    <meta name="color-scheme" content="light">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@next/css/pico.min.css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
@@ -48,6 +61,7 @@
 			document.cookie = 'wishlist=' + JSON.stringify(wishlist) + ';domain=;path=/;'
 		}
 
+
     </script>
     {% if title %}
       <title>Bookshelf - {{ title }}</title>
@@ -62,8 +76,9 @@
         <ul>
           <li>
             <a href="{% url 'shop-home' %}" class="navbar__brand">
-              <img class="brand__logo" src="{% static 'logo.svg' %}">
-              <span class="brand__text">BookShelf</span>
+              <img class="brand__logo"
+                   src="{% static 'logo.svg' %}"
+                   alt="Bookshelf logo">
             </a>
           </li>
         </ul>
@@ -71,9 +86,9 @@
           {% regroup genres by category as category_list %}
           {% for category in category_list %}
             <li>
-              <details class="dropdown">
-                <summary>{{ category.grouper }}</summary>
-                <ul dir="rtl">
+              <details class="dropdown" role="list">
+                <summary role="link">{{ category.grouper }}</summary>
+                <ul dir="rtl" role="listbox">
                   {% for genre in category.list %}
                     <li>
                       <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
@@ -85,7 +100,7 @@
           {% endfor %}
           <li></li>
           <li>
-            <a href="{% url 'shop-about' %}">About us</a>
+            <a href="{% url 'shop-about' %}">About</a>
           </li>
           <li>
             <a href="{% url 'shop-contacts' %}">Contacts</a>
@@ -165,7 +180,6 @@
     <script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
-    {% block scripts %}
-    {% endblock %}
+    {% block scripts %}{% endblock %}
   </body>
 </html>
