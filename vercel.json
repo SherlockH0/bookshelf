@@ -18,6 +18,10 @@
     {
       "src": "/(.*)",
       "dest": "bookshelf/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     }
   ],
   "outputDirectory": "staticfiles"
