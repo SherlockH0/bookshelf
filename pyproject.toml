@@ -10,7 +10,7 @@ dependencies = [
   "django-widget-tweaks",
   "markdown",
   "pillow",
-  "psycopg[binary]",
+  "psycopg2-binary>=2.9.11",
   "python-dotenv",
   "urllib3",
   "whitenoise",
