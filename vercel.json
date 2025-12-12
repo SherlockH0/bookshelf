@@ -1,14 +1,16 @@
 {
   "regions": ["fra1"],
-  "routes": [
+  "builds": [
     {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
+      "src": "bookshelf/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
     {
       "src": "/(.*)",
       "dest": "bookshelf/wsgi.py"
     }
-  ],
-  "outputDirectory": "staticfiles"
+  ]
 }
