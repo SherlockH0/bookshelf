@@ -7,6 +7,11 @@
       "config": {
         "maxLambdaSize": "15mb"
       }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/python",
+      "config": { "distDir": "staticfiles" }
     }
   ],
   "routes": [
@@ -14,5 +19,6 @@
       "src": "/(.*)",
       "dest": "bookshelf/wsgi.py"
     }
-  ]
+  ],
+  "outputDirectory": "staticfiles"
 }
